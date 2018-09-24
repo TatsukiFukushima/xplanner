@@ -1,24 +1,54 @@
-<div class="center jumbotron">
-  <h1>X Planner</h1>
-</div>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <h1>
+          <%= gravatar_for @user %><br clear = "">
+          <%= link_to @user.name, @user %>
+        </h1>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+      <%= form_tag users_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search], class: 'search_user', placeholder: 'ユーザー検索' %>
+          <%= submit_tag "Search", :name => nil, class: 'search_user_btn' %>
+        </p>
+      <% end %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>アクティビティ</h3>
+      <p>このページはログイン済みユーザー用のホームページです。</p>
+      <p>ほげほげー</p>
+      <p>ろーれむいぷさむ</p>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>X Planner</h1>
+  </div>
 
-<div class="home-container">
-  <h2>Lorem</h2>
-  <p>
-    <em>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium repellendus natus officia unde doloremque veniam assumenda ea autem reprehenderit tempore asperiores minima fugit, fugiat, dolore rem deleniti aut laboriosam tenetur?
-    </em>
-  </p>
-  <h2>Lorem</h2>
-  <p>
-    <em>
-      Ullam quod impedit accusantium quas enim dignissimos mollitia ut, tenetur porro, aspernatur in laboriosam sit maxime omnis, culpa eius harum saepe voluptas!
-    </em>
-  </p>
-  <h2>Lorem</h2>
-  <p>
-    <em>
-      Beatae neque fugiat, excepturi, ducimus, odio sapiente nobis illum dicta harum consequatur facilis minus illo odit. Fuga harum commodi blanditiis ullam saepe.
-    </em>
-  </p>
-</div>
+  <div class="home-container">
+    <h2>Lorem</h2>
+    <p>
+      <em>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium repellendus natus officia unde doloremque veniam assumenda ea autem reprehenderit tempore asperiores minima fugit, fugiat, dolore rem deleniti aut laboriosam tenetur?
+      </em>
+    </p>
+    <h2>Lorem</h2>
+    <p>
+      <em>
+        Ullam quod impedit accusantium quas enim dignissimos mollitia ut, tenetur porro, aspernatur in laboriosam sit maxime omnis, culpa eius harum saepe voluptas!
+      </em>
+    </p>
+    <h2>Lorem</h2>
+    <p>
+      <em>
+        Beatae neque fugiat, excepturi, ducimus, odio sapiente nobis illum dicta harum consequatur facilis minus illo odit. Fuga harum commodi blanditiis ullam saepe.
+      </em>
+    </p>
+  </div>
+<% end %>

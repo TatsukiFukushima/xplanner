@@ -94,6 +94,15 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
   
+  # 検索機能のためのメソッド
+  def self.search(search)
+    if search
+      User.where(['name LIKE ?', "%#{search}%"])
+    else
+      User.all
+    end
+  end
+  
   private
     
     # メールアドレスを小文字にする

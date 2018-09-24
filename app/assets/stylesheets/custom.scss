@@ -162,7 +162,7 @@ aside {
 }
 
 .gravatar {
-  float: left;
+  /* float: left; */
   margin-right: 10px;
 }
 
@@ -223,6 +223,14 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+.search_user {
+  width: 70%;
+}
+
+.search_user_btn {
+  width: 20%;
 }
 
 #error_explanation {
