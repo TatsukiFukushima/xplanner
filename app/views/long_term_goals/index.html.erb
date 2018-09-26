@@ -1,0 +1,43 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %><br clear = "">
+        <%= link_to @user.name, @user %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section>
+      <%= form_tag users_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search], class: 'search_user', placeholder: 'ユーザー検索' %>
+          <%= submit_tag "Search", :name => nil, class: 'search_user_btn' %>
+        </p>
+      <% end %>
+      </section>
+  </aside>
+  <div class="col-md-8">
+    <%= render 'users/follow_form' if logged_in? %>
+    <h3>Your Goals</h3>
+    <table class="table table-bordered table-sortable ui-sortable">
+      <thead>
+        <tr>
+          <th>カテゴリー</th>
+          <th>目標内容</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @long_term_goals.each do |goal| %>
+        <%= content_tag "tr", class: "item", data: { model_name: goal.class.name.underscore, update_url: user_long_term_goal_sort_path(long_term_goal_id: goal.id) } do %>
+          <td id="l-goal-category"><%= goal.category %></td>
+          <td id="l-goal-content"><%= goal.content %></td>
+          <td id="l-goal-action"><%= link_to '編集', '#' %><%= link_to '削除', '#' %></td>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

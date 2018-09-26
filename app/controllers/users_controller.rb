@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @long_term_goals = @user.long_term_goals
+    @long_term_goals = @user.long_term_goals.rank(:row_order)
   end
   
   def create
