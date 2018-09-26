@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+    resources :long_term_goals do 
+      put :sort
+    end 
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]

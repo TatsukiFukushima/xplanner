@@ -21,5 +21,15 @@
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <h3>Your Goals</h3>
+    <ul>
+    <% @long_term_goals.each do |goal| %>
+      <li>
+        <%= goal.category %>
+        <%= goal.content %>
+        <%= link_to '編集', '#' %>
+        <%= link_to '削除', '#' %>
+      </li>
+    <% end %>
+    </ul>
   </div>
 </div>

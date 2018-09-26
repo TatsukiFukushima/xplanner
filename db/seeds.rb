@@ -42,3 +42,15 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+
+# 長期目標
+5.times do |i|
+  user = User.find(i + 1)
+  8.times do 
+    category = Faker::Lorem.word.capitalize
+    content = Faker::Lorem.sentence(1)
+    params = { long_term_goal: { category: category, content: content } }
+    user.long_term_goals.create!(params[:long_term_goal])
+  end 
+end 
