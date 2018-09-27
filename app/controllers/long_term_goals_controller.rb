@@ -1,5 +1,5 @@
 class LongTermGoalsController < ApplicationController
-  #before_action :set_long_term_goal, only: [:show, :edit, :update, :destroy]
+  # before_action :set_long_term_goal, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user 
   before_action :correct_user_for_l_goal, only: [:edit, :update]
   
