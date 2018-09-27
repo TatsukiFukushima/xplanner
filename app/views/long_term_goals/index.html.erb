@@ -29,7 +29,9 @@
     </section>
   </aside>
   <div class="col-md-9">
-    <h3 class="center new-l-goal">長期目標リスト<%= link_to "新規長期目標", new_user_long_term_goal_path, class: "new-l-goal" %></h3>
+    <% if @user == current_user %>
+      <h3 class="center new-l-goal">長期目標リスト<%= link_to "新規長期目標", new_user_long_term_goal_path, class: "new-l-goal" %></h3>
+    <% end %>
     <table class="table table-bordered table-sortable ui-sortable">
       <thead>
         <tr>
