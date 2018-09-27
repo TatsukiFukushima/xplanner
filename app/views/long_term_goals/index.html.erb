@@ -3,14 +3,14 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %><br clear = "">
-        <%= link_to @user.name, user_long_term_goals_path(@user) %>
+        <%= link_to @user.name, user_long_term_goals_path(@user), data: {"turbolinks" => false} %>
       </h1>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
     <section class="follow-button">
-    <%= render 'users/follow_form' if logged_in? %>
+      <%= render 'users/follow_form' if logged_in? %>
     </section>
     <section>
       <p class="center">通知</p>
@@ -26,7 +26,7 @@
         </p>
       <% end %>
       <input type="text" placeholder="目標検索">
-      </section>
+    </section>
   </aside>
   <div class="col-md-9">
     <h3 class="center new-l-goal">長期目標リスト<%= link_to "新規長期目標", new_user_long_term_goal_path, class: "new-l-goal" %></h3>
@@ -36,16 +36,24 @@
           <th>目標期限</th>
           <th>カテゴリー</th>
           <th>目標内容</th>
+        <% if @user == current_user %>
           <th></th>
+        <% end %>
         </tr>
       </thead>
       <tbody>
       <% @long_term_goals.each do |goal| %>
         <%= content_tag "tr", class: "item", data: { model_name: goal.class.name.underscore, update_url: user_long_term_goal_sort_path(long_term_goal_id: goal.id) } do %>
-          <td><%= %></td>
-          <td><%= goal.category %></td>
-          <td><%= goal.content %></td>
-          <td><%= link_to '編集', '#' %><%= link_to '削除', '#' %></td>
+            <td><%= %></td>
+            <td><%= link_to goal.category, user_long_term_goal_path(id: goal.id) %></td>
+            <td><%= goal.content %></td>
+          <% if @user == current_user %>
+            <td>
+              <%= link_to '編集', edit_user_long_term_goal_path(id: goal.id) %>
+              <%= link_to '削除', user_long_term_goal_path(id: goal.id), method: :delete,
+                data: { confirm: "本当に削除しますか？" } %>
+            </td>
+          <% end %>
         <% end %>
       <% end %>
       </tbody>
