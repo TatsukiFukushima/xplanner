@@ -1,7 +1,7 @@
 class LongTermGoalsController < ApplicationController
   before_action :set_long_term_goal, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user 
-  before_action :correct_user_for_l_goal, only: [:edit, :update, :destroy]
+  before_action :correct_user_for_l_goal, only: [:new, :create, :edit, :update, :destroy]
 
   
   
@@ -11,7 +11,7 @@ class LongTermGoalsController < ApplicationController
   end
 
   def create
-    @user = current_user 
+    @user = User.find(params[:user_id]) 
     @long_term_goal = @user.long_term_goals.build(long_term_goal_params)
     if @long_term_goal.save 
       flash[:success] = "長期目標を作成しました"
