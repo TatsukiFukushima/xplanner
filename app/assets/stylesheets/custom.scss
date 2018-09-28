@@ -382,6 +382,7 @@ a {
 
 div.l-goal-show-container {
   background-color: #eee;
+  border-radius: 10px;
 }
 
 section.user-data {
@@ -393,8 +394,21 @@ section.data2 {
 
 }
 
+div.item {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+}
 
-/* message */
+div.table-sortable {
+  border: none;
+}
+
+
+/*=================================================================
+      Messages
+=================================================================*/
+
 section.message_box {
   padding: 10px;
   border: 1px solid $gray-light;
@@ -414,4 +428,4 @@ div.message_form {
 
 #message_content {
   font-size: 1.0em;
-}
+

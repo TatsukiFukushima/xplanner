@@ -54,3 +54,24 @@ followers.each { |follower| follower.follow(user) }
     user.long_term_goals.create!(params[:long_term_goal])
   end 
 end 
+
+# 中期目標
+8.times do |i|
+  user = User.first
+  long_term_goal = user.long_term_goals[i]
+  5.times do 
+    content = Faker::Lorem.sentence(1)
+    params = { mid_term_goal: { content: content } }
+    long_term_goal.mid_term_goals.create!(params[:mid_term_goal])
+  end 
+end 
+
+8.times do |i|
+  user = User.find(2)
+  long_term_goal = user.long_term_goals[i]
+  5.times do 
+    content = Faker::Lorem.sentence(1)
+    params = { mid_term_goal: { content: content } }
+    long_term_goal.mid_term_goals.create!(params[:mid_term_goal])
+  end 
+end 

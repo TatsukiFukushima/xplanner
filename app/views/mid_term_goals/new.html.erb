@@ -1,16 +1,13 @@
-<h1>長期目標編集</h1>
+<h1>新規中期目標</h1>
 <div class="clearfix">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@long_term_goal, url: long_term_goal_path) do |f| %>
+    <%= form_for(@mid_term_goal, url: long_term_goal_mid_term_goals_path) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      
-      <%= f.label :category, "カテゴリー" %>
-      <%= f.text_field :category, class: 'form-control' %>
       
       <%= f.label :content, "目標内容" %>
       <%= f.text_field :content, class: 'form-control' %>
       
-      <%= f.submit '更新', class: "btn btn-primary" %>
+      <%= f.submit '作成', class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
