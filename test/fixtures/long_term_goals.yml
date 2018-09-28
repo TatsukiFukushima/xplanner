@@ -1,11 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  content: MyString
-  user: one
-
-two:
-  category: MyString
-  content: MyString
-  user: two
+long_term_goal_1:
+  category: "Programming"
+  content: "aaaaaaaaaaaaaaaaa"
+  user: michael
+  
+long_term_goal_2:
+  category: "English"
+  content: "bbbbbbbbbbbbbbbbb"
+  user: michael
+  
+long_term_goal_3:
+  category: "Programming"
+  content: "aaaaaaaaaaaaaaaa"
+  user: archer
+  
+long_term_goal_4:
+  category: "Programming"
+  content: "bbbbbbbbbbbbbbbb"
+  user: archer
