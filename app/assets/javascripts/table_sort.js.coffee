@@ -8,7 +8,7 @@ $ ->
     stop: (e, ui) ->
       ui.item.removeClass('active-item-shadow')
       # highlight the row on drop to indicate an update
-      ui.item.children('td').effect('highlight', {}, 1000)
+      ui.item.children('td, div').effect('highlight', {}, 1000)
     
     update: (e, ui) ->
       item = ui.item

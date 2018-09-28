@@ -382,6 +382,7 @@ a {
 
 div.l-goal-show-container {
   background-color: #eee;
+  border-radius: 10px;
 }
 
 section.user-data {
@@ -391,4 +392,14 @@ section.user-data {
 
 section.data2 {
 
+}
+
+div.item {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+}
+
+div.table-sortable {
+  border: none;
 }
