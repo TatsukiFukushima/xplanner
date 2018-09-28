@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180926081651) do
+ActiveRecord::Schema.define(version: 20180927102311) do
 
   create_table "long_term_goals", force: :cascade do |t|
     t.string "category"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20180926081651) do
     t.datetime "updated_at", null: false
     t.integer "row_order"
     t.index ["user_id"], name: "index_long_term_goals_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "from_id"
+    t.integer "to_id"
+    t.string "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id", "created_at"], name: "index_messages_on_room_id_and_created_at"
   end
 
   create_table "relationships", force: :cascade do |t|
