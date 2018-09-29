@@ -35,7 +35,11 @@
 <h1><%= @long_term_goal.category %><span>|</span><%= @long_term_goal.content %></h1>
 <p><%= link_to "新規中期目標", new_long_term_goal_mid_term_goal_path(@long_term_goal) %></p>
 <div class="row">
+<% if current_user == @user %>
   <div class="table table-bordered table-sortable ui-sortable">
+<% else %>
+  <div class="">
+<% end %>
     <% @mid_term_goals.each do |goal| %>
       <%= content_tag "div", class: "item", data: { model_name: goal.class.name.underscore, update_url: mid_term_goal_sort_path(goal) } do %>
         <div>
