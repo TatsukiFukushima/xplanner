@@ -24,5 +24,3 @@ $ ->
     )
     
  
-    # stop: (e, ui) ->
-    #   ui.item.children('td').effect('highlight')

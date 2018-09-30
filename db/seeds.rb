@@ -75,3 +75,64 @@ end
     long_term_goal.mid_term_goals.create!(params[:mid_term_goal])
   end 
 end 
+
+# 短期目標
+user = User.first 
+long_term_goals = user.long_term_goals
+long_term_goals.each do |l_goal|
+  mid_term_goals = l_goal.mid_term_goals
+  mid_term_goals.each do |m_goal|
+    5.times do 
+      content = Faker::Lorem.sentence(1)
+      params = { short_term_goal: { content: content } }
+      m_goal.short_term_goals.create!(params[:short_term_goal])
+    end 
+  end 
+end 
+
+user = User.find(2)
+long_term_goals = user.long_term_goals
+long_term_goals.each do |l_goal|
+  mid_term_goals = l_goal.mid_term_goals
+  mid_term_goals.each do |m_goal|
+    5.times do 
+      content = Faker::Lorem.sentence(1)
+      params = { short_term_goal: { content: content } }
+      m_goal.short_term_goals.create!(params[:short_term_goal])
+    end 
+  end 
+end 
+
+
+# アプローチ
+user = User.first
+long_term_goals = user.long_term_goals 
+long_term_goals.each do |l_goal|
+  mid_term_goals = l_goal.mid_term_goals 
+  mid_term_goals.each do |m_goal|
+    short_term_goals = m_goal.short_term_goals
+    short_term_goals.each do |s_goal| 
+      5.times do 
+        content = Faker::Lorem.sentence(1)
+        params = { approach: { content: content } }
+        s_goal.approaches.create!(params[:approach])
+      end 
+    end 
+  end 
+end 
+
+user = User.find(2)
+long_term_goals = user.long_term_goals 
+long_term_goals.each do |l_goal|
+  mid_term_goals = l_goal.mid_term_goals 
+  mid_term_goals.each do |m_goal|
+    short_term_goals = m_goal.short_term_goals
+    short_term_goals.each do |s_goal| 
+      5.times do 
+        content = Faker::Lorem.sentence(1)
+        params = { approach: { content: content } }
+        s_goal.approaches.create!(params[:approach])
+      end 
+    end 
+  end 
+end 

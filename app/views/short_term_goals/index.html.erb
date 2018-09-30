@@ -32,43 +32,42 @@
     </section>
   </div>
 </div>
-<h1><%= @long_term_goal.category %><span>|</span><%= @long_term_goal.content %></h1>
+<h1><%= @long_term_goal.content %><span>|</span><%= @mid_term_goal.content %></h1>
 <% if current_user == @user %>
-<p><%= link_to "新規中期目標", new_long_term_goal_mid_term_goal_path(@long_term_goal) %></p>
+<p><%= link_to "新規短期目標", new_mid_term_goal_short_term_goal_path(@mid_term_goal) %></p>
 <div class="row">
   <div class="table-sortable ui-sortable">
 <% else %>
 <div class="row">
   <div>
 <% end %>
-    <% @mid_term_goals.each do |goal| %>
-      <%= content_tag "div", class: "item", data: { model_name: goal.class.name.underscore, update_url: mid_term_goal_sort_path(goal) } do %>
+    <% @short_term_goals.each do |s_goal| %>
+      <%= content_tag "div", class: "item", data: { model_name: s_goal.class.name.underscore, update_url: short_term_goal_sort_path(s_goal) } do %>
         <div class="clearfix">
           <section class="left">
-            <%= link_to goal.content, mid_term_goal_short_term_goals_path(goal), data: {"turbolinks" => false} %><br />
-            <span>期限</span><br />
-            <span>コメント</span><br />
+            <%= s_goal.content %><%= s_goal.status %><br />
+            <span>期限</span>
+            <span>コメント</span>
             <span>いいね</span><br />
-            <%= link_to '編集', edit_mid_term_goal_path(goal) %>
-            <%= link_to '削除', mid_term_goal_path(goal), method: :delete,
+            <%= link_to '編集', edit_short_term_goal_path(s_goal) %>
+            <%= link_to '削除', short_term_goal_path(s_goal), method: :delete,
               data: { confirm: "本当に削除しますか？" } %><br />
-            <%= link_to '新規短期目標', new_mid_term_goal_short_term_goal_path(goal) %>
+            <%= link_to '新規アプローチ', new_short_term_goal_approach_path(s_goal) %>
           </section>
         <% if current_user == @user %>
           <section class="right table-sortable ui-sortable">
         <% else %>
           <section class="right">
         <% end %>
-            <% @short_term_goals = goal.short_term_goals.rank(:row_order) %>
-            <% @short_term_goals.each do |s_goal| %>
-              <%= content_tag "div", class: "item", data: { model_name: s_goal.class.name.underscore, update_url: short_term_goal_sort_path(s_goal) } do %>
+            <% @approaches = s_goal.approaches.rank(:row_order) %>
+            <% @approaches.each do |approach| %>
+              <%= content_tag "div", class: "item", data: { model_name: approach.class.name.underscore, update_url: approach_sort_path(approach) } do %>
                 <div>
-                  <%= s_goal.content %><%= s_goal.status %><br />
-                  <span>期限</span>
+                  <%= approach.content %><%= approach.effectiveness %><br />
                   <span>コメント</span>
-                  <span>いいね</span><br />
-                  <%= link_to '編集', edit_short_term_goal_path(s_goal) %>
-                  <%= link_to '削除', short_term_goal_path(s_goal), method: :delete,
+                  <span>いいね</span>
+                  <%= link_to '編集', edit_approach_path(approach) %>
+                  <%= link_to '削除', approach_path(approach), method: :delete,
                     data: { confirm: "本当に削除しますか？" } %>
                 </div>
               <% end %>

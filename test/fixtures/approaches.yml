@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-mid_term_goal_1:
+approach_1:
   content: "aaaaaaaaaaaaaaaaa"
-  long_term_goal: long_term_goal_1
+  short_term_goal: short_term_goal_1

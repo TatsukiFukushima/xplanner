@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180928051159) do
+ActiveRecord::Schema.define(version: 20180930072041) do
+
+  create_table "approaches", force: :cascade do |t|
+    t.string "content"
+    t.integer "effectiveness", default: 0, null: false
+    t.integer "row_order"
+    t.integer "short_term_goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["short_term_goal_id"], name: "index_approaches_on_short_term_goal_id"
+  end
 
   create_table "long_term_goals", force: :cascade do |t|
     t.string "category"
@@ -49,6 +59,16 @@ ActiveRecord::Schema.define(version: 20180928051159) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "short_term_goals", force: :cascade do |t|
+    t.string "content"
+    t.integer "status", default: 0, null: false
+    t.integer "row_order"
+    t.integer "mid_term_goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mid_term_goal_id"], name: "index_short_term_goals_on_mid_term_goal_id"
   end
 
   create_table "users", force: :cascade do |t|
