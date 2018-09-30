@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @room_id = message_room_id(current_user, @user)
     @messages = Message.resent_in_room(@room_id)
+    @users = current_user.following.paginate(page: params[:page])
   end
   
   def message_room_id(first_user, second_user)
