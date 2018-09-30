@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root    'landing_page#home'
   get     '/signup',    to: 'users#new'
   get     '/login',     to: 'sessions#new'
@@ -12,8 +12,14 @@ Rails.application.routes.draw do
     end
     resources :long_term_goals, except: :show, shallow: true do 
       put :sort
-      resources :mid_term_goals, shallow: true do 
+      resources :mid_term_goals, except: :show, shallow: true do 
         put :sort
+        resources :short_term_goals, except: :show, shallow: true do 
+          put :sort 
+          resources :approaches, except: [:index, :show], shallow: true do 
+            put :sort 
+          end 
+        end 
       end 
     end 
   end

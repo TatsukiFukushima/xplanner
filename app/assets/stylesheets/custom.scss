@@ -404,6 +404,15 @@ div.table-sortable {
   border: none;
 }
 
+section {
+  &.left {
+    float: left;
+  }
+  &.right {
+    float: right;
+  }
+}
+
 
 /*=================================================================
       Messages
