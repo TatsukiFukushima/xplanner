@@ -255,7 +255,7 @@ input, textarea, select, .uneditable-input {
 }
 
 input {
-  height: auto !important;
+  height: auto;
 }
 
 .search_user {
@@ -394,18 +394,26 @@ section.data2 {
 }
 
 
-/* message */
+/*=================================================================
+      Messages
+=================================================================*/
 section.message_box {
-  padding: 10px;
+  padding: 0px;
   border: 1px solid $gray-light;
   overflow: scroll;
   #messages {
-    height: 400px;
+    padding: 10px;
+    height: 300px;
   }
 }
 
 div.message_form {
   padding-top: 10px;
+  
+  input {
+    margin-bottom: 0px;
+    height: 50px;
+  }
 }
 
 #message_sender {
@@ -414,4 +422,22 @@ div.message_form {
 
 #message_content {
   font-size: 1.0em;
+}
+
+.message_box {
+  background-color: #eeeeee;
+}
+
+.messages_to {
+  padding-left: 0;
+  
+  a {
+    display: inline-block;
+    font-size: 1.5em;
+  }
+}
+
+.message_side_top {
+  margin-top: 0;
+  margin-bottom: 20px;
 }
