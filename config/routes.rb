@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   get     '/messages/:id', to: 'users#show'
   post    '/login',     to: 'sessions#create'
   delete  '/logout',    to: 'sessions#destroy'
-  resources :users, except: :show do
+  resources :users, except: :show, shallow: true do
     member do
       get :following, :followers
     end
-    resources :long_term_goals do 
+    resources :long_term_goals, except: :show, shallow: true do 
       put :sort
+      resources :mid_term_goals, shallow: true do 
+        put :sort
+      end 
     end 
   end
   resources :account_activations, only: [:edit]

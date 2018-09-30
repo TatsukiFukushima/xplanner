@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180927102311) do
+ActiveRecord::Schema.define(version: 20180928051159) do
 
   create_table "long_term_goals", force: :cascade do |t|
     t.string "category"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20180927102311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id", "created_at"], name: "index_messages_on_room_id_and_created_at"
+  end
+
+  create_table "mid_term_goals", force: :cascade do |t|
+    t.string "content"
+    t.integer "row_order"
+    t.integer "long_term_goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["long_term_goal_id"], name: "index_mid_term_goals_on_long_term_goal_id"
   end
 
   create_table "relationships", force: :cascade do |t|

@@ -29,10 +29,13 @@
     </section>
   </aside>
   <div class="col-md-9">
-    <% if @user == current_user %>
-      <h3 class="center new-l-goal">長期目標リスト<%= link_to "新規長期目標", new_user_long_term_goal_path, class: "new-l-goal" %></h3>
-    <% end %>
+  <% if @user == current_user %>
+    <h3 class="center new-l-goal">長期目標リスト<%= link_to "新規長期目標", new_user_long_term_goal_path, class: "new-l-goal" %></h3>
     <table class="table table-bordered table-sortable ui-sortable">
+  <% else %>
+    <h3 class="center new-l-goal">長期目標リスト</h3>
+    <table class="table">
+  <% end %>
       <thead>
         <tr>
           <th>目標期限</th>
@@ -45,14 +48,14 @@
       </thead>
       <tbody>
       <% @long_term_goals.each do |goal| %>
-        <%= content_tag "tr", class: "item", data: { model_name: goal.class.name.underscore, update_url: user_long_term_goal_sort_path(long_term_goal_id: goal.id) } do %>
+        <%= content_tag "tr", class: "item", data: { model_name: goal.class.name.underscore, update_url: long_term_goal_sort_path(goal) } do %>
             <td><%= %></td>
-            <td><%= link_to goal.category, user_long_term_goal_path(id: goal.id) %></td>
-            <td><%= goal.content %></td>
+            <td><%= goal.category %></td>
+            <td><%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: { "turbolinks" => false } %></td>
           <% if @user == current_user %>
             <td>
-              <%= link_to '編集', edit_user_long_term_goal_path(id: goal.id) %>
-              <%= link_to '削除', user_long_term_goal_path(id: goal.id), method: :delete,
+              <%= link_to '編集', edit_long_term_goal_path(goal) %>
+              <%= link_to '削除', long_term_goal_path(goal), method: :delete,
                 data: { confirm: "本当に削除しますか？" } %>
             </td>
           <% end %>

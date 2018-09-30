@@ -26,36 +26,30 @@ class LongTermGoalsController < ApplicationController
     @long_term_goals = @user.long_term_goals.rank(:row_order)
   end 
 
-  def show
-    @user = User.find(params[:user_id])
-  end
-
   def edit
   end
 
   def update
-    @user = User.find(params[:user_id])
     if @long_term_goal.update_attributes(long_term_goal_params)
       flash[:success] = "長期目標を編集しました"
-      redirect_to user_long_term_goals_path(@user)
+      redirect_to user_long_term_goals_path(current_user)
     else
       render 'edit'
     end 
   end
 
   def destroy
-    @user = User.find(params[:user_id])
     @long_term_goal.destroy
     flash[:success] = "長期目標を削除しました"
-    redirect_to user_long_term_goals_path(@user)
+    redirect_to user_long_term_goals_path(current_user)
   end
   
   # 並び替えのデータ（row_order_position）を更新するメソッド
   #（正しいユーザーがドラッグアンドドロップした時のみ）
   def sort 
-    @user = User.find(params[:user_id])
+    long_term_goal = LongTermGoal.find(params[:long_term_goal_id])
+    @user = long_term_goal.user
     if @user == current_user
-      long_term_goal = LongTermGoal.find(params[:long_term_goal_id])
       long_term_goal.update(long_term_goal_params)
       render body: nil
     end
@@ -77,7 +71,11 @@ class LongTermGoalsController < ApplicationController
     
     # 正しいユーザーかどうか確認
     def correct_user_for_l_goal 
-      @user = User.find(params[:user_id])
+      if params[:user_id]
+        @user = User.find(params[:user_id])
+      else 
+        @user = @long_term_goal.user
+      end
       redirect_to(root_url) unless current_user?(@user)
     end 
     
