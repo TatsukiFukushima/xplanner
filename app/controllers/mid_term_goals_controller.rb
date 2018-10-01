@@ -1,7 +1,7 @@
 class MidTermGoalsController < ApplicationController
   before_action :set_mid_term_goal, only: [:edit, :update, :destroy]
   before_action :logged_in_user
-  before_action :correct_user_for_m_goal, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user_for_m_goal, except: [:sort, :index]
   
   
   

@@ -1,0 +1,44 @@
+<% @short_term_goals.each_with_index do |s_goal, i| %>
+  <%= content_tag "div", class: "item", data: { model_name: s_goal.class.name.underscore, update_url: short_term_goal_sort_path(s_goal) } do %>
+    <div class="clearfix">
+      <section class="left">
+        <%= s_goal.content %><%= s_goal.status %><br />
+        <span>期限</span>
+        <span>コメント</span>
+        <span>いいね</span><br />
+      <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+        <%= link_to '編集', edit_short_term_goal_path(s_goal), remote: true %>
+        <%= link_to '削除', short_term_goal_path(s_goal), method: :delete,
+          data: { confirm: "本当に削除しますか？" } %><br />
+        <%= link_to '新規アプローチ', new_short_term_goal_approach_path(s_goal), remote: true %>
+      <% end %>
+      </section>
+    <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+      <section class="right table-sortable ui-sortable clearfix">
+    <% else %>
+      <section class="right clearfix">
+    <% end %>
+        <div onclick="obj=document.getElementById('a_open_<%= i %>').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">▼ アプローチ一覧</a>
+        </div>
+        <div id="a_open_<%= i %>" style="display:none;clear:both;">
+        <% @approaches = s_goal.approaches.rank(:row_order) %>
+        <% @approaches.each do |approach| %>
+          <%= content_tag "div", class: "item", data: { model_name: approach.class.name.underscore, update_url: approach_sort_path(approach) } do %>
+            <div>
+              <%= approach.content %><%= approach.effectiveness %><br />
+              <span>コメント</span>
+              <span>いいね</span>
+            <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+              <%= link_to '編集', edit_approach_path(approach), remote: true %>
+              <%= link_to '削除', approach_path(approach), method: :delete,
+                data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+      </section>
+    </div>
+  <% end %>
+<% end %>

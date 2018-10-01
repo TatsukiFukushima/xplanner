@@ -1,0 +1,49 @@
+<% @mid_term_goals.each_with_index do |goal, i| %>
+  <%= content_tag "div", class: "item", data: { model_name: goal.class.name.underscore, update_url: mid_term_goal_sort_path(goal) } do %>
+    <div class="clearfix">
+      <section class="left">
+        <%= link_to goal.content, mid_term_goal_short_term_goals_path(goal), data: {"turbolinks" => false} %><br />
+        <%= goal.status %><br />
+        <span>期限</span><br />
+        <span>コメント</span><br />
+        <span>いいね</span><br />
+      <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+        <%= link_to '編集', edit_mid_term_goal_path(goal), remote: true %>
+        <%= link_to '削除', mid_term_goal_path(goal), method: :delete,
+          data: { confirm: "本当に削除しますか？" } %><br />
+        <%= link_to '新規短期目標', new_mid_term_goal_short_term_goal_path(goal), remote: true %>
+      <% end %>
+      </section>
+    <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+      <section class="right table-sortable ui-sortable clearfix">
+    <% else %>
+      <section class="right clearfix">
+    <% end %>
+        <div onclick="obj=document.getElementById('s_open_<%= i %>').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">▼ 短期目標一覧</a>
+        </div>
+        <div id="s_open_<%= i %>" style="display:none;clear:both;">
+        <% @short_term_goals = goal.short_term_goals.rank(:row_order) %>
+        <% @short_term_goals.each do |s_goal| %>
+          <%= content_tag "div", class: "item", data: { model_name: s_goal.class.name.underscore, update_url: short_term_goal_sort_path(s_goal) } do %>
+            <div>
+              <%= s_goal.content %><%= s_goal.status %>
+              <a data-remote="true" href="<%= short_term_goal_approaches_path(s_goal) %>">
+                アプローチ一覧<b class="caret"></b>
+              </a><br />
+              <span>期限</span>
+              <span>コメント</span>
+              <span>いいね</span><br />
+            <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+              <%= link_to '編集', edit_short_term_goal_path(s_goal), remote: true %>
+              <%= link_to '削除', short_term_goal_path(s_goal), method: :delete,
+                data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+      </section>
+    </div>
+  <% end %>
+<% end %>
