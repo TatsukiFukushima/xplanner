@@ -63,7 +63,7 @@ class LongTermGoalsController < ApplicationController
     end 
   
     def long_term_goal_params
-      params.require(:long_term_goal).permit(:category, :content, :row_order_position)
+      params.require(:long_term_goal).permit(:category, :content, :row_order_position, :status)
     end 
     
     
