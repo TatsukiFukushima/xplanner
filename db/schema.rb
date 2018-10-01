@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180930072041) do
+ActiveRecord::Schema.define(version: 20181001010952) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "content"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180930072041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "row_order"
+    t.integer "status", default: 0, null: false
     t.index ["user_id"], name: "index_long_term_goals_on_user_id"
   end
 
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20180930072041) do
     t.integer "long_term_goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
     t.index ["long_term_goal_id"], name: "index_mid_term_goals_on_long_term_goal_id"
   end
 

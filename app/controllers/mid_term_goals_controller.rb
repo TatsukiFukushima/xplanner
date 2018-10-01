@@ -69,7 +69,7 @@ class MidTermGoalsController < ApplicationController
     end 
     
     def mid_term_goal_params
-      params.require(:mid_term_goal).permit(:content, :row_order_position)
+      params.require(:mid_term_goal).permit(:content, :row_order_position, :status)
     end 
     
     
