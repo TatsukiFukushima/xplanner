@@ -1,0 +1,25 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= form_for(@mid_term_goal, url: mid_term_goal_path) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">中期目標編集</h4>
+        <%= render 'shared/error_messages', object: f.object %>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <%= f.label :content, '目標内容' %>
+          <%= f.text_field :content, class: 'form-control' %>
+          
+          <%= f.select :status, [['未達成'], ['実行中'], ['達成済み']] %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <%= f.submit "更新", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

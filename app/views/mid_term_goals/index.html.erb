@@ -33,49 +33,16 @@
   </div>
 </div>
 <h1><%= @long_term_goal.category %><span>|</span><%= @long_term_goal.content %></h1>
-<% if current_user == @user %>
-<p><%= link_to "新規中期目標", new_long_term_goal_mid_term_goal_path(@long_term_goal) %></p>
+<% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+<p><%= link_to "新規中期目標", new_long_term_goal_mid_term_goal_path(@long_term_goal), remote: true %></p>
 <div class="row">
   <div class="table-sortable ui-sortable">
 <% else %>
 <div class="row">
   <div>
 <% end %>
-    <% @mid_term_goals.each do |goal| %>
-      <%= content_tag "div", class: "item", data: { model_name: goal.class.name.underscore, update_url: mid_term_goal_sort_path(goal) } do %>
-        <div class="clearfix">
-          <section class="left">
-            <%= link_to goal.content, mid_term_goal_short_term_goals_path(goal), data: {"turbolinks" => false} %><br />
-            <span>期限</span><br />
-            <span>コメント</span><br />
-            <span>いいね</span><br />
-            <%= link_to '編集', edit_mid_term_goal_path(goal) %>
-            <%= link_to '削除', mid_term_goal_path(goal), method: :delete,
-              data: { confirm: "本当に削除しますか？" } %><br />
-            <%= link_to '新規短期目標', new_mid_term_goal_short_term_goal_path(goal) %>
-          </section>
-        <% if current_user == @user %>
-          <section class="right table-sortable ui-sortable">
-        <% else %>
-          <section class="right">
-        <% end %>
-            <% @short_term_goals = goal.short_term_goals.rank(:row_order) %>
-            <% @short_term_goals.each do |s_goal| %>
-              <%= content_tag "div", class: "item", data: { model_name: s_goal.class.name.underscore, update_url: short_term_goal_sort_path(s_goal) } do %>
-                <div>
-                  <%= s_goal.content %><%= s_goal.status %><br />
-                  <span>期限</span>
-                  <span>コメント</span>
-                  <span>いいね</span><br />
-                  <%= link_to '編集', edit_short_term_goal_path(s_goal) %>
-                  <%= link_to '削除', short_term_goal_path(s_goal), method: :delete,
-                    data: { confirm: "本当に削除しますか？" } %>
-                </div>
-              <% end %>
-            <% end %>
-          </section>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render 'm_goal' %>
   </div>
 </div>
+<div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<%= link_to '戻る', :back, data: { "turbolinks" => false } %> 

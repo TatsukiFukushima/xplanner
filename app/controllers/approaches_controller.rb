@@ -1,7 +1,7 @@
 class ApproachesController < ApplicationController
   before_action :set_approach, only: [:edit, :update, :destroy]
   before_action :logged_in_user 
-  before_action :correct_user_for_approach, except: :sort 
+  before_action :correct_user_for_approach, except: [:sort, :index]
   
   
   def new
@@ -19,6 +19,11 @@ class ApproachesController < ApplicationController
     else 
       render 'new'
     end 
+  end 
+  
+  def index 
+    @short_term_goal = ShortTermGoal.find(params[:short_term_goal_id])
+    @approaches = @short_term_goal.approaches.rank(:row_order) 
   end 
 
   def edit

@@ -16,7 +16,7 @@ class ShortTermGoalsController < ApplicationController
     @long_term_goal = @mid_term_goal.long_term_goal 
     if @short_term_goal.save
       flash[:success] = "短期目標を作成しました"
-      redirect_to long_term_goal_mid_term_goals_path(@long_term_goal)
+      redirect_to mid_term_goal_short_term_goals_path(@mid_term_goal)
     else 
       render 'new'
     end 
@@ -37,7 +37,7 @@ class ShortTermGoalsController < ApplicationController
     @long_term_goal = @mid_term_goal.long_term_goal 
     if @short_term_goal.update_attributes(short_term_goal_params)
       flash[:success] = "短期目標を編集しました"
-      redirect_to long_term_goal_mid_term_goals_path(@long_term_goal)
+      redirect_to mid_term_goal_short_term_goals_path(@mid_term_goal)
     else 
       render 'edit'
     end 
@@ -48,7 +48,7 @@ class ShortTermGoalsController < ApplicationController
     @long_term_goal = @mid_term_goal.long_term_goal 
     @short_term_goal.destroy 
     flash[:success] = "短期目標を削除しました"
-    redirect_to long_term_goal_mid_term_goals_path(@long_term_goal)
+    redirect_to mid_term_goal_short_term_goals_path(@mid_term_goal)
   end 
   
   

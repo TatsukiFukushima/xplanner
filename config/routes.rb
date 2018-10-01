@@ -16,7 +16,7 @@ Rails.application.routes.draw do
         put :sort
         resources :short_term_goals, except: :show, shallow: true do 
           put :sort 
-          resources :approaches, except: [:index, :show], shallow: true do 
+          resources :approaches, except: :show, shallow: true do 
             put :sort 
           end 
         end 
