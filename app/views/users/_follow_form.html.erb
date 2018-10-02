@@ -1,9 +1,21 @@
-<% unless current_user?(@user) %>
-  <div id="follow_form">
-  <% if current_user.following?(@user) %>
-    <%= render 'users/unfollow' %>
-  <% else %>
-    <%= render 'users/follow' %>
+<% if defined? user %>
+  <% unless current_user?(user) %>
+    <div id="follow_form_<%= user.id %>">
+    <% if current_user.following?(user) %>
+      <%= render partial: 'users/unfollow', locals: { user: user } %>
+    <% else %>
+      <%= render partial: 'users/follow', locals: { user: user } %>
+    <% end %>
+    </div>
   <% end %>
-  </div>
+<% else %>
+  <% unless current_user?(@user) %>
+    <div id="follow_form">
+    <% if current_user.following?(@user) %>
+      <%= render 'users/unfollow' %>
+    <% else %>
+      <%= render 'users/follow' %>
+    <% end %>
+    </div>
+  <% end %>
 <% end %>
