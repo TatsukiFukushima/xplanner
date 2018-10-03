@@ -8,6 +8,7 @@ class MidTermGoalsController < ApplicationController
   def new
     @long_term_goal = LongTermGoal.find(params[:long_term_goal_id])
     @mid_term_goal = @long_term_goal.mid_term_goals.build
+    @mid_term_goal.build_deadline
   end
   
   def create 
@@ -69,7 +70,8 @@ class MidTermGoalsController < ApplicationController
     end 
     
     def mid_term_goal_params
-      params.require(:mid_term_goal).permit(:content, :row_order_position, :status)
+      params.require(:mid_term_goal).permit(:content, :row_order_position, :status,
+        deadline_attributes: :date)
     end 
     
     

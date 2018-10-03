@@ -1,6 +1,10 @@
 <% @long_term_goals.each do |goal| %>
   <%= content_tag "tr", class: "item", data: { model_name: goal.class.name.underscore, update_url: long_term_goal_sort_path(goal) } do %>
-      <td><%= %></td>
+      <td>
+        <% if goal.deadline %>
+          <%= goal.deadline.date %>
+        <% end %>
+      </td>
       <td><%= goal.category %></td>
       <td>
         <%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: { "turbolinks" => false } %>

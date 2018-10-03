@@ -3,6 +3,8 @@ class LongTermGoal < ApplicationRecord
   ranks :row_order, with_same: :user_id 
   belongs_to :user
   has_many :mid_term_goals, dependent: :destroy
+  has_one :deadline, as: :due_date, dependent: :destroy, inverse_of: :due_date
+  accepts_nested_attributes_for :deadline
   validates :category, presence: true, length: { maximum: 255 }
   validates :content, presence: true, length: { maximum: 255 }
   validates :status, presence: true 
