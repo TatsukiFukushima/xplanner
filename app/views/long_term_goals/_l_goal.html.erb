@@ -11,10 +11,16 @@
         <a data-remote="true" href="<%= long_term_goal_mid_term_goals_path(goal) %>">
           中期目標一覧<b class="caret"></b>
         </a>
+    <% if goal.memo %>
+      <%= link_to 'メモ', memo_path(goal.memo), remote: true %>
+    <% end %>
       </td>
       <td><%= goal.status %></td>
     <% if @user == current_user %><!-- 他ユーザーのページにいるなら -->
       <td>
+      <% unless goal.memo %>
+        <%= link_to '新規メモ', long_term_goal_memo_new_path(goal), remote: true %>
+      <% end %>
         <%= link_to '編集', edit_long_term_goal_path(goal), remote: true %>
         <%= link_to '削除', long_term_goal_path(goal), method: :delete,
           data: { confirm: "本当に削除しますか？" } %>

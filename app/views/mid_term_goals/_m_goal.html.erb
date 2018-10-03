@@ -7,7 +7,13 @@
         <span>期限</span><br />
         <span>コメント</span><br />
         <span>いいね</span><br />
+        <% if goal.memo %>
+          <%= link_to 'メモ', memo_path(goal.memo), remote: true %><br />
+        <% end %>
       <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+      <% unless goal.memo %>
+        <%= link_to '新規メモ', mid_term_goal_memo_new_path(goal), remote: true %>
+      <% end %>
         <%= link_to '編集', edit_mid_term_goal_path(goal), remote: true %>
         <%= link_to '削除', mid_term_goal_path(goal), method: :delete,
           data: { confirm: "本当に削除しますか？" } %><br />
@@ -34,7 +40,13 @@
               <span>期限</span>
               <span>コメント</span>
               <span>いいね</span><br />
+            <% if s_goal.memo %>
+              <%= link_to 'メモ', memo_path(s_goal.memo), remote: true %><br />
+            <% end %>
             <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+              <% unless s_goal.memo %>
+                <%= link_to '新規メモ', short_term_goal_memo_new_path(s_goal), remote: true %>
+              <% end %>
               <%= link_to '編集', edit_short_term_goal_path(s_goal), remote: true %>
               <%= link_to '削除', short_term_goal_path(s_goal), method: :delete,
                 data: { confirm: "本当に削除しますか？" } %>

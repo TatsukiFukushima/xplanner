@@ -6,7 +6,13 @@
         <span>期限</span>
         <span>コメント</span>
         <span>いいね</span><br />
+        <% if s_goal.memo %>
+          <%= link_to 'メモ', memo_path(s_goal.memo), remote: true %><br />
+        <% end %>
       <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+      <% unless s_goal.memo %>
+        <%= link_to '新規メモ', short_term_goal_memo_new_path(s_goal), remote: true %>
+      <% end %>
         <%= link_to '編集', edit_short_term_goal_path(s_goal), remote: true %>
         <%= link_to '削除', short_term_goal_path(s_goal), method: :delete,
           data: { confirm: "本当に削除しますか？" } %><br />
@@ -27,9 +33,16 @@
           <%= content_tag "div", class: "item", data: { model_name: approach.class.name.underscore, update_url: approach_sort_path(approach) } do %>
             <div>
               <%= approach.content %><%= approach.effectiveness %><br />
+              <span>期限</span>
               <span>コメント</span>
               <span>いいね</span>
+              <% if approach.memo %>
+                <%= link_to 'メモ', memo_path(approach.memo), remote: true %><br />
+              <% end %>
             <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+            <% unless approach.memo %>
+              <%= link_to '新規メモ', approach_memo_new_path(s_goal), remote: true %>
+            <% end %>
               <%= link_to '編集', edit_approach_path(approach), remote: true %>
               <%= link_to '削除', approach_path(approach), method: :delete,
                 data: { confirm: "本当に削除しますか？" } %>
