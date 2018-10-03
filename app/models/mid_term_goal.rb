@@ -3,6 +3,8 @@ class MidTermGoal < ApplicationRecord
   ranks :row_order, with_same: :long_term_goal_id
   belongs_to :long_term_goal
   has_many :short_term_goals, dependent: :destroy
+  has_one :deadline, as: :due_date, dependent: :destroy, inverse_of: :due_date
+  accepts_nested_attributes_for :deadline
   validates :content, presence: true, length: { maximum: 255 }
   validates :status, presence: true
   enum status: { "未達成": 0, "実行中": 1, "達成済み": 2 }

@@ -1,6 +1,6 @@
 <div class="modal-dialog">
   <div class="modal-content">
-    <%= form_for(@long_term_goal, url: long_term_goal_path) do |f| %>
+    <%= form_for(@long_term_goal, url: long_term_goal_path, remote: true) do |f| %>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -17,6 +17,13 @@
           <%= f.text_field :content, class: 'form-control' %>
           
           <%= f.select :status, [['未達成'], ['実行中'], ['達成済み']] %>
+          
+          <%= f.fields_for :deadline do |deadline_f| %>
+             
+            <%= deadline_f.label :date %>
+            <%= deadline_f.date_field :date, class: 'form-control' %>
+
+          <% end %>
         </div>
       </div>
       <div class="modal-footer">

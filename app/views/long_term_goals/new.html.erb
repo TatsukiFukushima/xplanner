@@ -7,6 +7,13 @@
       <%= f.label :category, "カテゴリー" %>
       <%= f.text_field :category, class: 'form-control' %>
       
+      <%= f.fields_for :deadline do |deadline_f| %>
+             
+        <%= deadline_f.label :date %>
+        <%= deadline_f.date_field :date, class: 'form-control' %>
+        
+      <% end %>
+      
       <%= f.label :content, "目標内容" %>
       <%= f.text_field :content, class: 'form-control' %>
       

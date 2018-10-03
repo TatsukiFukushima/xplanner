@@ -8,6 +8,7 @@ class LongTermGoalsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @long_term_goal = @user.long_term_goals.build
+    @long_term_goal.build_deadline
   end
 
   def create
@@ -63,7 +64,8 @@ class LongTermGoalsController < ApplicationController
     end 
   
     def long_term_goal_params
-      params.require(:long_term_goal).permit(:category, :content, :row_order_position, :status)
+      params.require(:long_term_goal).permit(:category, :content, :row_order_position, :status,
+        deadline_attributes: :date)
     end 
     
     
@@ -78,6 +80,4 @@ class LongTermGoalsController < ApplicationController
       end
       redirect_to(root_url) unless current_user?(@user)
     end 
-    
-
 end

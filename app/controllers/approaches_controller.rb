@@ -7,6 +7,7 @@ class ApproachesController < ApplicationController
   def new
     @short_term_goal = ShortTermGoal.find(params[:short_term_goal_id])
     @approach = @short_term_goal.approaches.build
+    @approach.build_deadline
   end
   
   def create
@@ -68,7 +69,8 @@ class ApproachesController < ApplicationController
     end 
     
     def approach_params 
-      params.require(:approach).permit(:content, :row_order_position, :effectiveness)
+      params.require(:approach).permit(:content, :row_order_position, :effectiveness,
+        deadline_attributes: :date)
     end 
     
     # beforeアクション
