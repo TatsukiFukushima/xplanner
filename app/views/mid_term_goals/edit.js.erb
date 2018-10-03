@@ -1,2 +1,2 @@
-$(".goal-modal").html("<%= escape_javascript(render 'edit') %>")
+$(".goal-modal").html("<%= escape_javascript(render partial: 'modals/m_goal_edit') %>")
 $(".goal-modal").modal("show")

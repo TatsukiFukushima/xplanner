@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181003012925) do
+ActiveRecord::Schema.define(version: 20181003043751) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "content"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20181003012925) do
     t.integer "row_order"
     t.integer "status", default: 0, null: false
     t.index ["user_id"], name: "index_long_term_goals_on_user_id"
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.string "memoable_type"
+    t.integer "memoable_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["memoable_type", "memoable_id"], name: "index_memos_on_memoable_type_and_memoable_id"
   end
 
   create_table "messages", force: :cascade do |t|

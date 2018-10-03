@@ -4,6 +4,7 @@ class ShortTermGoal < ApplicationRecord
   belongs_to :mid_term_goal
   has_many :approaches, dependent: :destroy 
   has_one :deadline, as: :due_date, dependent: :destroy, inverse_of: :due_date
+  has_one :memo, as: :memoable, dependent: :destroy
   accepts_nested_attributes_for :deadline
   validates :content, presence: true, length: { maximum: 255 }
   validates :status, presence: true 

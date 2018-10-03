@@ -1,0 +1,30 @@
+<% if @memo.memoable.class == LongTermGoal %>
+  <% @user = @memo.memoable.user %>
+<% elsif @memo.memoable.class == MidTermGoal %>
+  <% @user = @memo.memoable.long_term_goal.user %>
+<% elsif @memo.memoable.class == ShortTermGoal %>
+  <% @user = @memo.memoable.mid_term_goal.long_term_goal.user %>
+<% elsif @memo.memoable.class == Approach %>
+  <% @user = @memo.memoable.short_term_goal.mid_term_goal.long_term_goal.user %>
+<% end %>
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">メモ</h4>
+      </div>
+      <div class="modal-body">
+        <p><%= @memo.content %></p>
+      <% if current_user == @user %>
+        <%= link_to '編集', edit_memo_path(@memo), remote: true %>
+        <%= link_to '削除', memo_path(@memo), method: :delete,
+          data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+      </div>
+  </div>
+</div>

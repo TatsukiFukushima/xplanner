@@ -1,2 +1,2 @@
-$(".goal-modal").html("<%= escape_javascript(render 'index') %>")
+$(".goal-modal").html("<%= escape_javascript(render partial: 'modals/approach_index.html.erb') %>")
 $(".goal-modal").modal("show")
