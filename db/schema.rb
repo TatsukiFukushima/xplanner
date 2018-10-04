@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181003043751) do
+ActiveRecord::Schema.define(version: 20181004051836) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "content"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20181003043751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["due_date_type", "due_date_id"], name: "index_deadlines_on_due_date_type_and_due_date_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string "likable_type"
+    t.integer "likable_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likable_type", "likable_id", "user_id"], name: "index_likes_on_likable_type_and_likable_id_and_user_id", unique: true
+    t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "long_term_goals", force: :cascade do |t|

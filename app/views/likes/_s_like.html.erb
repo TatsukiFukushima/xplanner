@@ -1,0 +1,16 @@
+<% if @like = s_goal.like_user(current_user.id) %>
+  <%= link_to s_like_path(@like), method: :delete, remote: true, id: "like-button-s-#{s_goal.id}" do %>
+    <%= image_tag("red-heart.png", size: '20x20', class: 'red-heart') %>
+  <% end %>
+  <span id="like-count-s-<%= s_goal.id %>">
+    <%= s_goal.likes.count.to_s %>
+  </span>
+<% else %>
+  <%= link_to short_term_goal_likes_path(s_goal), method: :post, remote: true, id: "like-button-s-#{s_goal.id}" do %>
+    <%= image_tag("heart.png", size: '20x20', class: 'heart') %>
+  <% end %>
+  <span id="like-count-s-<%= s_goal.id %>">
+    <%= s_goal.likes.count.to_s %>
+  </span>
+<% end %>
+

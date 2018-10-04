@@ -5,7 +5,7 @@
         <%= s_goal.content %><%= s_goal.status %><br />
         <span>期限</span>
         <span>コメント</span>
-        <span>いいね</span><br />
+        <%= render partial: 'likes/s_like', locals: { s_goal: s_goal } %><br />
         <% if s_goal.memo %>
           <%= link_to 'メモ', memo_path(s_goal.memo), remote: true %><br />
         <% end %>
@@ -35,7 +35,7 @@
               <%= approach.content %><%= approach.effectiveness %><br />
               <span>期限</span>
               <span>コメント</span>
-              <span>いいね</span>
+              <%= render partial: 'likes/a_like', locals: { approach: approach } %>
               <% if approach.memo %>
                 <%= link_to 'メモ', memo_path(approach.memo), remote: true %><br />
               <% end %>
