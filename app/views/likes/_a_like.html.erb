@@ -3,14 +3,14 @@
     <%= image_tag("red-heart.png", size: '20x20', class: 'red-heart') %>
   <% end %>
   <span id="like-count-a-<%= approach.id %>">
-    <%= approach.likes.count.to_s %>
+    <%= link_to approach.likes.count.to_s, likes_path(approach: approach.id) %>
   </span>
 <% else %>
   <%= link_to approach_likes_path(approach), method: :post, remote: true, id: "like-button-a-#{approach.id}" do %>
     <%= image_tag("heart.png", size: '20x20', class: 'heart') %>
   <% end %>
   <span id="like-count-a-<%= approach.id %>">
-    <%= approach.likes.count.to_s %>
+    <%= link_to approach.likes.count.to_s, likes_path(approach: approach.id) %>
   </span>
 <% end %>
 

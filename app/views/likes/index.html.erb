@@ -1,0 +1,8 @@
+<h1>いいねユーザー一覧</h1>
+<% if @likes %>
+<ul>
+  <% @likes.each do |like| %>
+    <%= render partial: 'users/user', locals: { user: like.user } %>
+  <% end %>
+</ul>
+<% end %>

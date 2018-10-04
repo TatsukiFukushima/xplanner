@@ -3,6 +3,21 @@ class LikesController < ApplicationController
   before_action :logged_in_user
   
   
+  def index 
+    if params[:l_goal]
+      @long_term_goal = LongTermGoal.find(params[:l_goal])
+      @likes = @long_term_goal.likes 
+    elsif params[:m_goal]
+      @mid_term_goal = MidTermGoal.find(params[:m_goal])
+      @likes = @mid_term_goal.likes 
+    elsif params[:s_goal] 
+      @short_term_goal = ShortTermGoal.find(params[:s_goal])
+      @likes = @short_term_goal.likes 
+    elsif params[:approach] 
+      @approach = Approach.find(params[:approach])
+      @likes = @approach.likes 
+    end 
+  end 
   
   def l_create
     @long_term_goal = LongTermGoal.find(params[:long_term_goal_id])
