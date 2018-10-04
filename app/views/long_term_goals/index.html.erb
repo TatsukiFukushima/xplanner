@@ -1,3 +1,59 @@
+<div class="row l-goal-show-container">
+  <div class="col-md-10 col-md-offset-1">
+    <section class="user-data data1">
+      <section class="user_info">
+        <h2>
+          <%= gravatar_for @user %><br clear = "">
+          <%= link_to @user.name, user_long_term_goals_path(@user), data: {"turbolinks" => false} %>
+        </h2>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="follow-button">
+        <%= render 'users/follow_form' if logged_in? %>
+      </section>
+    </section>
+    
+    <section class="user-data data2">
+      <p class="center">通知</p>
+      <p class="center">メッセージ</p>
+      <p class="center">X Room一覧</p>
+    </section>
+    <section class="user-data data3">
+      <input type="text" placeholder="X Room検索">
+      <%= form_tag users_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search], class: 'search_user', placeholder: 'ユーザー検索' %>
+          <%= submit_tag "Search", :name => nil, class: 'search_user_btn' %>
+        </p>
+      <% end %>
+      <input type="text" placeholder="目標検索">
+    </section>
+  </div>
+</div>
+<h1>長期目標リスト</h1>
+<% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+<p><%= link_to "新規長期目標", new_user_long_term_goal_path(@user), remote: true %></p>
+<div class="row">
+  <div class="table-sortable ui-sortable">
+<% else %>
+<div class="row">
+  <div>
+<% end %>
+    <%= render 'l_goal' %>
+  </div>
+</div>
+<div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<%= link_to '戻る', :back, data: { "turbolinks" => false } %> 
+
+
+
+
+<%#= 予備用レイアウト %>
+
+<% if false %>
+
 <div class="row">
   <aside class="col-md-3 user-sidebar">
     <section class="user_info">
@@ -55,3 +111,5 @@
 </div>
 <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <%= link_to '戻る', :back, data: { "turbolinks" => false } %> 
+
+<% end %>

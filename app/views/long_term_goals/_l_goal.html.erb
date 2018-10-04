@@ -1,3 +1,72 @@
+<% @long_term_goals.each_with_index do |goal, i| %>
+  <%= content_tag "div", class: "item", data: { model_name: goal.class.name.underscore, update_url: long_term_goal_sort_path(goal) } do %>
+    <div class="clearfix">
+      <section class="left">
+        <%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: {"turbolinks" => false} %><br />
+        <%= goal.status %><br />
+        <span>期限</span><br />
+        <span>コメント</span><br />
+        <%= render partial: 'likes/l_like', locals: { goal: goal } %><br />
+        <% if goal.memo %>
+          <%= link_to 'メモ', memo_path(goal.memo), remote: true %><br />
+        <% end %>
+      <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+      <% unless goal.memo %>
+        <%= link_to '新規メモ', long_term_goal_memo_new_path(goal), remote: true %>
+      <% end %>
+        <%= link_to '編集', edit_long_term_goal_path(goal), remote: true %>
+        <%= link_to '削除', long_term_goal_path(goal), method: :delete,
+          data: { confirm: "本当に削除しますか？" } %><br />
+        <%= link_to '新規中期目標', new_long_term_goal_mid_term_goal_path(goal), remote: true %>
+      <% end %>
+      </section>
+    <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+      <section class="right table-sortable ui-sortable clearfix">
+    <% else %>
+      <section class="right clearfix">
+    <% end %>
+        <div onclick="obj=document.getElementById('m_open_<%= i %>').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">▼ 中期目標一覧</a>
+        </div>
+        <div id="m_open_<%= i %>" style="display:none;clear:both;">
+        <% @mid_term_goals = goal.mid_term_goals.rank(:row_order) %>
+        <% @mid_term_goals.each do |m_goal| %>
+          <%= content_tag "div", class: "item", data: { model_name: m_goal.class.name.underscore, update_url: mid_term_goal_sort_path(m_goal) } do %>
+            <div>
+              <%= m_goal.content %><%= m_goal.status %>
+              <a data-remote="true" href="<%= mid_term_goal_short_term_goals_path(m_goal) %>">
+                短期目標一覧<b class="caret"></b>
+              </a><br />
+              <span>期限</span>
+              <span>コメント</span>
+              <%= render partial: 'likes/m_like', locals: { m_goal: m_goal } %><br />
+            <% if m_goal.memo %>
+              <%= link_to 'メモ', memo_path(m_goal.memo), remote: true %><br />
+            <% end %>
+            <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+              <% unless m_goal.memo %>
+                <%= link_to '新規メモ', mid_term_goal_memo_new_path(m_goal), remote: true %>
+              <% end %>
+              <%= link_to '編集', edit_mid_term_goal_path(m_goal), remote: true %>
+              <%= link_to '削除', mid_term_goal_path(m_goal), method: :delete,
+                data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+      </section>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+
+<%#= 予備用レイアウト %>
+
+<% if false %>
+
 <% @long_term_goals.each do |goal| %>
   <%= content_tag "tr", class: "item", data: { model_name: goal.class.name.underscore, update_url: long_term_goal_sort_path(goal) } do %>
       <td>
@@ -27,4 +96,7 @@
       </td>
     <% end %>
   <% end %>
+<% end %>
+
+
 <% end %>
