@@ -1,2 +1,1 @@
-$("#like-count-a-<%= @approach.id %>").remove();
 $("#like-button-a-<%= @approach.id %>").html("<%= escape_javascript(render partial: "likes/a_like", locals: { approach: @approach }) %>");

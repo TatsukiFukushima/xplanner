@@ -6,6 +6,7 @@ class MidTermGoal < ApplicationRecord
   has_one :deadline, as: :due_date, dependent: :destroy, inverse_of: :due_date
   has_many :likes, as: :likable, dependent: :destroy, inverse_of: :likable
   has_one :memo, as: :memoable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   accepts_nested_attributes_for :deadline
   validates :content, presence: true, length: { maximum: 255 }
   validates :status, presence: true

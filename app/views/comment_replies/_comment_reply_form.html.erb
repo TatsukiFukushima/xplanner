@@ -1,0 +1,14 @@
+<div class="clearfix" id="comment-reply-form">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@comment.comment_replies.build, url: comment_comment_replies_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      
+      <%= f.label :content, '返信コメント内容' %>
+      <%= f.text_field :content, class: 'form-control' %>
+      
+      <%= f.submit '送信', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

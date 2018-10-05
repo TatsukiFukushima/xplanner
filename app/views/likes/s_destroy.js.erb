@@ -1,2 +1,1 @@
-$("#like-count-s-<%= @short_term_goal.id %>").remove();
 $("#like-button-s-<%= @short_term_goal.id %>").html("<%= escape_javascript(render partial: "likes/s_like", locals: { s_goal: @short_term_goal }) %>");

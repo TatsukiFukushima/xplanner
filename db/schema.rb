@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181004051836) do
+ActiveRecord::Schema.define(version: 20181005043423) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "content"
@@ -20,6 +20,27 @@ ActiveRecord::Schema.define(version: 20181004051836) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["short_term_goal_id"], name: "index_approaches_on_short_term_goal_id"
+  end
+
+  create_table "comment_replies", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "comment_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_replies_on_comment_id"
+    t.index ["user_id"], name: "index_comment_replies_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.text "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "deadlines", force: :cascade do |t|

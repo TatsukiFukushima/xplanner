@@ -1,0 +1,17 @@
+<h1>コメント一覧</h1>
+<a href="#comment-form">コメント欄へ↓</a>
+<% @comments.each do |comment| %>
+  <div>
+    <%= render partial: 'users/user', locals: { user: comment.user } %>
+    <p><%= comment.content %></p>
+    <%= link_to comment_comment_replies_path(comment) do %>
+      <span>返信コメント <%= comment.comment_replies.count %></span>
+    <% end %>
+  <% if current_user == comment.user %>
+    <%= link_to "削除", comment_path(comment), method: :delete,
+      data: { confirm: "本当に削除しますか？" } %>
+  <% end %>
+  </div>
+<% end %>
+<%= render 'comments/comment_form' %>
+
