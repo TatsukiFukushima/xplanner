@@ -5,7 +5,9 @@
         <%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: {"turbolinks" => false} %><br />
         <%= goal.status %><br />
         <span>期限</span><br />
-        <span>コメント</span><br />
+        <%= link_to long_term_goal_comments_path(goal) do %>
+          <span>コメント <%= goal.comments.count %></span>
+        <% end %><br />
         <%= render partial: 'likes/l_like', locals: { goal: goal } %><br />
         <% if goal.memo %>
           <%= link_to 'メモ', memo_path(goal.memo), remote: true %><br />
@@ -38,7 +40,9 @@
                 短期目標一覧<b class="caret"></b>
               </a><br />
               <span>期限</span>
-              <span>コメント</span>
+              <%= link_to mid_term_goal_comments_path(m_goal) do %>
+                <span>コメント <%= m_goal.comments.count %></span>
+              <% end %><br />
               <%= render partial: 'likes/m_like', locals: { m_goal: m_goal } %><br />
             <% if m_goal.memo %>
               <%= link_to 'メモ', memo_path(m_goal.memo), remote: true %><br />
