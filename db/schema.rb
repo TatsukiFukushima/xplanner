@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181003043751) do
+ActiveRecord::Schema.define(version: 20181004125653) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "content"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20181003043751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["short_term_goal_id"], name: "index_approaches_on_short_term_goal_id"
+  end
+
+  create_table "block_relationships", force: :cascade do |t|
+    t.integer "blocker_id"
+    t.integer "blocked_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blocked_id"], name: "index_block_relationships_on_blocked_id"
+    t.index ["blocker_id", "blocked_id"], name: "index_block_relationships_on_blocker_id_and_blocked_id", unique: true
+    t.index ["blocker_id"], name: "index_block_relationships_on_blocker_id"
   end
 
   create_table "deadlines", force: :cascade do |t|

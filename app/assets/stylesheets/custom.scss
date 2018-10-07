@@ -271,6 +271,21 @@ input {
   font-size: 1.3rem;
 }
 
+.btn-block {
+  background-color: #af3535;
+  color: white;
+}
+
+.btn-block:hover {
+  background-color: #942626;
+  color: white;
+}
+
+.btn-blocking {
+  background-color: #ce1313;
+  color: white;
+}
+
 #error_explanation {
   color: red;
   ul {

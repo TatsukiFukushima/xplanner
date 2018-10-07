@@ -2,7 +2,7 @@ class LongTermGoalsController < ApplicationController
   before_action :set_long_term_goal, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user 
   before_action :correct_user_for_l_goal, except: [:sort, :index]
-
+  before_action :is_blocked?, only: [:index]
   
   
   def new
@@ -79,5 +79,13 @@ class LongTermGoalsController < ApplicationController
         @user = @long_term_goal.user
       end
       redirect_to(root_url) unless current_user?(@user)
-    end 
+    end
+    
+    # ブロックされているか確認
+    def is_blocked?
+      user = User.find_by(id: params[:user_id])
+      if user.blocking?(current_user)
+        render '/users/blocked'
+      end
+    end
 end

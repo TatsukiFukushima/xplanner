@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete  '/logout',    to: 'sessions#destroy'
   resources :users, except: :show, shallow: true do
     member do
-      get :following, :followers
+      get :following, :followers, :blocking
     end
     resources :long_term_goals, except: :show, shallow: true do 
       put :sort
@@ -35,5 +35,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships,       only: [:create, :destroy]
+  resources :block_relationships, only: [:create, :destroy]
   mount ActionCable.server => '/cable'
 end
