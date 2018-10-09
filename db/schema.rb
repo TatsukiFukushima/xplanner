@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20181005043423) do
     t.index ["short_term_goal_id"], name: "index_approaches_on_short_term_goal_id"
   end
 
+  create_table "block_relationships", force: :cascade do |t|
+    t.integer "blocker_id"
+    t.integer "blocked_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blocked_id"], name: "index_block_relationships_on_blocked_id"
+    t.index ["blocker_id", "blocked_id"], name: "index_block_relationships_on_blocker_id_and_blocked_id", unique: true
+    t.index ["blocker_id"], name: "index_block_relationships_on_blocker_id"
+  end
+
   create_table "comment_replies", force: :cascade do |t|
     t.integer "user_id"
     t.integer "comment_id"
