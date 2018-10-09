@@ -4,8 +4,10 @@
       <section class="left">
         <%= s_goal.content %><%= s_goal.status %><br />
         <span>期限</span>
-        <span>コメント</span>
-        <span>いいね</span><br />
+        <%= link_to short_term_goal_comments_path(s_goal) do %>
+          <span>コメント <%= s_goal.comments.count %></span>
+        <% end %><br />
+        <%= render partial: 'likes/s_like', locals: { s_goal: s_goal } %><br />
         <% if s_goal.memo %>
           <%= link_to 'メモ', memo_path(s_goal.memo), remote: true %><br />
         <% end %>
@@ -34,8 +36,10 @@
             <div>
               <%= approach.content %><%= approach.effectiveness %><br />
               <span>期限</span>
-              <span>コメント</span>
-              <span>いいね</span>
+              <%= link_to approach_comments_path(approach) do %>
+                <span>コメント <%= approach.comments.count %></span>
+              <% end %><br />
+              <%= render partial: 'likes/a_like', locals: { approach: approach } %>
               <% if approach.memo %>
                 <%= link_to 'メモ', memo_path(approach.memo), remote: true %><br />
               <% end %>

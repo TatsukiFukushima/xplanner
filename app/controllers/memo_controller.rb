@@ -79,7 +79,7 @@ class MemoController < ApplicationController
   def edit
   end
   
-  def update
+  def update #redirect_to request.urlとか良さそう　リダイレクトないでもいい
     if @memo.update_attributes(memo_params)
       flash[:success] = "メモを編集しました"
       if @memo.memoable.class == LongTermGoal 
@@ -96,7 +96,7 @@ class MemoController < ApplicationController
     end 
   end 
 
-  def destroy 
+  def destroy #redirect_to request.urlとか良さそう  リダイレクトなしでもいい
     @memo.destroy 
     flash[:success] = "メモを削除しました"
     if @memo.memoable.class == LongTermGoal 

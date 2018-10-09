@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181004125653) do
+ActiveRecord::Schema.define(version: 20181005043423) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "content"
@@ -32,6 +32,27 @@ ActiveRecord::Schema.define(version: 20181004125653) do
     t.index ["blocker_id"], name: "index_block_relationships_on_blocker_id"
   end
 
+  create_table "comment_replies", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "comment_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_replies_on_comment_id"
+    t.index ["user_id"], name: "index_comment_replies_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.text "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "deadlines", force: :cascade do |t|
     t.string "due_date_type"
     t.integer "due_date_id"
@@ -39,6 +60,17 @@ ActiveRecord::Schema.define(version: 20181004125653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["due_date_type", "due_date_id"], name: "index_deadlines_on_due_date_type_and_due_date_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string "likable_type"
+    t.integer "likable_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likable_type", "likable_id", "user_id"], name: "index_likes_on_likable_type_and_likable_id_and_user_id", unique: true
+    t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "long_term_goals", force: :cascade do |t|
