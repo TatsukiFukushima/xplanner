@@ -9,55 +9,34 @@
           <span>コメント <%= goal.comments.count %></span>
         <% end %><br />
         <%= render partial: 'likes/l_like', locals: { goal: goal } %><br />
+        <%#= この長期目標が既にメモを持っている場合 %>
         <% if goal.memo %>
           <%= link_to 'メモ', memo_path(goal.memo), remote: true %><br />
         <% end %>
-      <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
-      <% unless goal.memo %>
-        <%= link_to '新規メモ', long_term_goal_memo_new_path(goal), remote: true %>
-      <% end %>
+      <%#= 自分のページにいる場合 %>
+      <% if current_user == @user %>
+        <%#= この長期目標がメモを持っていない場合 %>
+        <% unless goal.memo %>
+          <%= link_to '新規メモ', long_term_goal_memo_new_path(goal), remote: true %>
+        <% end %>
         <%= link_to '編集', edit_long_term_goal_path(goal), remote: true %>
-        <%= link_to '削除', long_term_goal_path(goal), method: :delete,
+        <%= link_to '削除', long_term_goal_path(goal), method: :delete, remote: true,
           data: { confirm: "本当に削除しますか？" } %><br />
         <%= link_to '新規中期目標', new_long_term_goal_mid_term_goal_path(goal), remote: true %>
       <% end %>
       </section>
-    <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+    <%#= 自分のページにいる場合 %>
+    <% if current_user == @user %>
       <section class="right table-sortable ui-sortable clearfix">
+    <%#= 自分以外のユーザーのページにいる場合 %>
     <% else %>
       <section class="right clearfix">
     <% end %>
         <div onclick="obj=document.getElementById('m_open_<%= i %>').style; obj.display=(obj.display=='none')?'block':'none';">
           <a style="cursor:pointer;">▼ 中期目標一覧</a>
         </div>
-        <div id="m_open_<%= i %>" style="display:none;clear:both;">
-        <% @mid_term_goals = goal.mid_term_goals.rank(:row_order) %>
-        <% @mid_term_goals.each do |m_goal| %>
-          <%= content_tag "div", class: "item", data: { model_name: m_goal.class.name.underscore, update_url: mid_term_goal_sort_path(m_goal) } do %>
-            <div>
-              <%= m_goal.content %><%= m_goal.status %>
-              <a data-remote="true" href="<%= mid_term_goal_short_term_goals_path(m_goal) %>">
-                短期目標一覧<b class="caret"></b>
-              </a><br />
-              <span>期限</span>
-              <%= link_to mid_term_goal_comments_path(m_goal) do %>
-                <span>コメント <%= m_goal.comments.count %></span>
-              <% end %><br />
-              <%= render partial: 'likes/m_like', locals: { m_goal: m_goal } %><br />
-            <% if m_goal.memo %>
-              <%= link_to 'メモ', memo_path(m_goal.memo), remote: true %><br />
-            <% end %>
-            <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
-              <% unless m_goal.memo %>
-                <%= link_to '新規メモ', mid_term_goal_memo_new_path(m_goal), remote: true %>
-              <% end %>
-              <%= link_to '編集', edit_mid_term_goal_path(m_goal), remote: true %>
-              <%= link_to '削除', mid_term_goal_path(m_goal), method: :delete,
-                data: { confirm: "本当に削除しますか？" } %>
-            <% end %>
-            </div>
-          <% end %>
-        <% end %>
+        <div id="m_open_<%= i %>" class="<%= goal.id %>-m-index" style="display:none;clear:both;">
+          <%= render 'm_goal', goal: goal %>
         </div>
       </section>
     </div>
@@ -66,41 +45,3 @@
 
 
 
-
-<%#= 予備用レイアウト %>
-
-<% if false %>
-
-<% @long_term_goals.each do |goal| %>
-  <%= content_tag "tr", class: "item", data: { model_name: goal.class.name.underscore, update_url: long_term_goal_sort_path(goal) } do %>
-      <td>
-        <% if goal.deadline %>
-          <%= goal.deadline.date %>
-        <% end %>
-      </td>
-      <td><%= goal.category %></td>
-      <td>
-        <%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: { "turbolinks" => false } %>
-        <a data-remote="true" href="<%= long_term_goal_mid_term_goals_path(goal) %>">
-          中期目標一覧<b class="caret"></b>
-        </a>
-    <% if goal.memo %>
-      <%= link_to 'メモ', memo_path(goal.memo), remote: true %>
-    <% end %>
-      </td>
-      <td><%= goal.status %></td>
-    <% if @user == current_user %><!-- 他ユーザーのページにいるなら -->
-      <td>
-      <% unless goal.memo %>
-        <%= link_to '新規メモ', long_term_goal_memo_new_path(goal), remote: true %>
-      <% end %>
-        <%= link_to '編集', edit_long_term_goal_path(goal), remote: true %>
-        <%= link_to '削除', long_term_goal_path(goal), method: :delete,
-          data: { confirm: "本当に削除しますか？" } %>
-      </td>
-    <% end %>
-  <% end %>
-<% end %>
-
-
-<% end %>

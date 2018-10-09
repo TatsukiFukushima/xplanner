@@ -1,29 +1,28 @@
 class LongTermGoalsController < ApplicationController
-  before_action :set_long_term_goal, only: [:show, :edit, :update, :destroy]
+  before_action :l_set_long_term_goal, only: [:show, :edit, :update, :destroy]
+  before_action :l_set_user, only: [:new, :create, :index]
   before_action :logged_in_user 
-  before_action :correct_user_for_l_goal, except: [:sort, :index]
+  before_action :l_correct_user, except: [:sort, :index]
   before_action :is_blocked?, only: [:index]
+
   
   
   def new
-    @user = User.find(params[:user_id])
     @long_term_goal = @user.long_term_goals.build
     @long_term_goal.build_deadline
   end
 
   def create
-    @user = User.find(params[:user_id]) 
     @long_term_goal = @user.long_term_goals.build(long_term_goal_params)
     if @long_term_goal.save 
-      flash[:success] = "長期目標を作成しました"
-      redirect_to user_long_term_goals_path
+      # flash[:success] = "長期目標を作成しました"
+      @long_term_goals = @user.long_term_goals.rank(:row_order)
     else 
       render 'new'
     end 
   end
   
   def index 
-    @user = User.find(params[:user_id])
     @long_term_goals = @user.long_term_goals.rank(:row_order)
   end 
 
@@ -32,8 +31,7 @@ class LongTermGoalsController < ApplicationController
 
   def update
     if @long_term_goal.update_attributes(long_term_goal_params)
-      flash[:success] = "長期目標を編集しました"
-      redirect_to user_long_term_goals_path(current_user)
+      @long_term_goals = @user.long_term_goals.rank(:row_order)
     else
       render 'edit'
     end 
@@ -41,12 +39,12 @@ class LongTermGoalsController < ApplicationController
 
   def destroy
     @long_term_goal.destroy
-    flash[:success] = "長期目標を削除しました"
-    redirect_to user_long_term_goals_path(current_user)
+    # flash[:success] = "長期目標を削除しました"
+    @long_term_goals = @user.long_term_goals.rank(:row_order)
   end
   
   # 並び替えのデータ（row_order_position）を更新するメソッド
-  #（正しいユーザーがドラッグアンドドロップした時のみ）
+  #（正しいユーザーがドラッグアンドドロップした時のみ更新する）
   def sort 
     long_term_goal = LongTermGoal.find(params[:long_term_goal_id])
     @user = long_term_goal.user
@@ -59,10 +57,6 @@ class LongTermGoalsController < ApplicationController
   
   private 
   
-    def set_long_term_goal
-      @long_term_goal = LongTermGoal.find(params[:id])
-    end 
-  
     def long_term_goal_params
       params.require(:long_term_goal).permit(:category, :content, :row_order_position, :status,
         deadline_attributes: :date)
@@ -71,8 +65,18 @@ class LongTermGoalsController < ApplicationController
     
     # beforeアクション
     
+    # ある長期目標一覧のユーザーををurlのパラメーターからセットする
+    def l_set_user
+      @user = User.find(params[:user_id])
+    end 
+    
+    # 長期目標をurlのパラメーターからセットする
+    def l_set_long_term_goal
+      @long_term_goal = LongTermGoal.find(params[:id])
+    end 
+
     # 正しいユーザーかどうか確認
-    def correct_user_for_l_goal 
+    def l_correct_user
       if params[:user_id]
         @user = User.find(params[:user_id])
       else 

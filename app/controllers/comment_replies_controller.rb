@@ -1,16 +1,15 @@
 class CommentRepliesController < ApplicationController
   before_action :logged_in_user
   before_action :set_comment_reply, only: :destroy 
+  before_action :reply_set_comment, only: [:create, :index]
   before_action :correct_user_for_comment_reply, only: :destroy 
   
   
   def index 
-    @comment = Comment.find(params[:comment_id])
     @comment_replies = @comment.comment_replies 
   end 
   
   def create 
-    @comment = Comment.find(params[:comment_id])
     @comment_reply = @comment.comment_replies.build(comment_reply_params)
     if @comment_reply.save 
       flash[:success] = "返信コメントを送信しました"
@@ -35,6 +34,10 @@ class CommentRepliesController < ApplicationController
     end 
     
     # beforeアクション
+    
+    def reply_set_comment
+      @comment = Comment.find(params[:comment_id])
+    end 
     
     def set_comment_reply
       @comment_reply = CommentReply.find(params[:id])

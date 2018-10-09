@@ -1,4 +1,4 @@
-$ ->
+ready = ->
   $('.table-sortable').sortable(
     axis: 'y'
     items: '.item'
@@ -23,4 +23,7 @@ $ ->
       )
     )
 
-
+$(document).ready(ready)
+$(document).on('turbolinks:load', ready)
+$(document).on('turbolinks:change', ready)
+$(document).on('ajax:success', ready)

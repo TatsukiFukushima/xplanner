@@ -1,16 +1,23 @@
+<% s_goal = @short_term_goal %>
 <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">短期目標：<%= @short_term_goal.content %></h4>
+        <h4 class="modal-title">短期目標：<%= s_goal.content %></h4>
       </div>
       <div class="modal-body">
         <h5>アプローチ一覧</h5>
-        <% @approaches.each do |approach| %>
-          <p><%= approach.content %></p>
-        <% end %>
+      <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+        <section class="table-sortable ui-sortable clearfix">
+      <% else %>
+        <section class="clearfix">
+      <% end %>
+          <div class="<%= s_goal.id %>-a-index">
+            <%= render 'short_term_goals/approach', s_goal: s_goal %>
+          </div>
+        </section>
       </div>
   </div>
 </div>
