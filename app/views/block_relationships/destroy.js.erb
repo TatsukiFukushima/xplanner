@@ -1,0 +1,2 @@
+$("#block_form").html("<%= escape_javascript(render('users/block')) %>");
+$("#blockers").html('<%= @user.blockers.count %>');

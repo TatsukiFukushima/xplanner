@@ -12,6 +12,10 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :active_block_relationships, class_name: "BlockRelationship", foreign_key: "blocker_id", dependent: :destroy
+  has_many :passive_block_relationships, class_name: "BlockRelationship", foreign_key: "blocked_id", dependent: :destroy
+  has_many :blocking, through: :active_block_relationships, source: :blocked
+  has_many :blockers, through: :passive_block_relationships, source: :blocker
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -111,6 +115,21 @@ class User < ApplicationRecord
   # 他のユーザーにメールを送信する
   def send_message(other_user, room_id, content)
     from_messages.create!(to_id: other_user.id, room_id: room_id, content: content)
+  end
+  
+  # ユーザーをブロックする
+  def block(other_user)
+    blocking << other_user
+  end
+
+  # ユーザーをブロックを解除する
+  def unblock(other_user)
+    active_block_relationships.find_by(blocked_id: other_user.id).destroy
+  end
+
+  # 現在のユーザーがブロックしてたらtrueを返す
+  def blocking?(other_user)
+    blocking.include?(other_user)
   end
   
   private

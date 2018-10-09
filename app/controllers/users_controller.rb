@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :following, :followers]
+  before_action :logged_in_user, only: [:index, :edit, :update, :following, :followers, :blocking]
   before_action :correct_user, only: [:edit, :update]
   
   def index 
@@ -73,6 +73,12 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
   
+  def blocking
+    @title = "blocking"
+    @user  = User.find(params[:id])
+    @users = @user.blocking.paginate(page: params[:page])
+    render 'show_block'
+  end
   
   
   
