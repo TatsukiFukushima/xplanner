@@ -17,4 +17,4 @@ document.addEventListener 'turbolinks:load', ->
       if event.keyCode is 13 # return = send 
         App.xroom.speak event.target.value
         event.target.value = ''
-        event.preventDefalut()
+        event.preventDefault()
