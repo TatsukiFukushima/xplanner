@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :sent_messages, through: :from_messages, source: :from
   has_many :received_messages, through: :to_messages, source: :to
   has_many :long_term_goals, dependent: :destroy
+  has_many  :xrooms, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
