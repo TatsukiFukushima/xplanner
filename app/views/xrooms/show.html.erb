@@ -1,0 +1,7 @@
+<h1>Xroom<%= @xroom.id %></h1>
+<div id="xmessages", data-xroom_id="<%= @xroom.id %>">
+  <%= render @xmessages %>
+</div>
+<form>
+  <input type="text" data-behavior="xroom_speaker" placeholder= "メッセージを入力">
+</form>
