@@ -35,15 +35,18 @@
   </div>
 </div>
 <h1>長期目標リスト</h1>
-<% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
-<p><%= link_to "新規長期目標", new_user_long_term_goal_path(@user), remote: true %></p>
-<div class="row">
-  <div class="table-sortable ui-sortable">
+<%#= 自分のページにいる場合 %>
+<% if current_user == @user %>
+  <p><%= link_to "新規長期目標", new_user_long_term_goal_path(@user), remote: true %></p>
+  <div class="row">
+    <div class="table-sortable ui-sortable l-index">
+<%#= 自分以外のユーザーのページにいる場合 %>
 <% else %>
-<div class="row">
-  <div>
+  <div class="row">
+    <div class="l-index">
 <% end %>
     <%= render 'l_goal' %>
+    </div>
   </div>
 </div>
 <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>

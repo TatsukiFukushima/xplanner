@@ -1,0 +1,6 @@
+<% if /mid_term_goals/ === request.referer %>
+  $(".m-index").html("<%= escape_javascript(render 'm_goal') %>")
+<% elsif /long_term_goals/ === request.referer %>
+  $(".<%= @long_term_goal.id %>-m-index").html("<%= escape_javascript(render 'long_term_goals/m_goal', goal: @long_term_goal) %>")
+<% end %>
+$(".goal-modal").modal("hide")

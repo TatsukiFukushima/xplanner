@@ -1,0 +1,27 @@
+<% approaches = s_goal.approaches.rank(:row_order) %>
+<% approaches.each do |approach| %>
+  <%= content_tag "div", class: "item", data: { model_name: approach.class.name.underscore, update_url: approach_sort_path(approach) } do %>
+    <div>
+      <%= approach.content %><%= approach.effectiveness %><br />
+      <span>期限</span>
+      <%= link_to approach_comments_path(approach) do %>
+        <span>コメント <%= approach.comments.count %></span>
+      <% end %><br />
+      <%= render partial: 'likes/a_like', locals: { approach: approach } %>
+      <%#= このアプローチが既にメモを持っている場合 %>
+      <% if approach.memo %>
+        <%= link_to 'メモ', memo_path(approach.memo), remote: true %><br />
+      <% end %>
+    <%#= 自分のページにいる場合 %>
+    <% if current_user == @user %>
+      <%#= このアプローチがメモを持っていない場合 %>
+      <% unless approach.memo %>
+        <%= link_to '新規メモ', approach_memo_new_path(s_goal), remote: true %>
+      <% end %>
+      <%= link_to '編集', edit_approach_path(approach), remote: true %>
+      <%= link_to '削除', approach_path(approach), method: :delete, remote: true,
+        data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+    </div>
+  <% end %>
+<% end %>

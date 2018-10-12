@@ -15,15 +15,11 @@
     <% end %>
   </aside>
   
-  <div class="messages">
+  <div class="messages col-md-8">
     <% if !current_user?(@user) && logged_in? %>
       <section class="message_box">
         <div id="messages">
           <%= render @messages %>
-        </div>
-        <div class="message_form">
-         <%= render 'messages/message_form',
-           {from_user: current_user, to_user: @user, room_id: @room_id} %>
         </div>
       </section>
       <script type="text/javascript">
@@ -33,6 +29,10 @@
         });
         $('section.message_box').scrollTop(height);
       </script>
+      <div class="message_form">
+       <%= render 'messages/message_form',
+         {from_user: current_user, to_user: @user, room_id: @room_id} %>
+      </div>
     <% end %>
   </div>
 </div>

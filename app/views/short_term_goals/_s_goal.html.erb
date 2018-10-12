@@ -8,52 +8,34 @@
           <span>コメント <%= s_goal.comments.count %></span>
         <% end %><br />
         <%= render partial: 'likes/s_like', locals: { s_goal: s_goal } %><br />
+        <%#= この短期目標が既にメモを持っている場合 %>
         <% if s_goal.memo %>
           <%= link_to 'メモ', memo_path(s_goal.memo), remote: true %><br />
         <% end %>
-      <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
-      <% unless s_goal.memo %>
-        <%= link_to '新規メモ', short_term_goal_memo_new_path(s_goal), remote: true %>
-      <% end %>
+      <%#= 自分のページにいる場合 %>
+      <% if current_user == @user %>
+        <%#= この短期目標がメモを持っていない場合 %>
+        <% unless s_goal.memo %>
+          <%= link_to '新規メモ', short_term_goal_memo_new_path(s_goal), remote: true %>
+        <% end %>
         <%= link_to '編集', edit_short_term_goal_path(s_goal), remote: true %>
-        <%= link_to '削除', short_term_goal_path(s_goal), method: :delete,
+        <%= link_to '削除', short_term_goal_path(s_goal), method: :delete, remote: true,
           data: { confirm: "本当に削除しますか？" } %><br />
         <%= link_to '新規アプローチ', new_short_term_goal_approach_path(s_goal), remote: true %>
       <% end %>
       </section>
-    <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+    <%#= 自分のページにいる場合 %>
+    <% if current_user == @user %>
       <section class="right table-sortable ui-sortable clearfix">
+    <%#= 自分以外のユーザーのページにいる場合 %>
     <% else %>
       <section class="right clearfix">
     <% end %>
         <div onclick="obj=document.getElementById('a_open_<%= i %>').style; obj.display=(obj.display=='none')?'block':'none';">
           <a style="cursor:pointer;">▼ アプローチ一覧</a>
         </div>
-        <div id="a_open_<%= i %>" style="display:none;clear:both;">
-        <% @approaches = s_goal.approaches.rank(:row_order) %>
-        <% @approaches.each do |approach| %>
-          <%= content_tag "div", class: "item", data: { model_name: approach.class.name.underscore, update_url: approach_sort_path(approach) } do %>
-            <div>
-              <%= approach.content %><%= approach.effectiveness %><br />
-              <span>期限</span>
-              <%= link_to approach_comments_path(approach) do %>
-                <span>コメント <%= approach.comments.count %></span>
-              <% end %><br />
-              <%= render partial: 'likes/a_like', locals: { approach: approach } %>
-              <% if approach.memo %>
-                <%= link_to 'メモ', memo_path(approach.memo), remote: true %><br />
-              <% end %>
-            <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
-            <% unless approach.memo %>
-              <%= link_to '新規メモ', approach_memo_new_path(s_goal), remote: true %>
-            <% end %>
-              <%= link_to '編集', edit_approach_path(approach), remote: true %>
-              <%= link_to '削除', approach_path(approach), method: :delete,
-                data: { confirm: "本当に削除しますか？" } %>
-            <% end %>
-            </div>
-          <% end %>
-        <% end %>
+        <div id="a_open_<%= i %>" class="<%= s_goal.id %>-a-index" style="display:none;clear:both;">
+          <%= render 'approach', s_goal: s_goal %>
         </div>
       </section>
     </div>

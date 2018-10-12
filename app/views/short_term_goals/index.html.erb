@@ -33,16 +33,18 @@
   </div>
 </div>
 <h1><%= @long_term_goal.content %><span>|</span><%= @mid_term_goal.content %></h1>
-<% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
-<p><%= link_to "新規短期目標", new_mid_term_goal_short_term_goal_path(@mid_term_goal), remote: true %></p>
-<div class="row">
-  <div class="table-sortable ui-sortable">
+<%#= 自分のページにいる場合 %>
+<% if current_user == @user %>
+  <p><%= link_to "新規短期目標", new_mid_term_goal_short_term_goal_path(@mid_term_goal), remote: true %></p>
+  <div class="row">
+    <div class="table-sortable ui-sortable s-index">
+<%#= 自分以外のユーザのページにいる場合 %>
 <% else %>
-<div class="row">
-  <div>
+  <div class="row">
+    <div class="s-index">
 <% end %>
     <%= render 's_goal' %>
+    </div>
   </div>
-</div>
-<div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<%= link_to '戻る', :back, data: { "turbolinks" => false } %> 
+  <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+  <%= link_to '戻る', :back, data: { "turbolinks" => false } %> 

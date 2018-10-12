@@ -1,0 +1,30 @@
+<% short_term_goals = m_goal.short_term_goals.rank(:row_order) %>
+<% short_term_goals.each do |s_goal| %>
+  <%= content_tag "div", class: "item", data: { model_name: s_goal.class.name.underscore, update_url: short_term_goal_sort_path(s_goal) } do %>
+    <div>
+      <%= s_goal.content %><%= s_goal.status %>
+      <a data-remote="true" href="<%= short_term_goal_approaches_path(s_goal) %>">
+        アプローチ一覧<b class="caret"></b>
+      </a><br />
+      <span>期限</span>
+    <%= link_to short_term_goal_comments_path(s_goal) do %>
+      <span>コメント <%= s_goal.comments.count %></span>
+    <% end %><br />
+      <%= render partial: 'likes/s_like', locals: { s_goal: s_goal } %><br />
+    <%#= この短期目標が既にメモを持っている場合 %>
+    <% if s_goal.memo %>
+      <%= link_to 'メモ', memo_path(s_goal.memo), remote: true %><br />
+    <% end %>
+    <%#= 自分のページにいる場合 %>
+    <% if current_user == @user %>
+      <%#= この短期目標がメモを持っていない場合 %>
+      <% unless s_goal.memo %>
+        <%= link_to '新規メモ', short_term_goal_memo_new_path(s_goal), remote: true %>
+      <% end %>
+      <%= link_to '編集', edit_short_term_goal_path(s_goal), remote: true %>
+      <%= link_to '削除', short_term_goal_path(s_goal), method: :delete, remote: true,
+        data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+    </div>
+  <% end %>
+<% end %>
