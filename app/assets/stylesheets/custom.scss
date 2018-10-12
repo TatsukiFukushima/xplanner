@@ -24,6 +24,7 @@ html {
 
 body {
   padding-top: 60px;
+  background-color: #eee;
 }
 
 section {
@@ -114,6 +115,37 @@ a {
   }
 }
 
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-inverse {
+  background-color: #1f4b96;
+  border-color: #15366b;
+}
+
+.navbar-nav > li > a {
+  padding: 12px;
+}
+
+.navbar-right > li > a {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #E0E6F8;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #15366b;
+  color: #E0E6F8;
+}
+
+.fa-bell {
+  font-size: 1.6em;
+  margin-top: 3px;
+}
+
 
 /*=================================================================
       Footer
@@ -122,7 +154,7 @@ a {
 footer {
   margin-top: 80px;
   padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
+  border-top: 1px solid $gray-light;
   color: $gray-light;
   p.footerp {
     font-size: 1.1rem;
@@ -159,12 +191,14 @@ div.home-container {
 =================================================================*/
 
 aside {
+  
+  padding-bottom: 50px;
+  
   section.user_info {
     margin-top: 20px;
   }
   section {
-    padding: 10px 0;
-    margin-top: 20px;
+    padding: 0px;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -185,9 +219,8 @@ aside {
 }
 
 aside.user-sidebar {
-  background-color: #eee;
-  border-radius: 10px;
-  margin-top: 70px;
+  background-color: #fff;
+  margin-bottom: 200px;
 }
 
 .gravatar {
@@ -238,10 +271,6 @@ aside.user-sidebar {
   padding: 0;
 }
 
-section.follow-button {
-  margin-top: 10px;
-}
-
 
 /*=================================================================
       Forms
@@ -258,17 +287,32 @@ input {
   height: auto;
 }
 
+.search-form {
+  margin-right: 50px;
+  padding: 10px;
+  width: 300px;
+  height: 45px;
+  
+  p {
+    margin-bottom: 0;
+  }
+}
+
 .search_user {
   width: 70%;
   margin-left: 4%;
   border-radius: 5px;
+  margin-bottom: 0;
+  background-color: #fff;
 }
 
 .search_user_btn {
   width: 20%;
   margin-right: 4%;
+  margin-bottom: 0;
   border-radius: 5px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  padding: 1px 6px;
 }
 
 .btn-block {
@@ -389,6 +433,55 @@ a {
   }
 }
 
+.l-goal-head {
+  background-color: #fff;
+  padding: 10px;
+  width: 50%;
+  margin: 0 0 10px 25%;
+  font-size: 32px;
+  display: inline-block;
+}
+
+.create-l-goal {
+  float: right;
+  background-color: #1f4b96;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 50px;
+  
+  a {
+    color: #fff;
+    font-size: 32px;
+    line-height: 52px;
+    margin-left: 18%;
+  }
+}
+
+.create-l-goal:hover {
+  background-color: #15366b;
+}
+
+.l-goal-content {
+  font-size: 28px;
+  margin-bottom: 0;
+}
+
+.l-goal-left {
+  list-style-type: none;
+  padding-left: 0;
+  
+  li {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+  
+  .l-goal-edit-link {
+    margin-left: 200px;
+  }
+}
+
 
 /*=================================================================
       MidTermGoals
@@ -410,9 +503,9 @@ section.data2 {
 }
 
 div.item {
-  background-color: #eee;
-  border: 1px solid #aaa;
-  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 30px;
 }
 
 div.table-sortable {
@@ -426,6 +519,10 @@ section {
   &.right {
     float: right;
   }
+}
+
+.m-goal-new-link {
+  padding-top: 45px;
 }
 
 
