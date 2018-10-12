@@ -10,22 +10,8 @@
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
-      <section>
-        <p class="center">通知</p>
-        <p class="center">メッセージ</p>
-        <p class="center">X Room一覧</p>
-      </section>
-      <section>
-      <input type="text" placeholder="X Room検索">
-      <%= form_tag users_path, :method => 'get' do %>
-        <p>
-          <%= text_field_tag :search, params[:search], class: 'search_user', placeholder: 'ユーザー検索' %>
-          <%= submit_tag "Search", :name => nil, class: 'search_user_btn' %>
-        </p>
-      <% end %>
-      <input type="text" placeholder="目標検索">
-      </section>
     </aside>
+    
     <div class="col-md-9 center">
       <h3>アクティビティ</h3>
       <p>このページはログイン済みユーザー用のホームページです。</p>
