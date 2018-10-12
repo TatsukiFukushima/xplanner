@@ -26,6 +26,6 @@ class XroomsController < ApplicationController
   
   private 
     def xroom_params
-      params.require(:xroom).permit(:category, :description)
+      params.require(:xroom).permit(:name, :category, :description)
     end 
 end
