@@ -1,7 +1,11 @@
 <div>
   <ul>
     <% @xrooms.each do |xroom| %>
-      <li><%= link_to "Xroom#{xroom.id}", xroom_path(xroom) %></li>
+      <% if xroom.name %>
+        <li><%= link_to xroom.name, xroom_path(xroom) %></li>
+      <% else %>
+        <li><%= link_to "X Room#{xroom.id}", xroom_path(xroom) %></li>
+      <% end %>
     <% end %>
   </ul>
   <p><%= link_to "X Room作成", new_xroom_path %></p>

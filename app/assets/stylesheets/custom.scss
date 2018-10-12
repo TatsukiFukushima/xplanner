@@ -583,3 +583,79 @@ div.message_form {
   margin-bottom: 20px;
 }
 
+
+/*=================================================================
+      Xmessages
+=================================================================*/
+
+#xroom_name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 auto 10px;
+}
+
+.xmessage_sidebar {
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+section.xmessage_box {
+  padding: 0px;
+  border: 1px solid $gray-light;
+  overflow: scroll;
+  #xmessages {
+    padding: 20px;
+    height: 400px;
+  }
+}
+
+
+form.xmessage_form {
+  padding-top: 10px;
+  input {
+    margin-bottom: 0px;
+    height: 50px;
+  }
+}
+
+.xmessage_box {
+  background-color: #eee;
+}
+
+#xmessage_sender {
+  font-size: 1.2rem;
+}
+
+#xmessage_content {
+  font-size: 1.2rem;
+  background-color: white;
+  min-width: 20px;
+  max-width: 450px;
+  height: auto;
+  display: inline-block;
+  padding: 3px;
+  border-radius: 5px;
+  position: relative;
+}
+
+p.chat_tri_r:before {
+  position: absolute;
+  right: 5px;
+  top: -10px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid rgba(128, 216, 255, 0.3);
+}
+
+p.chat_tri_l:before {
+  position: absolute;
+  left: 5px;
+  top: -10px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-bottom: 10px solid #fff;
+}
