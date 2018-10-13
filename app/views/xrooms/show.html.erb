@@ -3,9 +3,9 @@
     <%= link_to 'Xroom一覧へ', xrooms_path, class: 'xroom_link' %>
     <section class="xmessage_sidebar">
       <h3 class="xroom_attr">カテゴリー</h2>
-      <p class="xroom_exp"><%= @xroom.category %></p>
+      <p class="xroom_exp xroom_category"><%= @xroom.category %></p>
       <h3 class="xroom_attr">概要</h2>
-      <p class="xroom_exp"><%= @xroom.description %> </p>
+      <p class="xroom_exp xroom_description"><%= @xroom.description %> </p>
       <h3 class="xroom_attr">リアルタイムユーザー<span>〇人</span></h3>
       <ul class="xroom_users">
         <li class="xroom_user"><%= link_to 'aiueo', '#', target: '_blank' %></li><br />
@@ -20,6 +20,11 @@
     <h1 id="xroom_name"><%= @xroom.name %></h1>
   <% else %>
     <h1 id="xroom_name">X Room<%= @xroom.id %></h1>
+  <% end %>
+  <% if @xroom.user == current_user %>
+    <%= link_to '編集', edit_xroom_path, remote: true %>
+    <%= link_to '削除', xroom_path, method: :delete, remote: true, 
+      data: { confirm: "本当に削除しますか？" } %>
   <% end %>
     <section class="xmessage_box">
       <div id="xmessages", data-xroom_id="<%= @xroom.id %>">
@@ -38,3 +43,4 @@
     </form>    
   </div>
 </div>
+<div class="modal fade xroom-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>

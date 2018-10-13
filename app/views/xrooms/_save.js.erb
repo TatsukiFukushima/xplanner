@@ -1,0 +1,4 @@
+$("#xroom_name").html("<%= escape_javascript(@xroom.name) %>")
+$(".xroom_category").html("<%= escape_javascript(@xroom.category) %>")
+$(".xroom_description").html("<%= escape_javascript(@xroom.description) %>")
+$(".xroom-modal").modal("hide")
