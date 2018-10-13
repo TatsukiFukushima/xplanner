@@ -1,12 +1,26 @@
-<div>
-  <ul>
-    <% @xrooms.each do |xroom| %>
-      <% if xroom.name %>
-        <li><%= link_to xroom.name, xroom_path(xroom) %></li>
-      <% else %>
-        <li><%= link_to "X Room#{xroom.id}", xroom_path(xroom) %></li>
-      <% end %>
-    <% end %>
-  </ul>
-  <p><%= link_to "X Room作成", new_xroom_path %></p>
+<div class="row">
+  <aside class="col-md-3 xroom_sidebar">
+    <div class = "x_search_form">
+      <%#= form_tag users_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search], class: 'search_xroom', placeholder: ' X Room検索' %>
+          <%= submit_tag "検索", :name => nil, class: 'search_xroom_btn' %>
+        </p>
+      <%# end %>
+    </div>
+    <p class="center">絞り込み</p>
+    <p>名前</p>
+    <p>カテゴリー</p>
+    <p>概要</p><br />
+    <p>ルーム人数降順</p>
+    <p>ルーム人数昇順</p>
+  </aside>
+  
+  <div class="col-md-9">
+    <h1 class="xroom_head">X Roomリスト</h1>
+    <p class="create_xroom"><%= link_to "＋", new_xroom_path %></p>
+    <ul>
+      <%= render @xrooms %>
+    </ul>
+  </div>
 </div>

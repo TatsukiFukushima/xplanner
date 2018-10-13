@@ -1,11 +1,17 @@
 <div class="row">
   <aside class="col-md-4 center">
-    <%= link_to 'Xroom一覧', xrooms_path %>
+    <%= link_to 'Xroom一覧へ', xrooms_path, class: 'xroom_link' %>
     <section class="xmessage_sidebar">
-      <h2>カテゴリー</h2>
-      <p class="center"><%= @xroom.category %></p>
-      <h2>概要</h2>
-      <p class="center"><%= @xroom.description %> </p>
+      <h3 class="xroom_attr">カテゴリー</h2>
+      <p class="xroom_exp"><%= @xroom.category %></p>
+      <h3 class="xroom_attr">概要</h2>
+      <p class="xroom_exp"><%= @xroom.description %> </p>
+      <h3 class="xroom_attr">リアルタイムユーザー<span>〇人</span></h3>
+      <ul class="xroom_users">
+        <li class="xroom_user"><%= link_to 'aiueo', '#', target: '_blank' %></li><br />
+        <li class="xroom_user"><%= link_to 'あいうえお', '#', target: '_blank' %></li><br />
+        <li class="xroom_user"><%= link_to 'あああああああああ', '#', target: '_blank' %></li><br />
+      </ul>
     </section>
   </aside>
   
@@ -28,7 +34,7 @@
       $('section.xmessage_box').scrollTop(height);
     </script>
     <form class="xmessage_form">
-      <input type="text" data-behavior="xroom_speaker" placeholder= "メッセージを入力">
+      <textarea type="text" data-behavior="xroom_speaker" placeholder= "メッセージを入力"></textarea>
     </form>    
   </div>
 </div>

@@ -1,7 +1,9 @@
 <div class="xmessage xmessage_<%= xmessage.id %>" data-session="<%= session[:user_id] %>">
   <p class="<%= xmessage.id %>" id="xmessage_sender">
-    <%= gravatar_for(xmessage.user, size: 15) %>
-    <%= link_to xmessage.user.name, user_long_term_goals_path(xmessage.user) %>
+    <span class="sender_line">
+      <%= gravatar_for(xmessage.user, size: 15) %>
+      <%= link_to xmessage.user.name, user_long_term_goals_path(xmessage.user), target: '_blank' %>
+    </span>
   </p>
   <p class="content_<%= xmessage.id %>" id="xmessage_content">
     <%= xmessage.content %>
@@ -10,7 +12,7 @@
     var user_id = <%= xmessage.user.id %>;
     var current_user_id = $('.xmessage').data('session');
     if (current_user_id == user_id) {
-      $('p.content_' + <%= xmessage.id %>).css({ 'text-align': 'left', 'background-color': 'rgba(128, 216, 255, 0.3)' });
+      $('p.content_' + <%= xmessage.id %>).css({ 'text-align': 'left', 'background-color': '#bbe5ed' });
       $('div.xmessage_' + <%= xmessage.id %>).css({ 'text-align': 'right' });
       $('p.content_' + <%= xmessage.id %>).addClass('chat_tri_r');
     } else {

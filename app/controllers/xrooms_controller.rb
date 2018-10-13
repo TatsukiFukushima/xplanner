@@ -14,6 +14,12 @@ class XroomsController < ApplicationController
     end 
   end 
   
+  def edit
+  end 
+  
+  def update
+  end 
+  
   def index 
     @xrooms = Xroom.all
   end 
@@ -22,6 +28,9 @@ class XroomsController < ApplicationController
     @xroom = Xroom.find(params[:id])
     @xmessages = @xroom.xmessages
   end
+  
+  def destroy
+  end 
   
   
   private 
