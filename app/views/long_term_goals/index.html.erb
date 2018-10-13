@@ -48,7 +48,6 @@
     <%= render 'l_goal' %>
     </div>
   </div>
-</div>
 <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <%= link_to '戻る', :back, data: { "turbolinks" => false } %>
 
@@ -82,10 +81,12 @@
     <h1 class="l-goal-head">長期目標リスト</h1>
     <% if current_user == @user %>
       <p class="create-l-goal"><%= link_to "＋", new_user_long_term_goal_path(@user), remote: true %></p>
-      <div class="table-sortable ui-sortable"> <!-- これ消すと並び替えできなくなるので注意 -->
+      <div class="table-sortable ui-sortable l-index"> <!-- これ消すと並び替えできなくなるので注意 -->
+    <% else %>
+      <div class="l-index">
     <% end %>
     <%= render 'l_goal' %>
+      </div>
   </div>
-</div>
 <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <%= link_to '戻る', :back, data: { "turbolinks" => false } %>
