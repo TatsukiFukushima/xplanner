@@ -48,7 +48,9 @@
           <%= render 'm_goal', goal: goal %>
         </div>
         <div class="m-goal-new-link">
+        <% if current_user == @user %>
           <%= link_to '新規中期目標', new_long_term_goal_mid_term_goal_path(goal), remote: true %>
+        <% end %>
         </div>
       </section>
     </div>

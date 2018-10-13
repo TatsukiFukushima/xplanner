@@ -18,9 +18,10 @@
   
   <div class="col-md-9">
     <h1 class="xroom_head">X Roomリスト</h1>
-    <p class="create_xroom"><%= link_to "＋", new_xroom_path %></p>
+    <p class="create_xroom"><%= link_to "＋", new_xroom_path, remote: true %></p>
     <ul>
       <%= render @xrooms %>
     </ul>
   </div>
 </div>
+<div class="modal fade xroom-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
