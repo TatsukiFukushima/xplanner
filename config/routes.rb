@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   resources :comments, only: :destroy, shallow: true do 
     resources :comment_replies, only: [:index, :destroy, :create]
   end
-  resources :xrooms, only: [:index, :show, :new, :create]
+  resources :xrooms
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships,       only: [:create, :destroy]

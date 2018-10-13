@@ -1,0 +1,25 @@
+<li class="xroom_item clearfix">
+  <ul class="col-sm-4">
+    <li class="xroom_category">
+      <%= xroom.category %>
+    </li>
+    <li class="xroom_middle">
+    <% if xroom.name %>
+      <span class="xroom_name"><%= xroom.name %></span>
+    <% else %>
+      <span class="xroom_name">X Room<%= xroom.id %></span>
+    <% end %>
+      <span>〇人</span>
+    </li>
+    <li>
+      <%= link_to 'ルームに入る', xroom_path(xroom), class: "xroom_entry" %>
+    </li>
+  </ul>
+  <ul class="col-sm-2">
+  </ul>
+  <ul class="col-sm-6">
+    <li class="xroom_desc">
+      <%= xroom.description %>
+    </li>
+  </ul>
+</li>

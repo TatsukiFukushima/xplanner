@@ -52,6 +52,14 @@ textarea {
   clear: both;
 }
 
+ul {
+  padding-left: 0;
+  li {
+    list-style-type: none;
+  }
+}
+
+
 
 /*=================================================================
       Typography
@@ -594,9 +602,128 @@ div.message_form {
   margin: 0 auto 10px;
 }
 
-.xmessage_sidebar {
-  background-color: #eee;
+.xroom_head {
+  background-color: #fff;
+  padding: 10px;
+  width: 50%;
+  margin: 0 0 10px 25%;
+  font-size: 32px;
+  display: inline-block;
+}
+
+.xroom_sidebar {
+  background-color: #fff;
+  margin-bottom: 20px;
+  
+  .x_search_form {
+    padding: 10px;
+    width: 100%;
+    margin: 20px auto;
+    
+    p {
+      margin-bottom: 0;
+      
+      .search_xroom {
+        width: 70%;
+        // margin-left: 4%;
+        border-radius: 5px;
+        margin-bottom: 0;
+        background-color: #fff;
+      }
+      
+      .search_xroom_btn {
+        width: 20%;
+        // margin-right: 4%;
+        margin-bottom: 0;
+        border-radius: 5px;
+        font-size: 1.3rem;
+        padding: 1px 2px;
+      }
+    }
+  }
+}
+
+.create_xroom {
+  float: right;
+  background-color: #1f4b96;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 50px;
+  
+  a {
+    color: #fff;
+    font-size: 32px;
+    line-height: 52px;
+    margin-left: 18%;
+  }
+}
+
+.create_xroom:hover {
+  background-color: #15366b;
+}
+
+li.xroom_item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 30px;
+  
+  .xroom_middle {
+    margin-top: 6px;
+    margin-bottom: 6px; 
+    overflow-wrap: break-word;
+    
+    .xroom_name {
+      font-size: 2.8rem;  
+    }
+  }
+  
+  .xroom_entry {
+    display: inline-block;
+    padding: 5px;
+    background-color: #bbe5ed;
+    border-radius: 15px;
+  }
+  
+  .xroom_desc {
+    overflow-wrap: break-word;
+  }
+}
+
+.xroom_link {
+  font-size: 2rem;
+}
+
+.xroom_attr {
+  font-size: 1.5rem;
+}
+
+.xroom_exp {
+  display: inline-block;
+  width: 80%;
+  background-color: #ddd;
+}
+
+.xroom_users {
+  margin: 0 auto 20px;
+  width: 80%;
+  max-height: 200px;
+  background-color: #ddd;
+  overflow: scroll;
+}
+
+.xroom_user {
+  background-color: #fff;
   border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  display: inline-block;
+}
+
+.xmessage_sidebar {
+  background-color: #fff;
 }
 
 section.xmessage_box {
@@ -612,23 +739,27 @@ section.xmessage_box {
 
 form.xmessage_form {
   padding-top: 10px;
-  input {
+  textarea {
     margin-bottom: 0px;
     height: 50px;
   }
 }
 
 .xmessage_box {
-  background-color: #eee;
+  background-color: #fff;
 }
 
 #xmessage_sender {
   font-size: 1.2rem;
 }
 
+.sender_line {
+  border-bottom: 1px solid #ccc;
+}
+
 #xmessage_content {
   font-size: 1.2rem;
-  background-color: white;
+  background-color: #ddd;
   min-width: 20px;
   max-width: 450px;
   height: auto;
@@ -636,6 +767,11 @@ form.xmessage_form {
   padding: 3px;
   border-radius: 5px;
   position: relative;
+}
+
+p.chat_tri_r,
+p.chat_tri_l {
+  filter:drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.2));
 }
 
 p.chat_tri_r:before {
@@ -646,7 +782,7 @@ p.chat_tri_r:before {
   width: 0;
   height: 0;
   border-right: 8px solid transparent;
-  border-bottom: 10px solid rgba(128, 216, 255, 0.3);
+  border-bottom: 10px solid #bbe5ed;
 }
 
 p.chat_tri_l:before {
@@ -657,5 +793,5 @@ p.chat_tri_l:before {
   width: 0;
   height: 0;
   border-left: 8px solid transparent;
-  border-bottom: 10px solid #fff;
+  border-bottom: 10px solid #ddd;
 }
