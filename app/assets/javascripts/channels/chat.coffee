@@ -42,7 +42,7 @@ document.addEventListener 'turbolinks:load', ->
         }
 
 $(document).on 'keypress', '[data-behavior~=chat_speaker]', (event) ->
-  if event.which is 13
+  if event.keyCode is 13 && !event.shiftKey # return = send
     value = event.target.value
     if value.replace(/\s/g, '').length > 0 && value.length <= 200
       App.chat.speak(current_user_id(), user_id(), room_id(), value)

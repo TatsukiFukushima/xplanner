@@ -11,11 +11,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  # def show
-  #   @user = User.find(params[:id])
-  #   redirect_to user_long_term_goals_path(@user)
-  # end
-  
   # メッセージ機能の作成のためにshowを作成。
   def show
     @user = User.find(params[:id])
