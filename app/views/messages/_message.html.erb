@@ -1,14 +1,25 @@
-<div class="message" data-session="<%= session[:user_id] %>">
+<div class="message message_<%= message.id %>" data-session="<%= session[:user_id] %>">
   <% user = User.find_by(id: message.from_id) %>
-  <p class="<%= message.id %>" id="message_sender"><%= user.name %></p>
-  <p class="<%= message.id %>" id="message_content"><%= message.content %></p>
+  <p class="<%= message.id %>" id="message_sender">
+    <span class="sender_line">
+      <%= gravatar_for(user, size: 15) %>
+      <%= link_to user.name, user_long_term_goals_path(user), target: '_blank' %>
+    </span>
+  </p>
+  <p class="<%= message.id %> content_<%= message.id %>" id="message_content">
+    <%= message.content.gsub("\n", "<br />").html_safe %>
+  </p>
+  <%#= simple_format(message.content, class: "#{message.id} content_#{message.id}", id: "message_content") %>
   <script type="text/javascript">
     var from_id = <%= message.from_id %>;
     var current_user_id = $('.message').data('session');
     if(from_id == current_user_id){
-      $('p.' + <%= message.id %>).css('text-align', 'right');
+      $('p.content_' + <%= message.id %>).css({ 'text-align': 'left', 'background-color': '#bbe5ed' });
+      $('div.message_' + <%= message.id %>).css({ 'text-align': 'right' });
+      $('p.content_' + <%= message.id %>).addClass('chat_tri_r');
     }else{
-      $('p.' + <%= message.id %>).css('text-align', 'left');
+      $('div.message_' + <%= message.id %>).css({ 'text-align': 'left' });
+      $('p.content_' + <%= message.id %>).addClass('chat_tri_l');
     }
   </script>
 </div>

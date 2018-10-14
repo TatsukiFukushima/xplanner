@@ -21,7 +21,9 @@ document.addEventListener 'turbolinks:load', ->
   
   
 $(document).on 'keypress', '[data-behavior~=xroom_speaker]', (event) ->
-  if event.keyCode is 13 # return = send 
+  if event.keyCode is 13 && !event.shiftKey # return = send 
     App.xroom.speak event.target.value
     event.target.value = ''
     event.preventDefault()
+
+

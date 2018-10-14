@@ -21,11 +21,17 @@
   <% else %>
     <h1 id="xroom_name">X Room<%= @xroom.id %></h1>
   <% end %>
+    <div class="clearfix">
   <% if @xroom.user == current_user %>
     <%= link_to '編集', edit_xroom_path, remote: true %>
     <%= link_to '削除', xroom_path, method: :delete, remote: true, 
       data: { confirm: "本当に削除しますか？" } %>
   <% end %>
+      <ul class="instruction">
+        <li class="instruction_left"># 改行＝＞Shift＋Enter</li>
+        <li class="instruction_left">送信＝＞Enter</li>
+      </ul>
+    </div>
     <section class="xmessage_box">
       <div id="xmessages", data-xroom_id="<%= @xroom.id %>">
         <%= render @xmessages %>

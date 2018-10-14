@@ -6,8 +6,9 @@
     </span>
   </p>
   <p class="content_<%= xmessage.id %>" id="xmessage_content">
-    <%= xmessage.content %>
+    <%= xmessage.content.gsub("\n", "<br />").html_safe %>
   </p>
+  <%#= simple_format(xmessage.content, class: "content_#{xmessage.id}", id: "xmessage_content") %>
   <script type="text/javascript">
     var user_id = <%= xmessage.user.id %>;
     var current_user_id = $('.xmessage').data('session');

@@ -551,30 +551,38 @@ section.message_box {
   border: 1px solid $gray-light;
   overflow: scroll;
   #messages {
-    padding: 10px;
-    height: 300px;
+    padding: 20px;
+    height: 400px;
   }
 }
 
 div.message_form {
   padding-top: 10px;
   
-  input {
+  textarea {
     margin-bottom: 0px;
-    height: 50px;
+    height: 80px;
   }
 }
 
 #message_sender {
-  font-size: 1.1em;
+  font-size: 1.2rem;
 }
 
 #message_content {
-  font-size: 1.0em;
+  font-size: 1.2rem;
+  background-color: #ddd;
+  min-width: 20px;
+  max-width: 450px;
+  height: auto;
+  display: inline-block;
+  padding: 3px;
+  border-radius: 5px;
+  position: relative;
 }
 
 .message_box {
-  background-color: #eeeeee;
+  background-color: #fff;
 }
 
 .messages_to {
@@ -591,6 +599,19 @@ div.message_form {
   margin-bottom: 20px;
 }
 
+#message_target {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 auto 6px;
+}
+
+#message_target_list {
+  padding-left: 10px;
+  background-color: #fff;
+  max-height: 400px;
+  overflow: scroll;
+}
+
 
 /*=================================================================
       Xmessages
@@ -599,7 +620,7 @@ div.message_form {
 #xroom_name {
   font-size: 2.5rem;
   font-weight: bold;
-  margin: 0 auto 10px;
+  margin: 0 auto 5px;
 }
 
 .xroom_head {
@@ -742,9 +763,26 @@ form.xmessage_form {
   padding-top: 10px;
   textarea {
     margin-bottom: 0px;
-    height: 50px;
+    height: 80px;
   }
 }
+
+ul.instruction {
+  display: inline-block;
+  float: right;
+  margin-bottom: 0;
+  .instruction_left {
+    display: inline-block;
+    color: red;
+    float: left;
+    &:first-child {
+     padding-right: 10px;
+     margin-right: 10px;
+     border-right: 1px solid $gray-light; 
+    }
+  }
+}
+
 
 .xmessage_box {
   background-color: #fff;
