@@ -12,7 +12,7 @@
       <span><%= xroom.user_count %>人</span>
     </li>
     <li>
-      <%= link_to 'ルームに入る', xroom_path(xroom), class: "xroom_entry" %>
+      <%= link_to 'ルームに入る', xroom_path(xroom), class: "xroom_entry", data: {"turbolinks" => false} %>
     </li>
   </ul>
   <ul class="col-sm-2">
