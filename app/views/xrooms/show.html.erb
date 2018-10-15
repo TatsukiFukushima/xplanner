@@ -6,11 +6,9 @@
       <p class="xroom_exp xroom_category"><%= @xroom.category %></p>
       <h3 class="xroom_attr">概要</h2>
       <p class="xroom_exp xroom_description"><%= @xroom.description %> </p>
-      <h3 class="xroom_attr">リアルタイムユーザー<span>〇人</span></h3>
+      <h3 class="xroom_attr">リアルタイムユーザー<span id="xuser_count"><%= @xroom.user_count %></span>人</h3>
       <ul class="xroom_users">
-        <li class="xroom_user"><%= link_to 'aiueo', '#', target: '_blank' %></li><br />
-        <li class="xroom_user"><%= link_to 'あいうえお', '#', target: '_blank' %></li><br />
-        <li class="xroom_user"><%= link_to 'あああああああああ', '#', target: '_blank' %></li><br />
+        <%= render 'xroom_user' %>
       </ul>
     </section>
   </aside>
