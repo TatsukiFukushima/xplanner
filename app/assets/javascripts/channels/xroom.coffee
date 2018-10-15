@@ -31,9 +31,10 @@ document.addEventListener 'turbolinks:load', ->
       # Called when the subscription has been terminated by the server
   
     received: (data) ->
-      $('#xmessages').append data['xmessage']
-      $('section.xmessage_box').scrollTop(xmessages_height());
-      if data['xuser_count']
+      if data['xmessage']?
+        $('#xmessages').append data['xmessage']
+        $('section.xmessage_box').scrollTop(xmessages_height());
+      if data['xuser_count']?
         $('#xuser_count').html data['xuser_count']
         $('.xroom_users').html data['xusers']
   
