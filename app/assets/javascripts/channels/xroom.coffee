@@ -26,7 +26,7 @@ document.addEventListener 'turbolinks:load', ->
       # Called when the subscription is ready for use on the server
   
     disconnected: ->
-       App.cable.subscriptions.remove(this)
+      # App.cable.subscriptions.remove(this)
        this.perform('unsubscribed') 
       # Called when the subscription has been terminated by the server
   
