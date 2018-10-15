@@ -34,6 +34,7 @@ class XroomsController < ApplicationController
   
   def show
     @xmessages = @xroom.xmessages
+    @xroom_users = @xroom.users
   end
   
   def destroy

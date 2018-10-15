@@ -6,7 +6,6 @@ class XmessageBroadcastJob < ApplicationJob
       render_xmessage(xmessage)
   end 
   
-  
   private 
   
     def render_xmessage(xmessage)

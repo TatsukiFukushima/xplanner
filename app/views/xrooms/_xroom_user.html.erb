@@ -1,0 +1,6 @@
+<% @xroom_users.each do |x_user| %>
+  <li class="xroom_user">
+    <%= gravatar_for x_user, size: 15 %>
+    <%= link_to x_user.name, user_long_term_goals_path(x_user), target: '_blank' %>
+  </li><br />
+<% end %>

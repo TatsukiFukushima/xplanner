@@ -9,7 +9,7 @@
     <% else %>
       <span class="xroom_name">X Room<%= xroom.id %></span>
     <% end %>
-      <span>〇人</span>
+      <span><%= xroom.user_count %>人</span>
     </li>
     <li>
       <%= link_to 'ルームに入る', xroom_path(xroom), class: "xroom_entry" %>
