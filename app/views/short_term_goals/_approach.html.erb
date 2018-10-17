@@ -2,6 +2,53 @@
 <% approaches.each do |approach| %>
   <%= content_tag "div", class: "item", data: { model_name: approach.class.name.underscore, update_url: approach_sort_path(approach) } do %>
     <div>
+      <p class="s-goal-approach-content"><%= approach.content %></p>
+      <ul class="s-goal-left">
+        <li>
+          <%= link_to short_term_goal_comments_path(s_goal) do %>
+            <span><i class="fas fa-comment"></i> <%= approach.comments.count %></span>
+          <% end %>
+        </li>
+        <li>
+          <%= render partial: 'likes/a_like', locals: { approach: approach } %>
+        </li>
+        <li>
+          <% if approach.memo %>
+            <%= link_to '', memo_path(s_goal.memo), class: "fas fa-sticky-note blue-note", remote: true %>
+          <% end %>
+          <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
+            <% unless s_goal.memo %>
+              <%= link_to '', approach_memo_new_path(approach), class: "fas fa-sticky-note", remote: true %>
+            <% end %>
+          <% end %>
+        </li>
+        <% if current_user == @user %>
+          <li class="approach-edit-link">
+          <%= link_to '編集', edit_approach_path(approach), remote: true %>
+          </li>
+          <li>
+          <%= link_to '削除', approach_path(approach), method: :delete, remote: true,
+            data: { confirm: "本当に削除しますか？" } %>
+          </li>
+        <% end %>
+    </ul>
+    </div>
+  <% end %>
+<% end %>
+<div class="approach-new-link">
+  <% if current_user == @user %>
+    <%= link_to '新規アプローチ', new_short_term_goal_approach_path(s_goal), remote: true %>
+  <% end %>
+</div>
+
+
+
+<%#= 元のやつ %>
+<% if false %>
+<% approaches = s_goal.approaches.rank(:row_order) %>
+<% approaches.each do |approach| %>
+  <%= content_tag "div", class: "item", data: { model_name: approach.class.name.underscore, update_url: approach_sort_path(approach) } do %>
+    <div>
       <%= approach.content %><%= approach.effectiveness %><br />
       <span>期限</span>
       <%= link_to approach_comments_path(approach) do %>
@@ -24,4 +71,5 @@
     <% end %>
     </div>
   <% end %>
+<% end %>
 <% end %>

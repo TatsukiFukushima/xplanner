@@ -103,6 +103,10 @@ a {
   }
 }
 
+.col-md-9 {
+  padding: 0 10px;
+}
+
 
 /*=================================================================
       Header
@@ -153,6 +157,7 @@ a {
   font-size: 1.6em;
   margin-top: 3px;
 }
+
 
 
 /*=================================================================
@@ -470,8 +475,29 @@ a {
   background-color: #15366b;
 }
 
+.status {
+  display: inline;
+  font-size: 13px;
+  padding: 3px 5px;
+  margin-right: 20px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.status-red {
+  background-color: #df0101;
+}
+
+.status-yellow {
+  background-color: #e0e000;
+}
+
+.status-green {
+  background-color: #16e000;
+}
+
 .l-goal-content {
-  font-size: 28px;
+  font-size: 24px;
   margin-bottom: 0;
 }
 
@@ -486,8 +512,28 @@ a {
   }
   
   .l-goal-edit-link {
-    margin-left: 200px;
+    margin-left: 100px;
   }
+}
+
+.fa-comment {
+  color: #888;
+}
+
+.fa-heart {
+  color: #888;
+}
+
+.red-heart {
+  color: #df0101;
+}
+
+.fa-sticky-note {
+  color: #888;
+}
+
+.blue-note {
+  color: #337ab7;
 }
 
 
@@ -530,8 +576,226 @@ section {
 }
 
 .m-goal-new-link {
-  padding-top: 45px;
+  padding-top: 10px;
+  background-color: #1f4b96;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 150px;
+  text-align: center;
+  margin-top: 10px;
+  
+  a {
+    color: #fff;
+  }
+  
+  &:hover {
+    background-color: #15366b;
+  }
 }
+
+.m-goal-link {
+  float: right;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  
+  a {
+    background-color: #555;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff;
+  }
+}
+
+.l-goal-m-goal-content {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.m-goal-content {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.m-goal-left {
+  list-style-type: none;
+  padding-left: 0;
+  
+  li {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+  
+  .m-goal-edit-link {
+    margin-left: 100px;
+  }
+}
+
+.m-goal-head {
+  background-color: #fff;
+  padding: 10px;
+  width: 50%;
+  margin: 0 0 10px 25%;
+  font-size: 32px;
+  display: inline-block;
+}
+
+.create-m-goal {
+  float: right;
+  background-color: #1f4b96;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 50px;
+  
+  a {
+    color: #fff;
+    font-size: 32px;
+    line-height: 52px;
+    margin-left: 18%;
+  }
+}
+
+.create-m-goal:hover {
+  background-color: #15366b;
+}
+
+
+
+/*=================================================================
+      ShortTermGoals
+=================================================================*/
+
+.s-goal-new-link {
+  padding-top: 10px;
+  background-color: #1f4b96;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 150px;
+  text-align: center;
+  margin-top: 10px;
+  
+  a {
+    color: #fff;
+  }
+  
+  &:hover {
+    background-color: #15366b;
+  }
+}
+
+.s-goal-link {
+  float: right;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  
+  a {
+    background-color: #555;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff;
+  }
+}
+
+.m-goal-s-goal-content {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.s-goal-content {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.s-goal-left {
+  list-style-type: none;
+  padding-left: 0;
+  
+  li {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+  
+  .s-goal-edit-link {
+    margin-left: 100px;
+  }
+}
+
+
+.s-goal-head {
+  background-color: #fff;
+  padding: 10px;
+  width: 50%;
+  margin: 0 0 10px 25%;
+  font-size: 32px;
+  display: inline-block;
+}
+
+.create-s-goal {
+  float: right;
+  background-color: #1f4b96;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 50px;
+  
+  a {
+    color: #fff;
+    font-size: 32px;
+    line-height: 52px;
+    margin-left: 18%;
+  }
+}
+
+.create-s-goal:hover {
+  background-color: #15366b;
+}
+
+
+
+/*=================================================================
+      Approaches
+=================================================================*/
+
+.approach-new-link {
+  padding-top: 10px;
+  background-color: #1f4b96;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 150px;
+  text-align: center;
+  margin-top: 10px;
+  
+  a {
+    color: #fff;
+  }
+  
+  &:hover {
+    background-color: #15366b;
+  }
+}
+
+.a-link {
+  float: right;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  
+  a {
+    background-color: #555;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff;
+  }
+}
+
+.s-goal-approach-content {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+
+
 
 
 

@@ -1,4 +1,39 @@
-<% if false %> <%#= 予備の予備用レイアウト %>
+<div class="row">
+  <aside class="col-md-3 user-sidebar">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %><br clear = "">
+        <%= link_to @user.name, user_long_term_goals_path(@user), data: {"turbolinks" => false} %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section class="follow-button">
+      <%= render 'users/follow_form' if logged_in? %>
+    </section>
+    <section class="block-button">
+      <%= render 'users/block_form' if logged_in? %>
+    </section>
+  </aside>
+  
+  <div class="col-md-9">
+    <h1 class="l-goal-head">長期目標リスト</h1>
+    <% if current_user == @user %>
+      <p class="create-l-goal"><%= link_to "＋", new_user_long_term_goal_path(@user), remote: true %></p>
+      <div class="table-sortable ui-sortable l-index"> <!-- これ消すと並び替えできなくなるので注意 -->
+    <% else %>
+      <div class="l-index">
+    <% end %>
+    <%= render 'l_goal' %>
+      </div>
+  </div>
+<div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<%= link_to '戻る', :back, data: { "turbolinks" => false } %>
+
+
+
+<% if false %> <%#= 予備用レイアウト %>
 
 <div class="row l-goal-show-container">
   <div class="col-md-10 col-md-offset-1">
@@ -52,41 +87,3 @@
 <%= link_to '戻る', :back, data: { "turbolinks" => false } %>
 
 <% end %>
-
-
-
-
-<%#= 予備用レイアウト %>
-
-<div class="row">
-  <aside class="col-md-3 user-sidebar">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %><br clear = "">
-        <%= link_to @user.name, user_long_term_goals_path(@user), data: {"turbolinks" => false} %>
-      </h1>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-    <section class="follow-button">
-      <%= render 'users/follow_form' if logged_in? %>
-    </section>
-    <section class="block-button">
-      <%= render 'users/block_form' if logged_in? %>
-    </section>
-  </aside>
-  
-  <div class="col-md-9">
-    <h1 class="l-goal-head">長期目標リスト</h1>
-    <% if current_user == @user %>
-      <p class="create-l-goal"><%= link_to "＋", new_user_long_term_goal_path(@user), remote: true %></p>
-      <div class="table-sortable ui-sortable l-index"> <!-- これ消すと並び替えできなくなるので注意 -->
-    <% else %>
-      <div class="l-index">
-    <% end %>
-    <%= render 'l_goal' %>
-      </div>
-  </div>
-<div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<%= link_to '戻る', :back, data: { "turbolinks" => false } %>
