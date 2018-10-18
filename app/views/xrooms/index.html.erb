@@ -1,19 +1,35 @@
 <div class="row">
   <aside class="col-md-3 xroom_sidebar">
     <div class = "x_search_form">
-      <%#= form_tag users_path, :method => 'get' do %>
+      <%= form_tag xrooms_path, :method => 'get' do %>
+        <p class="bold">絞り込み内容</p>
+        <p class="x_form_item">
+          <%= radio_button_tag 'x_attr', 'name', false %>
+          <%= label_tag 'x_attr_name', '名前' %>
+        </p>
+        <p class="x_form_item">
+          <%= radio_button_tag 'x_attr', 'category', false %>
+          <%= label_tag 'x_attr_category', 'カテゴリー' %>
+        </p>
+        <p class="x_form_item">
+          <%= radio_button_tag 'x_attr', 'description', true %>
+          <%= label_tag 'x_attr_description', '概要' %>
+        </p>
+        <p class="bold">X Roomリアルタイム人数</p>
+        <p class="x_form_item">
+          <%= radio_button_tag 'x_user_num', 'desc', true %>
+          <%= label_tag 'x_user_num_desc', '降順' %>
+        </p>
+        <p class="x_form_item">
+          <%= radio_button_tag 'x_user_num', 'asc', false %>
+          <%= label_tag 'x_user_num_asc', '昇順' %>
+        </p>
         <p>
-          <%= text_field_tag :search, params[:search], class: 'search_xroom', placeholder: ' X Room検索' %>
+          <%= text_field_tag :x_search, params[:x_search], class: 'search_xroom', placeholder: ' キーワードを入れてください' %>
           <%= submit_tag "検索", :name => nil, class: 'search_xroom_btn' %>
         </p>
-      <%# end %>
+      <% end %>
     </div>
-    <p class="center">絞り込み</p>
-    <p>名前</p>
-    <p>カテゴリー</p>
-    <p>概要</p><br />
-    <p>ルーム人数降順</p>
-    <p>ルーム人数昇順</p>
   </aside>
   
   <div class="col-md-9">
@@ -22,6 +38,7 @@
     <ul>
       <%= render @xrooms %>
     </ul>
+    <%= will_paginate @xrooms %>
   </div>
 </div>
 <div class="modal fade xroom-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
