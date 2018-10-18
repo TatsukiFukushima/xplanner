@@ -635,14 +635,35 @@ div.message_form {
 .xroom_sidebar {
   background-color: #fff;
   margin-bottom: 20px;
-  
+
   .x_search_form {
     padding: 10px;
     width: 100%;
     margin: 20px auto;
     
+    input {
+      width: auto;
+      font-size: 1.2rem;
+    }
+    
+    label {
+      font-weight: normal;
+      font-size: 1.4rem;
+    }
+    
     p {
       margin-bottom: 0;
+      
+      &.bold {
+        font-weight: bold;
+        display: inline-block;
+        border-bottom: 1px solid $gray-light;
+        margin-bottom: 5px;
+      }
+      
+      &.x_form_item {
+        padding-left: 10px;
+      }
       
       .search_xroom {
         width: 70%;

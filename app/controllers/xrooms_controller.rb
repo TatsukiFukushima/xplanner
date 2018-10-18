@@ -29,7 +29,8 @@ class XroomsController < ApplicationController
   end 
   
   def index 
-    @xrooms = Xroom.all
+    @xrooms = Xroom.search(search: params[:x_search], x_attr: params[:x_attr], order: params[:x_user_num]).
+      paginate(page: params[:page], per_page: 10)
   end 
   
   def show
