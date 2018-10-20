@@ -14,7 +14,15 @@
               <% end %>
             </div>
           </li>
-          <li><a class="fas fa-bell" href="#"></a>     </li>
+          <li>
+            <a href="#", class="fas fa-bell dropdown-toggle" data-toggle="dropdown">
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "こんな感じで表示", "#" %></li>
+              <li><%= link_to "こんな感じですよー", "#" %></li>
+            </ul>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= gravatar_for current_user, size: 25 %>  <%= current_user.name %> <b class="caret"></b>
