@@ -1,11 +1,11 @@
 <% approaches = s_goal.approaches.rank(:row_order) %>
 <% approaches.each do |approach| %>
   <%= content_tag "div", class: "item", data: { model_name: approach.class.name.underscore, update_url: approach_sort_path(approach) } do %>
-    <div>
+    <div class="clearfix">
       <p class="s-goal-approach-content"><%= approach.content %></p>
       <ul class="s-goal-left">
         <li>
-          <%= link_to short_term_goal_comments_path(s_goal) do %>
+          <%= link_to approach_comments_path(approach) do %>
             <span><i class="fas fa-comment"></i> <%= approach.comments.count %></span>
           <% end %>
         </li>
@@ -14,10 +14,10 @@
         </li>
         <li>
           <% if approach.memo %>
-            <%= link_to '', memo_path(s_goal.memo), class: "fas fa-sticky-note blue-note", remote: true %>
+            <%= link_to '', memo_path(approach.memo), class: "fas fa-sticky-note blue-note", remote: true %>
           <% end %>
           <% if current_user == @user %><!-- 他ユーザーのページにいるなら -->
-            <% unless s_goal.memo %>
+            <% unless approach.memo %>
               <%= link_to '', approach_memo_new_path(approach), class: "fas fa-sticky-note", remote: true %>
             <% end %>
           <% end %>
