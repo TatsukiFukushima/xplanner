@@ -1,3 +1,41 @@
+<div class="row">
+  <aside class="col-md-3 user-sidebar">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %><br clear = "">
+        <%= link_to @user.name, user_long_term_goals_path(@user), data: {"turbolinks" => false} %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section class="follow-button">
+      <%= render 'users/follow_form' if logged_in? %>
+    </section>
+    <section class="block-button">
+      <%= render 'users/block_form' if logged_in? %>
+    </section>
+  </aside>
+  
+  <div class="col-md-9">
+    <h1 class = "s-goal-head"><%= @long_term_goal.content %><span>|</span><%= @mid_term_goal.content %></h1>
+    <% if current_user == @user %>
+      <p class="create-s-goal"><%= link_to "＋", new_mid_term_goal_short_term_goal_path(@mid_term_goal), remote: true %></p>
+      <div class="table-sortable ui-sortable s-index"> <!-- これ消すと並び替えできなくなるので注意 -->
+    <% else %>
+      <div class="s-index">
+    <% end %>
+    <%= render 's_goal' %>
+      </div>
+  </div>
+<div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<%= link_to '戻る', :back, data: { "turbolinks" => false } %>
+
+
+
+
+<%#= 元のやつ %>
+<% if false %>
 <div class="row l-goal-show-container">
   <div class="col-md-10 col-md-offset-1">
     <section class="user-data data1">
@@ -48,3 +86,4 @@
   </div>
   <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
   <%= link_to '戻る', :back, data: { "turbolinks" => false } %> 
+<% end %>

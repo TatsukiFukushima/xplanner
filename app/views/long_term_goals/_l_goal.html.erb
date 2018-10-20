@@ -2,13 +2,19 @@
   <%= content_tag "div", class: "item", data: { model_name: goal.class.name.underscore, update_url: long_term_goal_sort_path(goal) } do %>
     <div class="clearfix">
       <section class="left">
-        <%= goal.status %>
-        <span>期限</span><br />
+        <% if goal.status == "未達成" %>
+          <p class = "status status-red"><%= goal.status %></p>
+        <% elsif goal.status == "実行中" %>
+          <p class = "status status-yellow"><%= goal.status %></p>
+        <% else %>
+          <p class = "status status-green"><%= goal.status %></p>
+        <% end %>
+        <span>期限: </span><%= goal.deadline ? goal.deadline.date : "未設定" %><br />
         <p class="l-goal-content"><%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: {"turbolinks" => false} %></p>
         <ul class="l-goal-left">
           <li>
             <%= link_to long_term_goal_comments_path(goal) do %>
-              <span>コメント <%= goal.comments.count %></span>
+              <span><i class="fas fa-comment"></i> <%= goal.comments.count %></span>
             <% end %>
           </li>
           <li>
@@ -16,11 +22,11 @@
           </li>
           <li>
             <% if goal.memo %>
-              <%= link_to 'メモ', memo_path(goal.memo), remote: true %>
+              <%= link_to '', memo_path(goal.memo), class: "fas fa-sticky-note blue-note", remote: true %>
             <% end %>
             <% if current_user == @user %>
               <% unless goal.memo %>
-                <%= link_to '新規メモ', long_term_goal_memo_new_path(goal), remote: true %>
+                <%= link_to '', long_term_goal_memo_new_path(goal), class: "fas fa-sticky-note", remote: true %>
               <% end %>
             <% end %>
           </li>
@@ -41,16 +47,11 @@
     <% else %>
       <section class="right clearfix">
     <% end %>
-        <div onclick="obj=document.getElementById('m_open_<%= i %>').style; obj.display=(obj.display=='none')?'block':'none';">
-          <a style="cursor:pointer;">▼ 中期目標一覧</a>
+        <div class="m-goal-link", onclick="obj=document.getElementById('m_open_<%= i %>').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">中期 ▼</a>
         </div>
         <div id="m_open_<%= i %>" class="<%= goal.id %>-m-index" style="display:none;clear:both;">
           <%= render 'm_goal', goal: goal %>
-        </div>
-        <div class="m-goal-new-link">
-        <% if current_user == @user %>
-          <%= link_to '新規中期目標', new_long_term_goal_mid_term_goal_path(goal), remote: true %>
-        <% end %>
         </div>
       </section>
     </div>

@@ -2,6 +2,71 @@
   <%= content_tag "div", class: "item", data: { model_name: s_goal.class.name.underscore, update_url: short_term_goal_sort_path(s_goal) } do %>
     <div class="clearfix">
       <section class="left">
+        <% if s_goal.status == "未達成" %>
+          <p class = "status status-red"><%= s_goal.status %></p>
+        <% elsif s_goal.status == "実行中" %>
+          <p class = "status status-yellow"><%= s_goal.status %></p>
+        <% else %>
+          <p class = "status status-green"><%= s_goal.status %></p>
+        <% end %>
+        <span>期限: </span><%= s_goal.deadline ? s_goal.deadline.date : "未設定" %><br />
+        <p class="s-goal-content"><%= s_goal.content %></p>
+        <ul class="s-goal-left">
+          <li>
+            <%= link_to short_term_goal_comments_path(s_goal) do %>
+              <span><i class="fas fa-comment"></i> <%= s_goal.comments.count %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= render partial: 'likes/s_like', locals: { s_goal: s_goal } %>
+          </li>
+          <li>
+            <% if s_goal.memo %>
+              <%= link_to '', memo_path(s_goal.memo), class: "fas fa-sticky-note blue-note", remote: true %>
+            <% end %>
+            <% if current_user == @user %>
+              <% unless s_goal.memo %>
+                <%= link_to '', short_term_goal_memo_new_path(s_goal), class: "fas fa-sticky-note", remote: true %>
+              <% end %>
+            <% end %>
+          </li>
+          <% if current_user == @user %>
+            <li class="s-goal-edit-link">
+              <%= link_to '編集', edit_short_term_goal_path(s_goal), remote: true %>
+            </li>
+            <li>
+              <%= link_to '削除', short_term_goal_path(s_goal), method: :delete, remote: true,
+                data: { confirm: "本当に削除しますか？" } %><br />
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    <% if current_user == @user %>
+      <section class="right table-sortable ui-sortable clearfix">
+    <%#= 自分以外のユーザーのページにいる場合 %>
+    <% else %>
+      <section class="right clearfix">
+    <% end %>
+        <div class="a-link", onclick="obj=document.getElementById('a_open_<%= i %>').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">アプローチ ▼</a>
+        </div>
+        <div id="a_open_<%= i %>" class="<%= s_goal.id %>-a-index" style="display:none;clear:both;">
+          <%= render 'approach', s_goal: s_goal %>
+        </div>
+      </section>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+
+<%#= 元のやつ %>
+<% if false %>
+<% @short_term_goals.each_with_index do |s_goal, i| %>
+  <%= content_tag "div", class: "item", data: { model_name: s_goal.class.name.underscore, update_url: short_term_goal_sort_path(s_goal) } do %>
+    <div class="clearfix">
+      <section class="left">
         <%= s_goal.content %><%= s_goal.status %><br />
         <span>期限</span>
         <%= link_to short_term_goal_comments_path(s_goal) do %>
@@ -40,4 +105,5 @@
       </section>
     </div>
   <% end %>
+<% end %>
 <% end %>
