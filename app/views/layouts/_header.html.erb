@@ -6,8 +6,13 @@
         <% if logged_in? %>
           <li>
             <div class = "search-form">
-              <%= form_tag users_path, :method => 'get' do %>
+              <%= form_tag search_result_path, :method => 'get' do %>
                 <p>
+                  <%= hidden_field_tag :nav_u_p, 'user' %>
+                  <%= hidden_field_tag :nav_l_p, 'l_goal' %>
+                  <%= hidden_field_tag :nav_m_p, 'm_goal' %>
+                  <%= hidden_field_tag :nav_s_p, 's_goal' %>
+                  <%= hidden_field_tag :nav_a_p, 'approach' %>
                   <%= text_field_tag :search, params[:search], class: 'search_user', placeholder: ' キーワード検索' %>
                   <%= submit_tag "検索", :name => nil, class: 'search_user_btn' %>
                 </p>

@@ -4,7 +4,7 @@
       <%= xroom.category %>
     </li>
     <li class="xroom_middle">
-    <% if xroom.name %>
+    <% unless xroom.name.blank? %>
       <span class="xroom_name"><%= xroom.name %></span>
     <% else %>
       <span class="xroom_name">X Room<%= xroom.id %></span>

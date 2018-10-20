@@ -5,6 +5,10 @@ class Xroom < ApplicationRecord
   has_many :users, through: :subscriptions
   validates :category, presence: true
   validates :description, presence: true
+  # 新規XRoom作成時のメッセージ作成
+  after_create_commit do
+    self.xmessages.create(user_id: self.user_id, content: '新規XRoomを作成しました。')
+  end
   
   def user_count
     Subscription.where(xroom_id: self.id).count
@@ -32,4 +36,5 @@ class Xroom < ApplicationRecord
     end
     return tmp
   end
+  
 end
