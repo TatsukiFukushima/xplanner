@@ -4,7 +4,7 @@ class LongTermGoal < ApplicationRecord
   belongs_to :user
   has_many :mid_term_goals, dependent: :destroy
   has_one :deadline, as: :due_date, dependent: :destroy, inverse_of: :due_date
-  has_many :likes, as: :likable, dependent: :destroy, inverse_of: :likable
+  has_many :likes, as: :likable, dependent: :destroy#, inverse_of: :likable
   has_one :memo, as: :memoable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   accepts_nested_attributes_for :deadline
@@ -30,8 +30,8 @@ class LongTermGoal < ApplicationRecord
     end
     tmp = tmp.where(['category LIKE ?', "%#{category_kwd}%"])
     tmp = tmp.get_by_status(status) if status.present?
-    tmp = tmp.sort { |a, b| b.likes.count <=> a.likes.count } if like_order.present?
-    tmp = tmp.sort { |a, b| b.comments.count <=> a.comments.count } if comment_order.present?
+    tmp = tmp.order('likes_count DESC') if like_order.present?
+    tmp = tmp.order('comments_count DESC') if comment_order.present?
     return tmp
   end
 end

@@ -1,0 +1,21 @@
+<% @approaches.each do |approach| %>
+<% s_goal = approach.short_term_goal %>
+  <div class="item">
+    <p class="s-goal-approach-content"><%= approach.content %></p>
+    <ul class="s-goal-left">
+      <li>
+        <%= link_to short_term_goal_comments_path(s_goal) do %>
+          <span><i class="fas fa-comment"></i> <%= approach.comments.count %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= render partial: 'likes/a_like', locals: { approach: approach } %>
+      </li>
+      <li>
+        <% if approach.memo %>
+          <%= link_to '', memo_path(approach.memo), class: "fas fa-sticky-note blue-note", remote: true %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+<% end %>

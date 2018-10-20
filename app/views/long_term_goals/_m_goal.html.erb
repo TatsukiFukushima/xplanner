@@ -1,7 +1,7 @@
 <% mid_term_goals = goal.mid_term_goals.rank(:row_order) %>
 <% mid_term_goals.each do |m_goal| %>
   <%= content_tag "div", class: "item", data: { model_name: m_goal.class.name.underscore, update_url: mid_term_goal_sort_path(m_goal) } do %>
-    <div>
+    <div class="clearfix">
       <% if m_goal.status == "未達成" %>
         <p class = "status status-red"><%= m_goal.status %></p>
       <% elsif m_goal.status == "実行中" %>
@@ -9,7 +9,7 @@
       <% else %>
         <p class = "status status-green"><%= m_goal.status %></p>
       <% end %>
-      <span>期限: </span><%= m_goal.deadline ? m_goal.deadline.date : "未設定" %><br />
+      <span>期限: </span><%= m_goal.deadline.date ? m_goal.deadline.date : "未設定" %><br />
       <p class="l-goal-m-goal-content"><%= m_goal.content %></p>
       <ul class="m-goal-left">
         <li>

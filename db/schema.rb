@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181015054050) do
+ActiveRecord::Schema.define(version: 20181020080957) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "content"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20181015054050) do
     t.integer "short_term_goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
     t.index ["short_term_goal_id"], name: "index_approaches_on_short_term_goal_id"
   end
 
@@ -81,6 +83,8 @@ ActiveRecord::Schema.define(version: 20181015054050) do
     t.datetime "updated_at", null: false
     t.integer "row_order"
     t.integer "status", default: 0, null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
     t.index ["user_id"], name: "index_long_term_goals_on_user_id"
   end
 
@@ -110,6 +114,8 @@ ActiveRecord::Schema.define(version: 20181015054050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0, null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
     t.index ["long_term_goal_id"], name: "index_mid_term_goals_on_long_term_goal_id"
   end
 
@@ -130,6 +136,8 @@ ActiveRecord::Schema.define(version: 20181015054050) do
     t.integer "mid_term_goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
     t.index ["mid_term_goal_id"], name: "index_short_term_goals_on_mid_term_goal_id"
   end
 

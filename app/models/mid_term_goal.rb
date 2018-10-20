@@ -27,8 +27,8 @@ class MidTermGoal < ApplicationRecord
       tmp = MidTermGoal.all
     end
     tmp = tmp.get_by_status(status) if status.present?
-    tmp = tmp.sort { |a, b| b.likes.count <=> a.likes.count } if like_order.present?
-    tmp = tmp.sort { |a, b| b.comments.count <=> a.comments.count } if comment_order.present?
+    tmp = tmp.order('likes_count DESC') if like_order.present?
+    tmp = tmp.order('comments_count DESC') if comment_order.present?
     return tmp
   end
 end

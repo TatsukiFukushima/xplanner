@@ -9,7 +9,7 @@
         <% else %>
           <p class = "status status-green"><%= s_goal.status %></p>
         <% end %>
-        <span>期限: </span><%= s_goal.deadline ? s_goal.deadline.date : "未設定" %><br />
+        <span>期限: </span><%= s_goal.deadline.date ? s_goal.deadline.date : "未設定" %><br />
         <p class="s-goal-content"><%= s_goal.content %></p>
         <ul class="s-goal-left">
           <li>

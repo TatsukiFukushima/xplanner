@@ -391,41 +391,6 @@ input {
 
 
 /*=================================================================
-      LongTermGoals table
-=================================================================*/
-
-table.table {
-  margin-top: 30px;
-  border-collapse: collapse;
-  width: 100%;
-  td, th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  tbody {
-    tr {
-      &:nth-child(odd) {
-        background-color: #f8f8f8;
-      }
-      &:hover {
-        background-color: #eee !important;
-      }
-    }
-  }
-  th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #666;
-    color: white;
-  }
-  tr {
-    height: auto;
-  }
-}
-
-
-/*=================================================================
       LongTermGoals
 =================================================================*/
 
@@ -561,6 +526,10 @@ div.item {
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px 30px;
+  div.clearfix {
+    margin: -10px -30px;
+    padding: 10px 30px;
+  }
 }
 
 div.table-sortable {
@@ -1195,6 +1164,10 @@ aside.search_sidebar {
 div.result_item {
   padding: 20px;
   margin-bottom: 20px;
+  
+  div.pagination {
+    margin: 0;
+  }
 }
 
 div.user_item {
@@ -1204,17 +1177,21 @@ div.user_item {
   border: 1px solid #ccc;
 }
 
-
-a.list-group-item {
-  float: left;
-  font-size: 1.3rem;
+div.list-group {
+  margin-bottom: 0;
   
-  span.search_count {
-    background-color: #bbe5ed;
-    border-radius: 50%;
-    padding: 5px;
-    font-size: 1rem;
-    font-weight: bold;
+  a.list-group-item {
+    float: left;
+    font-size: 1.3rem;
+    
+    span.search_count {
+      background-color: #bbe5ed;
+      border-radius: 50%;
+      padding: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
   }
 }
+
 
