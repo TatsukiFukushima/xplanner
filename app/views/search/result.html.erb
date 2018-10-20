@@ -1,0 +1,236 @@
+<div class="row">
+  <aside class="col-md-3 search_sidebar">
+    <%= form_tag search_result_path, :method => 'get', class: 'overall_search_form' do %>
+      <p class="bold">絞り込み内容</p>
+      <p class="search_item">
+        <%= check_box_tag 'user_p', 'user', true %>
+        <%= label_tag 'user_p', 'ユーザー' %>
+        <span onclick="obj=document.getElementById('u_pulldown').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">▼ </a>
+        </span>
+      </p>
+      <div id="u_pulldown" style="display:none;clear:both;">
+        <p class="search_child_item">
+          <%= check_box_tag 'user_follower_p', 'user_follower', false %>
+          <%= label_tag 'user_follower_p', 'フォロワー数降順' %>
+        </p>
+      </div>
+      <p class="search_item">
+        <%= check_box_tag 'l_goal_p', 'l_goal', true %>
+        <%= label_tag 'l_goal_p', '長期目標' %>
+        <span onclick="obj=document.getElementById('l_pulldown').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">▼ </a>
+        </span>
+      </p>
+      <div id="l_pulldown" style="display:none;clear:both;">
+        <p class="search_child_item">
+          <%= text_field_tag :l_category, params[:l_category], placeholder: 'カテゴリー検索' %>
+        </p>
+      </div>
+      <p class="search_item">
+        <%= check_box_tag 'm_goal_p', 'm_goal', true %>
+        <%= label_tag 'm_goal_p', '中期目標' %>
+      </p>
+      <p class="search_item">
+        <%= check_box_tag 's_goal_p', 's_goal', true %>
+        <%= label_tag 's_goal_p', '短期目標' %>
+      </p>
+      <p class="search_item">
+        <%= check_box_tag 'approach_p', 'approach', true %>
+        <%= label_tag 'approach_p', 'アプローチ' %>
+        <span onclick="obj=document.getElementById('a_pulldown').style; obj.display=(obj.display=='none')?'block':'none';">
+          <a style="cursor:pointer;">▼ </a>
+        </span>
+      </p>
+      <div id="a_pulldown" style="display:none;clear:both;">
+        <p class="search_child_item">
+          <%= label_tag :effectiveness, "効果" %>
+          <%= select_tag :effectiveness, options_for_select(Approach.effectivenesses), include_blank: true %>
+        </p>
+      </div>
+      <p class="bold">共通絞り込み内容</p>
+      <p class="search_child_item">
+        <%= label_tag :status, 'ステータス' %>
+        <%= select_tag :status, options_for_select(LongTermGoal.statuses), include_blank: true %>
+      </p>
+      <p class="search_child_item">
+        <%= check_box_tag 'like_count_p', 'like_count', false %>
+        <%= label_tag 'like_count_p', 'いいね数降順' %>
+      </p>
+      <p class="search_child_item">
+        <%= check_box_tag 'comment_count_p', 'comment_count', false %>
+        <%= label_tag 'comment_count_p', 'コメント数降順' %>
+      </p>
+      <p>
+        <%= text_field_tag :search, params[:search], class: 'kwd_textarea', placeholder: 'キーワードを入れてください' %>
+        <%= submit_tag '検索', :name => nil, class: 'kwd_search_btn' %>
+      </p>
+    <% end %>
+  </aside>
+  
+  <div class="col-md-9">
+
+    <div class="list-group clearfix" id="myList" role="tablist">
+      <div>
+        <a class="list-group-item list-group-item-action"　data-toggle="list" href="#user" role="tab">
+          ユーザー結果
+        <% unless @users.blank? %>
+          <span class="search_count"><%= @users.count %></span>
+        <% end %>
+        </a>
+        <a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal" role="tab">
+          長期目標結果
+        <% unless @l_goals.blank? %>
+          <span class="search_count"><%= @l_goals.count %></span>
+        <% end %>
+        </a>
+        <a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal" role="tab">
+          中期目標結果
+        <% unless @m_goals.blank? %>
+          <span class="search_count"><%= @m_goals.count %></span>
+        <% end %>
+        </a>
+        <a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal" role="tab">
+          短期目標結果
+        <% unless @s_goals.blank? %>
+          <span class="search_count"><%= @s_goals.count %></span>
+        <% end %>
+        </a>
+        <a class="list-group-item list-group-item-action" data-toggle="list" href="#approach" role="tab">
+          アプローチ結果
+        <% unless @approaches.blank? %>
+          <span class="search_count"><%= @approaches.count %></span>
+        <% end %>
+        </a>        
+      </div>
+    </div>
+    
+    <div class="tab-content">
+      <div class="tab-pane fade active" id="user" role="tabpanel">
+      <% unless @users.blank? %>
+        <div class="user_result result_item">
+          <%= will_paginate @users %>
+          <% @users.each do |user| %>
+          <div class="row user_item">
+            <div class="col-sm-4">
+              <%= gravatar_for user, size: 50 %>
+              <%= link_to user.name, user_long_term_goals_path(user), data: {"turbolinks" => false} %>
+              <%#= render partial: 'users/follow_form', locals: { user: user } %>
+            </div>
+            <div class="col-sm-8">
+              <a href="<%= following_user_path(user) %>">
+                <strong id="following" class="stat">
+                  <%= user.following.count %>
+                </strong>
+                following
+              </a>
+              <a href="<%= followers_user_path(user) %>">
+                <strong id="followers" class="stat">
+                  <%= user.followers.count %>
+                </strong>
+                followers
+              </a>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+      
+      <div class="tab-pane fade" id="l-goal" role="tabpanel">
+        <% unless @l_goals.blank? %>
+          <div class="l_goal_result result_item">
+            <%= will_paginate @l_goals %>
+            <% @l_goals.each do |goal| %>
+              <div class="clearfix item">
+                <section class="left">
+                  <%= goal.status %>
+                  <span>期限</span><br />
+                  <p class="l-goal-content"><%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: {"turbolinks" => false} %></p>
+                  <ul class="l-goal-left">
+                    <li>
+                      <%= link_to long_term_goal_comments_path(goal) do %>
+                        <span>コメント <%= goal.comments.count %></span>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= render partial: 'likes/l_like', locals: { goal: goal } %>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="tab-pane fade" id="m-goal" role="tabpanel">
+        <% unless @m_goals.blank? %>
+          <div class="m_goal_result result_item">
+            <%= will_paginate @m_goals %>
+            <% @m_goals.each do |m_goal| %>
+              <div class="clearfix item">
+                <section class="left">
+                  <%= link_to m_goal.content, mid_term_goal_short_term_goals_path(m_goal), data: {"turbolinks" => false} %><br />
+                  <%= m_goal.status %><br />
+                  <span>期限</span><br />
+                  <%= link_to mid_term_goal_comments_path(m_goal) do %>
+                    <span>コメント <%= m_goal.comments.count %></span>
+                  <% end %><br />
+                  <%= render partial: 'likes/m_like', locals: { m_goal: m_goal } %><br />
+                </section>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="tab-pane fade" id="s-goal" role="tabpanel">
+        <% unless @s_goals.blank? %>
+          <div class="s_goal_result result_item">
+            <%= will_paginate @s_goals %>
+            <% @s_goals.each do |s_goal| %>
+              <div class="clearfix item">
+                <section class="left">
+                  <%= s_goal.content %><%= s_goal.status %><br />
+                  <span>期限</span>
+                  <%= link_to short_term_goal_comments_path(s_goal) do %>
+                    <span>コメント <%= s_goal.comments.count %></span>
+                  <% end %><br />
+                  <%= render partial: 'likes/s_like', locals: { s_goal: s_goal } %><br />
+                </section>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="tab-pane fade" id="approach" role="tabpanel">
+        <% unless @approaches.blank? %>
+          <div class="approach_result result_item">
+            <%= will_paginate @approaches %>
+            <% @approaches.each do |approach| %>
+              <div class="clearfix item">
+                <section class="left">
+                  <%= approach.content %><%= approach.effectiveness %><br />
+                  <span>期限</span>
+                  <%= link_to approach_comments_path(approach) do %>
+                    <span>コメント <%= approach.comments.count %></span>
+                  <% end %><br />
+                  <%= render partial: 'likes/a_like', locals: { approach: approach } %><br />
+                </section>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#myList a').on('click', function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+</script>

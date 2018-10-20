@@ -105,12 +105,14 @@ class User < ApplicationRecord
   end
   
   # 検索機能のためのメソッド
-  def self.search(search)
-    if search
-      User.where(['name LIKE ?', "%#{search}%"])
+  def self.search(search: nil, order: nil)
+    if search.present?
+      tmp = User.where(['name LIKE ?', "%#{search}%"])
     else
-      User.all
+      tmp = User.all
     end
+    tmp = tmp.sort { |a, b| b.followers.count <=> a.followers.count } if order.present?
+    return tmp
   end
   
   # 他のユーザーにメールを送信する

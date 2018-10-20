@@ -14,7 +14,7 @@
   </aside>
   
   <div class="col-md-8">
-  <% if @xroom.name %>
+  <% unless @xroom.name.blank? %>
     <h1 id="xroom_name"><%= @xroom.name %></h1>
   <% else %>
     <h1 id="xroom_name">X Room<%= @xroom.id %></h1>
