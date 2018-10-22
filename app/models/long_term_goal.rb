@@ -34,4 +34,9 @@ class LongTermGoal < ApplicationRecord
     tmp = tmp.order('comments_count DESC') if comment_order.present?
     return tmp
   end
+  
+  # いいねランキングのためのメソッド
+  def self.l_rank
+    LongTermGoal.find(Like.where(likable_type: 'LongTermGoal').group(:likable_id).order('count(likable_id) desc').limit(10).pluck(:likable_id))
+  end 
 end

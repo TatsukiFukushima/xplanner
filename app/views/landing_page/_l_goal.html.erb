@@ -1,4 +1,4 @@
-<% @l_goals.each do |goal| %>
+<% @your_updated_l_goals.each do |goal| %>  
   <div class="clearfix item">
     <section class="left">
       <% if goal.status == "未達成" %>
@@ -27,10 +27,8 @@
       </ul>
     </section>
     <section class="right">
-      <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(goal.user, size: 20) %></span><span class="holder_name"><%= goal.user.name %></span></span>
+      <p>更新日：<%= Date.parse(goal.updated_at.to_s).strftime('%Y/%m/%d') %></p>
+      <p class="text_right"><span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(goal.user, size: 20) %></span><span class="holder_name"><%= goal.user.name %></span></span></p>
     </section>
   </div>
 <% end %>
-
-
-

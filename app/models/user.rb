@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :sent_messages, through: :from_messages, source: :from
   has_many :received_messages, through: :to_messages, source: :to
   has_many :long_term_goals, dependent: :destroy
+  has_many :mid_term_goals, through: :long_term_goals, dependent: :destroy
   has_many  :xrooms, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -114,6 +115,31 @@ class User < ApplicationRecord
     tmp = tmp.sort { |a, b| b.followers.count <=> a.followers.count } if order.present?
     return tmp
   end
+  
+  # フォロワーランキングのためのメソッド
+  def self.u_rank
+    User.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(10).pluck(:followed_id))
+  end 
+  
+  # あなたが最近更新した長期目標リストを返す
+  def your_updated_l_goals
+    self.long_term_goals.order('updated_at DESC').limit(20)
+  end 
+  
+  # あなたが最近更新した中期目標リストを返す
+  def your_updated_m_goals 
+    self.mid_term_goals.order('updated_at DESC').limit(20)
+  end 
+
+  # # あなたが最近更新した短期目標リストを返す
+  # def your_updated_s_goals 
+  #   self.short_term_goals.order('updated_at DESC')
+  # end 
+  
+  # # あなたが最近更新したアプローチリストを返す
+  # def your_updated_approaches 
+  #   self.approaches.order('updated_at DESC')
+  # end 
   
   # 他のユーザーにメールを送信する
   def send_message(other_user, room_id, content)

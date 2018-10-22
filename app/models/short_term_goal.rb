@@ -31,4 +31,14 @@ class ShortTermGoal < ApplicationRecord
     tmp = tmp.order('comments_count DESC') if comment_order.present?
     return tmp
   end
+  
+  # いいねランキングのためのメソッド
+  def self.s_rank
+    ShortTermGoal.find(Like.where(likable_type: 'ShortTermGoal').group(:likable_id).order('count(likable_id) desc').limit(10).pluck(:likable_id))
+  end 
+  
+  # この目標を作成したユーザーを獲得するメソッド
+  def user 
+    self.mid_term_goal.long_term_goal.user 
+  end 
 end
