@@ -1,4 +1,4 @@
-<% @approaches.each do |approach| %>
+<% approaches.each do |approach| %>
 <% s_goal = approach.short_term_goal %>
   <div class="clearfix item">
     <section class="left">
@@ -20,7 +20,8 @@
       </ul>
     </section>
     <section class="right">
-      <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(approach.user, size: 20) %></span><span class="holder_name"><%= approach.user.name %></span></span>
+      <p>更新日：<%= Date.parse(s_goal.updated_at.to_s).strftime('%Y/%m/%d') %></p>
+      <p><span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(approach.user, size: 20) %></span><span class="holder_name"><%= approach.user.name %></span></span></p>
     </section>
   </div>
 <% end %>

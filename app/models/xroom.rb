@@ -37,4 +37,9 @@ class Xroom < ApplicationRecord
     return tmp
   end
   
+  # フォロワーが更新した中期目標
+  def self.followers_resent_xrooms(current_user_id)
+    following_ids = Relationship.where(follower_id: current_user_id).pluck(:followed_id)
+    Xroom.where(user_id: following_ids).order('updated_at desc').limit(20)
+  end 
 end

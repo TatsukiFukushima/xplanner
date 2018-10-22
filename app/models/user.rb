@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :sent_messages, through: :from_messages, source: :from
   has_many :received_messages, through: :to_messages, source: :to
   has_many :long_term_goals, dependent: :destroy
+  has_many :mid_term_goals, dependent: :destroy
+  has_many :short_term_goals, dependent: :destroy
+  has_many :approaches, dependent: :destroy
   has_many  :xrooms, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -114,6 +117,87 @@ class User < ApplicationRecord
     tmp = tmp.sort { |a, b| b.followers.count <=> a.followers.count } if order.present?
     return tmp
   end
+  
+  # フォロワーランキングのためのメソッド
+  def self.u_rank
+    User.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(10).pluck(:followed_id))
+  end 
+  
+  # あなたが最近更新した長期目標リストを返す
+  def your_updated_l_goals
+    self.long_term_goals.order('updated_at DESC').limit(20)
+  end 
+  
+  # あなたが最近更新した中期目標リストを返す
+  def your_updated_m_goals 
+    self.mid_term_goals.order('updated_at DESC').limit(20)
+  end 
+
+  # あなたが最近更新した短期目標リストを返す
+  def your_updated_s_goals 
+    self.short_term_goals.order('updated_at DESC').limit(20)
+  end 
+  
+  # あなたが最近更新したアプローチリストを返す
+  def your_updated_approaches 
+    self.approaches.order('updated_at DESC').limit(20)
+  end 
+  
+  # あなたが最近作成したX Roomリストを返す
+  def your_xrooms 
+    self.xrooms.order('created_at DESC').limit(10)
+  end 
+  
+  # あなたの実行中の長期目標リストを返す
+  def your_ongoing_l_goals
+    self.long_term_goals.where(status: '実行中').order('updated_at DESC').limit(10)
+  end 
+  
+  # あなたの実行中の中期目標リストを返す
+  def your_ongoing_m_goals
+    self.mid_term_goals.where(status: '実行中').order('updated_at DESC').limit(10)
+  end 
+  
+  # あなたの実行中の短期目標リストを返す
+  def your_ongoing_s_goals
+    self.short_term_goals.where(status: '実行中').order('updated_at DESC').limit(10)
+  end 
+  
+  # あなたの実行中のアプローチリストを返す
+  def your_ongoing_approaches
+    self.approaches.where(status: '実行中').order('updated_at DESC').limit(10)
+  end 
+  
+  # あなたが最近達成した長期目標リストを返す
+  def your_achieved_l_goals
+    self.long_term_goals.where(status: '達成済み').order('updated_at DESC').limit(10)
+  end 
+  
+  # あなたが最近達成した中期目標リストを返す
+  def your_achieved_m_goals
+    self.mid_term_goals.where(status: '達成済み').order('updated_at DESC').limit(10)
+  end 
+  
+  # あなたが最近達成した短期目標リストを返す
+  def your_achieved_s_goals
+    self.short_term_goals.where(status: '達成済み').order('updated_at DESC').limit(10)
+  end 
+  
+  # あなたが最近達成したアプローチリストを返す
+  def your_achieved_approaches
+    self.approaches.where(status: '達成済み').order('updated_at DESC').limit(10)
+  end 
+  
+  # あなたが最近フォローしたユーザーリストを返す
+  def self.your_resent_followings(user_id)
+    User.find(Relationship.where(follower_id: user_id).order('created_at DESC').limit(10).pluck(:followed_id))
+  end
+  
+  # フォロワーが最近フォローしたユーザーリストを返す
+  def self.followers_resent_followings(current_user_id)
+    following_ids = Relationship.where(follower_id: current_user_id).pluck(:followed_id)
+    User.find(Relationship.where(follower_id: following_ids).order('created_at desc').limit(20).pluck(:followed_id))
+  end 
   
   # 他のユーザーにメールを送信する
   def send_message(other_user, room_id, content)
