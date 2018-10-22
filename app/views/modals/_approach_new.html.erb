@@ -10,8 +10,12 @@
       </div>
       <div class="modal-body">
         <div class="field">
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          
           <%= f.label :content, 'アプローチ内容' %>
           <%= f.text_field :content, class: 'form-control' %>
+          
+          <%= f.select :status, [['未達成'], ['実行中'], ['達成済み']] %>
           
           <%= f.select :effectiveness, [['？'], ['◎'], ['〇'], ['△'], ['✖']] %>
           

@@ -10,6 +10,8 @@
       </div>
       <div class="modal-body">
         <div class="field">
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          
           <%= f.label :content, '目標内容' %>
           <%= f.text_field :content, class: 'form-control' %>
           

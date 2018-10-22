@@ -61,7 +61,7 @@ end
   long_term_goal = user.long_term_goals[i]
   5.times do 
     content = Faker::Lorem.sentence(1)
-    params = { mid_term_goal: { content: content, deadline_attributes: { date: '2018-10-27' } } }
+    params = { mid_term_goal: { user_id: user.id, content: content, deadline_attributes: { date: '2018-10-27' } } }
     long_term_goal.mid_term_goals.create!(params[:mid_term_goal])
   end 
 end 
@@ -71,7 +71,7 @@ end
   long_term_goal = user.long_term_goals[i]
   5.times do 
     content = Faker::Lorem.sentence(1)
-    params = { mid_term_goal: { content: content, deadline_attributes: { date: '2018-10-27' } } }
+    params = { mid_term_goal: { user_id: user.id, content: content, deadline_attributes: { date: '2018-10-27' } } }
     long_term_goal.mid_term_goals.create!(params[:mid_term_goal])
   end 
 end 
@@ -84,7 +84,7 @@ long_term_goals.each do |l_goal|
   mid_term_goals.each do |m_goal|
     5.times do 
       content = Faker::Lorem.sentence(1)
-      params = { short_term_goal: { content: content, deadline_attributes: { date: '2018-10-27' } } }
+      params = { short_term_goal: { user_id: user.id, content: content, deadline_attributes: { date: '2018-10-27' } } }
       m_goal.short_term_goals.create!(params[:short_term_goal])
     end 
   end 
@@ -97,7 +97,7 @@ long_term_goals.each do |l_goal|
   mid_term_goals.each do |m_goal|
     5.times do 
       content = Faker::Lorem.sentence(1)
-      params = { short_term_goal: { content: content, deadline_attributes: { date: '2018-10-27' } } }
+      params = { short_term_goal: { user_id: user.id, content: content, deadline_attributes: { date: '2018-10-27' } } }
       m_goal.short_term_goals.create!(params[:short_term_goal])
     end 
   end 
@@ -114,7 +114,7 @@ long_term_goals.each do |l_goal|
     short_term_goals.each do |s_goal| 
       5.times do 
         content = Faker::Lorem.sentence(1)
-        params = { approach: { content: content, deadline_attributes: { date: '2018-10-27' } } }
+        params = { approach: { user_id: user.id, content: content, deadline_attributes: { date: '2018-10-27' } } }
         s_goal.approaches.create!(params[:approach])
       end 
     end 
@@ -130,7 +130,7 @@ long_term_goals.each do |l_goal|
     short_term_goals.each do |s_goal| 
       5.times do 
         content = Faker::Lorem.sentence(1)
-        params = { approach: { content: content, deadline_attributes: { date: '2018-10-27' } } }
+        params = { approach: { user_id: user.id, content: content, deadline_attributes: { date: '2018-10-27' } } }
         s_goal.approaches.create!(params[:approach])
       end 
     end 

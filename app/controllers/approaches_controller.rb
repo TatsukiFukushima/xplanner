@@ -64,7 +64,7 @@ class ApproachesController < ApplicationController
   private 
     
     def approach_params 
-      params.require(:approach).permit(:content, :row_order_position, :effectiveness,
+      params.require(:approach).permit(:user_id, :content, :row_order_position, :status, :effectiveness,
         deadline_attributes: :date)
     end 
     

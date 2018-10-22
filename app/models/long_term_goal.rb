@@ -39,4 +39,33 @@ class LongTermGoal < ApplicationRecord
   def self.l_rank
     LongTermGoal.find(Like.where(likable_type: 'LongTermGoal').group(:likable_id).order('count(likable_id) desc').limit(10).pluck(:likable_id))
   end 
+  
+  # あなたがいいねをした長期目標
+  def self.your_favorite_l_goals(user_id)
+    LongTermGoal.find(Like.where(likable_type: 'LongTermGoal').where(user_id: user_id).order('created_at desc').pluck(:likable_id))
+  end 
+  
+  # フォロワーが更新した長期目標
+  def self.followers_updated_l_goals(current_user_id)
+    following_ids = Relationship.where(follower_id: current_user_id).pluck(:followed_id)
+    LongTermGoal.where(user_id: following_ids).order('updated_at desc').limit(20)
+  end 
+  
+  # フォロワーが実行中の長期目標
+  def self.followers_ongoing_l_goals(current_user_id)
+    following_ids = Relationship.where(follower_id: current_user_id).pluck(:followed_id)
+    LongTermGoal.where(user_id: following_ids).where(status: '実行中').order('updated_at desc').limit(20)
+  end 
+  
+  # フォロワーが達成した長期目標
+  def self.followers_achieved_l_goals(current_user_id)
+    following_ids = Relationship.where(follower_id: current_user_id).pluck(:followed_id)
+    LongTermGoal.where(user_id: following_ids).where(status: '達成済み').order('updated_at desc').limit(20)
+  end 
+  
+  # フォロワーがいいねをした長期目標
+  def self.followers_favorite_l_goals(current_user_id)
+    following_ids = Relationship.where(follower_id: current_user_id).pluck(:followed_id)
+    LongTermGoal.find(Like.where(likable_type: 'LongTermGoal').where(user_id: following_ids).order('created_at desc').limit(20).pluck(:likable_id))
+  end 
 end
