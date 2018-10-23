@@ -1,0 +1,33 @@
+<% @s_goals.each do |s_goal| %>
+  <div class="clearfix item">
+    <section class="left">
+      <% if s_goal.status == "未達成" %>
+        <p class = "status status-red"><%= s_goal.status %></p>
+      <% elsif s_goal.status == "実行中" %>
+        <p class = "status status-yellow"><%= s_goal.status %></p>
+      <% else %>
+        <p class = "status status-green"><%= s_goal.status %></p>
+      <% end %>
+      <span>期限: </span><%= s_goal.deadline ? s_goal.deadline.date : "未設定" %><br />
+      <p class="s-goal-content"><%= s_goal.content %></p>
+      <ul class="s-goal-left">
+        <li>
+          <%= link_to short_term_goal_comments_path(s_goal) do %>
+            <span><i class="fas fa-comment"></i> <%= s_goal.comments.count %></span>
+          <% end %>
+        </li>
+        <li>
+          <%= render partial: 'likes/s_like', locals: { s_goal: s_goal } %>
+        </li>
+        <li>
+          <% if s_goal.memo %>
+            <%= link_to '', memo_path(s_goal.memo), class: "fas fa-sticky-note blue-note", remote: true %>
+          <% end %>
+        </li>
+      </ul>
+    </section>
+    <section class="right">
+      <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(s_goal.user, size: 20) %></span><span class="holder_name"><%= s_goal.user.name %></span></span>
+    </section>
+  </div>
+<% end %>

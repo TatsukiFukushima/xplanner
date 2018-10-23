@@ -4,7 +4,7 @@
       <%= xroom.category %>
     </li>
     <li class="xroom_middle">
-    <% if xroom.name %>
+    <% unless xroom.name.blank? %>
       <span class="xroom_name"><%= xroom.name %></span>
     <% else %>
       <span class="xroom_name">X Room<%= xroom.id %></span>
@@ -18,6 +18,9 @@
   <ul class="col-sm-2">
   </ul>
   <ul class="col-sm-6">
+    <li>
+      <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for xroom.user, size: 20 %></span><span class="holder_name"><%= link_to xroom.user.name, user_long_term_goals_path(xroom.user), target: '_blank' %></span></span>
+    </li>
     <li class="xroom_desc">
       <%= xroom.description %>
     </li>

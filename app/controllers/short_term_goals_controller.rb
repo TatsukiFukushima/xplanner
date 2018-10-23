@@ -66,7 +66,7 @@ class ShortTermGoalsController < ApplicationController
   private 
   
     def short_term_goal_params 
-      params.require(:short_term_goal).permit(:content, :row_order_position, :status,
+      params.require(:short_term_goal).permit(:user_id, :content, :row_order_position, :status,
         deadline_attributes: :date)
     end 
     

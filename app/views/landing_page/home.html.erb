@@ -10,15 +10,523 @@
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
+      <div class="home-list-group list-group" id="myList" role="tablist">
+        <!--あなたのアクティビティーパネルリンクリスト-->
+        <h2>
+          <span onclick="obj=document.getElementById('pulldown_1').style; obj.display=(obj.display=='none')?'block':'none';">
+            <a style="cursor:pointer;">・<span class="underline">あなたのアクティビティー▼ </span></a>
+          </span>
+        </h2><br />
+        <div class="pulldown_wrapper" id="pulldown_1" style="display:none;clear:both;">
+          <p>
+            <span onclick="obj=document.getElementById('pulldown_1_1').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a class="line" style="cursor:pointer;">・最新更新リスト▼ </a>
+            </span>
+          </p>
+          <div class="pulldown_wrapper" id="pulldown_1_1" style="display:none;clear:both;">
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-1-1-1" role="tab">長期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-1-1-2" role="tab">中期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-1-1-3" role="tab">短期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-1-1-4" role="tab">アプローチ</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#xroom-1-1-5" role="tab">X Room</a></p>
+          </div>
+          <p>
+            <span onclick="obj=document.getElementById('pulldown_1_2').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a class="line" style="cursor:pointer;">・最新実行中リスト▼ </a>
+            </span>
+          </p>
+          <div class="pulldown_wrapper" id="pulldown_1_2" style="display:none;clear:both;">
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-1-2-1" role="tab">長期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-1-2-2" role="tab">中期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-1-2-3" role="tab">短期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-1-2-4" role="tab">アプローチ</a></p>
+          </div>
+          <p>
+            <span onclick="obj=document.getElementById('pulldown_1_3').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a class="line" style="cursor:pointer;">・最新達成リスト▼ </a>
+            </span>
+          </p>
+          <div class="pulldown_wrapper" id="pulldown_1_3" style="display:none;clear:both;">
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-1-3-1" role="tab">長期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-1-3-2" role="tab">中期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-1-3-3" role="tab">短期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-1-3-4" role="tab">アプローチ</a></p>
+          </div>
+          <p>
+            <span onclick="obj=document.getElementById('pulldown_1_4').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a class="line" style="cursor:pointer;">・あなたのいいね / フォロー▼ </a>
+            </span>
+          </p>
+          <div class="pulldown_wrapper" id="pulldown_1_4" style="display:none;clear:both;">
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-1-4-1" role="tab">長期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-1-4-2" role="tab">中期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-1-4-3" role="tab">短期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-1-4-4" role="tab">アプローチ</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#user-1-4-5" role="tab">ユーザー</a></p>
+          </div>
+        </div>
+        <!--フォロワーアクティビティーパネルリンクリスト-->
+        <h2>
+          <span onclick="obj=document.getElementById('pulldown_2').style; obj.display=(obj.display=='none')?'block':'none';">
+            <a style="cursor:pointer;">・<span class="underline">フォロワーアクティビティー▼ </span></a>
+          </span>
+        </h2><br />
+        <div class="pulldown_wrapper" id="pulldown_2" style="display:none;clear:both;">
+          <p>
+            <span onclick="obj=document.getElementById('pulldown_2_1').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a class="line" style="cursor:pointer;">・最新更新リスト▼ </a>
+            </span>
+          </p>
+          <div class="pulldown_wrapper" id="pulldown_2_1" style="display:none;clear:both;">
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-2-1-1" role="tab">長期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-2-1-2" role="tab">中期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-2-1-3" role="tab">短期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-2-1-4" role="tab">アプローチ</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#xroom-2-1-5" role="tab">X Room</a></p>
+          </div>
+          <p>
+            <span onclick="obj=document.getElementById('pulldown_2_2').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a class="line" style="cursor:pointer;">・最新実行中リスト▼ </a>
+            </span>
+          </p>
+          <div class="pulldown_wrapper" id="pulldown_2_2" style="display:none;clear:both;">
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-2-2-1" role="tab">長期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-2-2-2" role="tab">中期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-2-2-3" role="tab">短期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-2-2-4" role="tab">アプローチ</a></p>
+          </div>
+          <p>
+            <span onclick="obj=document.getElementById('pulldown_2_3').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a class="line" style="cursor:pointer;">・最新達成リスト▼ </a>
+            </span>
+          </p>
+          <div class="pulldown_wrapper" id="pulldown_2_3" style="display:none;clear:both;">
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-2-3-1" role="tab">長期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-2-3-2" role="tab">中期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-2-3-3" role="tab">短期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-2-3-4" role="tab">アプローチ</a></p>
+          </div>
+          <p>
+            <span onclick="obj=document.getElementById('pulldown_2_4').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a class="line" style="cursor:pointer;">・フォロワーのいいね / フォロー▼ </a>
+            </span>
+          </p>
+          <div class="pulldown_wrapper" id="pulldown_2_4" style="display:none;clear:both;">
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-2-4-1" role="tab">長期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-2-4-2" role="tab">中期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-2-4-3" role="tab">短期目標</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-2-4-4" role="tab">アプローチ</a></p>
+            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#user-2-4-5" role="tab">ユーザー</a></p>
+          </div>
+        </div>
+        <!--いいね / フォロワーランキングパネルリンクリスト-->
+        <h2>
+          <span onclick="obj=document.getElementById('pulldown_3').style; obj.display=(obj.display=='none')?'block':'none';">
+            <a style="cursor:pointer;">・<span class="underline">いいね / フォロワーランキング▼ </span></a>
+          </span>
+        </h2>
+        <div class="pulldown_wrapper" id="pulldown_3" style="display:none;clear:both;">
+          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-3-1" role="tab">長期目標</a></p>
+          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-3-2" role="tab">中期目標</a></p>
+          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-3-3" role="tab">短期目標</a></p>
+          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-3-4" role="tab">アプローチ</a></p>
+          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#user-3-5" role="tab">ユーザー</a></p>
+        </div>
+      </div>
     </aside>
     
-    <div class="col-md-9 center">
-      <h3>アクティビティ</h3>
-      <p>このページはログイン済みユーザー用のホームページです。</p>
-      <p>ほげほげー</p>
-      <p>ろーれむいぷさむ</p>
+    <div class="col-md-9">
+      <!--パネルのコンテンツまとめdiv-->
+      <div class="tab-content">
+        <!--1-1-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-1-1-1" role="tabpanel">
+          <h3 class="center">あなたが最近更新した長期目標</h3>
+          <% unless @your_updated_l_goals.blank? %>
+            <div class="result_item">
+              <%= render 'l_goal', l_goals: @your_updated_l_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-1-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-1-1-2" role="tabpanel">
+          <h3 class="center">あなたが最近更新した中期目標</h3>
+          <% unless @your_updated_m_goals.blank? %>
+            <div class="result_item">
+              <%= render 'm_goal', m_goals: @your_updated_m_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-1-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-1-1-3" role="tabpanel">
+          <h3 class="center">あなたが最近更新した短期目標</h3>
+          <% unless @your_updated_s_goals.blank? %>
+            <div class="result_item">
+              <%= render 's_goal', s_goals: @your_updated_s_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-1-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-1-1-4" role="tabpanel">
+          <h3 class="center">あなたが最近更新したアプローチ</h3>
+          <% unless @your_updated_approaches.blank? %>
+            <div class="result_item">
+              <%= render 'approach', approaches: @your_updated_approaches %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-1-5XRoomパネル-->
+        <div class="tab-pane fade" id="xroom-1-1-5" role="tabpanel">
+          <h3 class="center">あなたが最近作成したX Room</h3>
+          <% unless @your_xrooms.blank? %>
+            <div class="result_item">
+              <%= render 'xroom', xrooms: @your_xrooms %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-2-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-1-2-1" role="tabpanel">
+          <h3 class="center">あなたの最近実行中の長期目標</h3>
+          <% unless @your_ongoing_l_goals.blank? %>
+            <div class="result_item">
+              <%= render 'l_goal', l_goals: @your_ongoing_l_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-2-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-1-2-2" role="tabpanel">
+          <h3 class="center">あなたの最近実行中の中期目標</h3>
+          <% unless @your_ongoing_m_goals.blank? %>
+            <div class="result_item">
+              <%= render 'm_goal', m_goals: @your_ongoing_m_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-2-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-1-2-3" role="tabpanel">
+          <h3 class="center">あなたの最近実行中短期目標</h3>
+          <% unless @your_ongoing_s_goals.blank? %>
+            <div class="result_item">
+              <%= render 's_goal', s_goals: @your_ongoing_s_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-2-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-1-2-4" role="tabpanel">
+          <h3 class="center">あなたの最近実行中アプローチ</h3>
+          <% unless @your_ongoing_approaches.blank? %>
+            <div class="result_item">
+              <%= render 'approach', approaches: @your_ongoing_approaches %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-3-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-1-3-1" role="tabpanel">
+          <h3 class="center">あなたが最近達成した長期目標</h3>
+          <% unless @your_achieved_l_goals.blank? %>
+            <div class="result_item">
+              <%= render 'l_goal', l_goals: @your_achieved_l_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-3-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-1-3-2" role="tabpanel">
+          <h3 class="center">あなたが最近達成した中期目標</h3>
+          <% unless @your_achieved_m_goals.blank? %>
+            <div class="result_item">
+              <%= render 'm_goal', m_goals: @your_achieved_m_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-3-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-1-3-3" role="tabpanel">
+          <h3 class="center">あなたが最近達成した短期目標</h3>
+          <% unless @your_achieved_s_goals.blank? %>
+            <div class="result_item">
+              <%= render 's_goal', s_goals: @your_achieved_s_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-3-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-1-3-4" role="tabpanel">
+          <h3 class="center">あなたが最近達成したアプローチ</h3>
+          <% unless @your_achieved_approaches.blank? %>
+            <div class="result_item">
+              <%= render 'approach', approaches: @your_achieved_approaches %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-4-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-1-4-1" role="tabpanel">
+          <h3 class="center">あなたがいいねをした長期目標</h3>
+          <% unless @your_favorite_l_goals.blank? %>
+            <div class="result_item">
+              <%= render 'l_goal', l_goals: @your_favorite_l_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-4-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-1-4-2" role="tabpanel">
+          <h3 class="center">あなたがいいねをした中期目標</h3>
+          <% unless @your_favorite_m_goals.blank? %>
+            <div class="result_item">
+              <%= render 'm_goal', m_goals: @your_favorite_m_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-4-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-1-4-3" role="tabpanel">
+          <h3 class="center">あなたがいいねをした短期目標</h3>
+          <% unless @your_favorite_s_goals.blank? %>
+            <div class="result_item">
+              <%= render 's_goal', s_goals: @your_favorite_s_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-4-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-1-4-4" role="tabpanel">
+          <h3 class="center">あなたがいいねをしたアプローチ</h3>
+          <% unless @your_favorite_approaches.blank? %>
+            <div class="result_item">
+              <%= render 'approach', approaches: @your_favorite_approaches %>
+            </div>
+          <% end %>
+        </div>
+        <!--1-4-5ユーザーパネル-->
+        <div class="tab-pane fade" id="user-1-4-5" role="tabpanel">
+          <h3 class="center">あなたがフォローしたユーザー</h3>
+          <% unless @your_resent_followings.blank? %>
+            <div class="result_item">
+              <%= render 'user', users: @your_resent_followings %>
+            </div>
+          <% end %>
+        </div>      
+        <!--2-1-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-2-1-1" role="tabpanel">
+          <h3 class="center">フォロワーが最近更新した長期目標</h3>
+          <% unless @followers_updated_l_goals.blank? %>
+            <div class="result_item">
+              <%= render 'l_goal', l_goals: @followers_updated_l_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-1-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-2-1-2" role="tabpanel">
+          <h3 class="center">フォロワーが最近更新した中期目標</h3>
+          <% unless @followers_updated_m_goals.blank? %>
+            <div class="result_item">
+              <%= render 'm_goal', m_goals: @followers_updated_m_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-1-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-2-1-3" role="tabpanel">
+          <h3 class="center">フォロワーが最近更新した短期目標</h3>
+          <% unless @followers_updated_s_goals.blank? %>
+            <div class="result_item">
+              <%= render 's_goal', s_goals: @followers_updated_s_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-1-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-2-1-4" role="tabpanel">
+          <h3 class="center">フォロワーが最近更新したアプローチ</h3>
+          <% unless @followers_updated_approaches.blank? %>
+            <div class="result_item">
+              <%= render 'approach', approaches: @followers_updated_approaches %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-1-5XRoomパネル-->
+        <div class="tab-pane fade" id="xroom-2-1-5" role="tabpanel">
+          <h3 class="center">フォロワーが最近作成したX Room</h3>
+          <% unless @followers_resent_xrooms.blank? %>
+            <div class="result_item">
+              <%= render 'xroom', xrooms: @followers_resent_xrooms %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-2-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-2-2-1" role="tabpanel">
+          <h3 class="center">フォロワーの最近実行中の長期目標</h3>
+          <% unless @followers_ongoing_l_goals.blank? %>
+            <div class="result_item">
+              <%= render 'l_goal', l_goals: @followers_ongoing_l_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-2-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-2-2-2" role="tabpanel">
+          <h3 class="center">フォロワーの最近実行中の中期目標</h3>
+          <% unless @followers_ongoing_m_goals.blank? %>
+            <div class="result_item">
+              <%= render 'm_goal', m_goals: @followers_ongoing_m_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-2-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-2-2-3" role="tabpanel">
+          <h3 class="center">フォロワーの最近実行中の短期目標</h3>
+          <% unless @followers_ongoing_s_goals.blank? %>
+            <div class="result_item">
+              <%= render 's_goal', s_goals: @followers_ongoing_s_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-2-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-2-2-4" role="tabpanel">
+          <h3 class="center">フォロワーの最近実行中のアプローチ</h3>
+          <% unless @followers_ongoing_approaches.blank? %>
+            <div class="result_item">
+              <%= render 'approach', approaches: @followers_ongoing_approaches %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-3-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-2-3-1" role="tabpanel">
+          <h3 class="center">フォロワーが最近達成した長期目標</h3>
+          <% unless @followers_achieved_l_goals.blank? %>
+            <div class="result_item">
+              <%= render 'l_goal', l_goals: @followers_achieved_l_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-3-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-2-3-2" role="tabpanel">
+          <h3 class="center">フォロワーが最近達成した中期目標</h3>
+          <% unless @followers_achieved_m_goals.blank? %>
+            <div class="result_item">
+              <%= render 'm_goal', m_goals: @followers_achieved_m_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-3-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-2-3-3" role="tabpanel">
+          <h3 class="center">フォロワーが最近達成した短期目標</h3>
+          <% unless @followers_achieved_s_goals.blank? %>
+            <div class="result_item">
+              <%= render 's_goal', s_goals: @followers_achieved_s_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-3-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-2-3-4" role="tabpanel">
+          <h3 class="center">フォロワーが最近達成したアプローチ</h3>
+          <% unless @followers_achieved_approaches.blank? %>
+            <div class="result_item">
+              <%= render 'approach', approaches: @followers_achieved_approaches %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-4-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-2-4-1" role="tabpanel">
+          <h3 class="center">フォロワーがいいねをした長期目標</h3>
+          <% unless @followers_favorite_l_goals.blank? %>
+            <div class="result_item">
+              <%= render 'l_goal', l_goals: @followers_favorite_l_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-4-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-2-4-2" role="tabpanel">
+          <h3 class="center">フォロワーがいいねをした中期目標</h3>
+          <% unless @followers_favorite_m_goals.blank? %>
+            <div class="result_item">
+              <%= render 'm_goal', m_goals: @followers_favorite_m_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-4-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-2-4-3" role="tabpanel">
+          <h3 class="center">フォロワーがいいねをした短期目標</h3>
+          <% unless @followers_favorite_s_goals.blank? %>
+            <div class="result_item">
+              <%= render 's_goal', s_goals: @followers_favorite_s_goals %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-4-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-2-4-4" role="tabpanel">
+          <h3 class="center">フォロワーがいいねをしたアプローチ</h3>
+          <% unless @followers_favorite_approaches.blank? %>
+            <div class="result_item">
+              <%= render 'approach', approaches: @followers_favorite_approaches %>
+            </div>
+          <% end %>
+        </div>
+        <!--2-4-5ユーザーパネル-->
+        <div class="tab-pane fade" id="user-2-4-5" role="tabpanel">
+          <h3 class="center">フォロワーがフォローをしたユーザー</h3>
+          <% unless @followers_resent_followings.blank? %>
+            <div class="result_item">
+              <%= render 'user', users: @followers_resent_followings %>
+            </div>
+          <% end %>
+        </div>   
+        
+        <!--3-1長期目標パネル-->
+        <div class="tab-pane fade" id="l-goal-3-1" role="tabpanel">
+          <h3 class="center">長期目標いいねランキングTOP10</h3>
+          <% unless @l_rank.blank? %>
+            <div class="l_goal_result result_item">
+              <%= render 'l_goal', l_goals: @l_rank %>
+            </div>
+          <% end %>
+        </div>
+        <!--3-2中期目標パネル-->
+        <div class="tab-pane fade" id="m-goal-3-2" role="tabpanel">
+          <h3 class="center">中期目標いいねランキングTOP10</h3>
+          <% unless @m_rank.blank? %>
+            <div class="m_goal_result result_item">
+              <%= render 'm_goal', m_goals: @m_rank %>
+            </div>
+          <% end %>
+        </div>
+        <!--3-3短期目標パネル-->
+        <div class="tab-pane fade" id="s-goal-3-3" role="tabpanel">
+          <h3 class="center">短期目標いいねランキングTOP10</h3>
+          <% unless @s_rank.blank? %>
+            <div class="s_goal_result result_item">
+              <%= render 's_goal', s_goals: @s_rank %>
+            </div>
+          <% end %>
+        </div>
+        <!--3-4アプローチパネル-->
+        <div class="tab-pane fade" id="approach-3-4" role="tabpanel">
+          <h3 class="center">アプローチいいねランキングTOP10</h3>
+          <% unless @a_rank.blank? %>
+            <div class="approach_result result_item">
+              <%= render 'approach', approaches: @a_rank %>
+            </div>
+          <% end %>
+        </div>
+        <!--3-5ユーザーパネル-->
+        <div class="tab-pane fade active" id="user-3-5" role="tabpanel">
+          <h3 class="center">ユーザーフォロワーランキングTOP10</h3>
+          <% unless @u_rank.blank? %>
+            <div class="user_result result_item">
+              <%= render 'user', users: @u_rank %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
+  <!--メモ用モーダルウィンドウ-->
+  <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+  
+  <script>
+    $(document).ready(function(){
+      $('#myList a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })
+    })
+    // $(document).on('turbolinks:load', function(){
+    //   var urlParams = new URLSearchParams(window.location.search);
+    //   var content = urlParams.get('content');
+    //   $(`[href="#${content}"]`).tab('show')
+    // })
+  </script>
 <% else %>
   <div class="center jumbotron">
     <h1>X Planner</h1>

@@ -1,0 +1,35 @@
+<% @l_rank.each do |goal| %>
+  <div class="clearfix item">
+    <section class="left">
+      <% if goal.status == "未達成" %>
+        <p class = "status status-red"><%= goal.status %></p>
+      <% elsif goal.status == "実行中" %>
+        <p class = "status status-yellow"><%= goal.status %></p>
+      <% else %>
+        <p class = "status status-green"><%= goal.status %></p>
+      <% end %>
+      <span>期限: </span><%= goal.deadline ? goal.deadline.date : "未設定" %><br />
+      <p class="l-goal-content"><%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: {"turbolinks" => false} %></p>
+      <ul class="l-goal-left">
+        <li>
+          <%= link_to long_term_goal_comments_path(goal) do %>
+            <span><i class="fas fa-comment"></i> <%= goal.comments.count %></span>
+          <% end %>
+        </li>
+        <li>
+          <%= render partial: 'likes/l_like', locals: { goal: goal } %>
+        </li>
+        <li>
+          <% if goal.memo %>
+            <%= link_to '', memo_path(goal.memo), class: "fas fa-sticky-note blue-note", remote: true %>
+          <% end %>
+        </li>
+      </ul>
+    </section>
+    <section class="right">
+      <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(goal.user, size: 20) %></span><span class="holder_name"><%= goal.user.name %></span></span>
+    </section>
+  </div>
+<% end %>
+
+

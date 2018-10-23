@@ -19,7 +19,12 @@ ActiveRecord::Schema.define(version: 20181023090744) do
     t.integer "short_term_goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
+    t.integer "user_id"
+    t.integer "status", default: 0, null: false
     t.index ["short_term_goal_id"], name: "index_approaches_on_short_term_goal_id"
+    t.index ["user_id"], name: "index_approaches_on_user_id"
   end
 
   create_table "block_relationships", force: :cascade do |t|
@@ -81,6 +86,8 @@ ActiveRecord::Schema.define(version: 20181023090744) do
     t.datetime "updated_at", null: false
     t.integer "row_order"
     t.integer "status", default: 0, null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
     t.index ["user_id"], name: "index_long_term_goals_on_user_id"
   end
 
@@ -110,7 +117,11 @@ ActiveRecord::Schema.define(version: 20181023090744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0, null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
+    t.integer "user_id"
     t.index ["long_term_goal_id"], name: "index_mid_term_goals_on_long_term_goal_id"
+    t.index ["user_id"], name: "index_mid_term_goals_on_user_id"
   end
 
   create_table "notices", force: :cascade do |t|
@@ -139,7 +150,11 @@ ActiveRecord::Schema.define(version: 20181023090744) do
     t.integer "mid_term_goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
+    t.integer "user_id"
     t.index ["mid_term_goal_id"], name: "index_short_term_goals_on_mid_term_goal_id"
+    t.index ["user_id"], name: "index_short_term_goals_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
