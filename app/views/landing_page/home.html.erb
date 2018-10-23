@@ -11,126 +11,129 @@
         <%= render 'shared/stats' %>
       </section>
       <div class="home-list-group list-group" id="myList" role="tablist">
+        <h1>メニュー</h2>
         <!--あなたのアクティビティーパネルリンクリスト-->
         <h2>
           <span onclick="obj=document.getElementById('pulldown_1').style; obj.display=(obj.display=='none')?'block':'none';">
-            <a style="cursor:pointer;">・<span class="underline">あなたのアクティビティー▼ </span></a>
+            <a style="cursor:pointer;"><span class="underline">► あなたのアクティビティー</span></a>
           </span>
-        </h2><br />
+        </h2>
         <div class="pulldown_wrapper" id="pulldown_1" style="display:none;clear:both;">
           <p>
             <span onclick="obj=document.getElementById('pulldown_1_1').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a class="line" style="cursor:pointer;">・最新更新リスト▼ </a>
+              <a class="line" style="cursor:pointer;">► 最新更新リスト</a>
             </span>
           </p>
           <div class="pulldown_wrapper" id="pulldown_1_1" style="display:none;clear:both;">
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-1-1-1" role="tab">長期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-1-1-2" role="tab">中期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-1-1-3" role="tab">短期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-1-1-4" role="tab">アプローチ</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#xroom-1-1-5" role="tab">X Room</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-1-1-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-1-1-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-1-1-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-1-1-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#xroom-1-1-5" role="tab">X Room</a></p>
           </div>
           <p>
             <span onclick="obj=document.getElementById('pulldown_1_2').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a class="line" style="cursor:pointer;">・最新実行中リスト▼ </a>
+              <a class="line" style="cursor:pointer;">► 最新実行中リスト</a>
             </span>
           </p>
           <div class="pulldown_wrapper" id="pulldown_1_2" style="display:none;clear:both;">
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-1-2-1" role="tab">長期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-1-2-2" role="tab">中期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-1-2-3" role="tab">短期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-1-2-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-1-2-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-1-2-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-1-2-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-1-2-4" role="tab">アプローチ</a></p>
           </div>
           <p>
             <span onclick="obj=document.getElementById('pulldown_1_3').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a class="line" style="cursor:pointer;">・最新達成リスト▼ </a>
+              <a class="line" style="cursor:pointer;">► 最新達成リスト</a>
             </span>
           </p>
           <div class="pulldown_wrapper" id="pulldown_1_3" style="display:none;clear:both;">
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-1-3-1" role="tab">長期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-1-3-2" role="tab">中期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-1-3-3" role="tab">短期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-1-3-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-1-3-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-1-3-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-1-3-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-1-3-4" role="tab">アプローチ</a></p>
           </div>
           <p>
             <span onclick="obj=document.getElementById('pulldown_1_4').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a class="line" style="cursor:pointer;">・あなたのいいね / フォロー▼ </a>
+              <a class="line" style="cursor:pointer;">► あなたのいいね / フォロー</a>
             </span>
           </p>
           <div class="pulldown_wrapper" id="pulldown_1_4" style="display:none;clear:both;">
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-1-4-1" role="tab">長期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-1-4-2" role="tab">中期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-1-4-3" role="tab">短期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-1-4-4" role="tab">アプローチ</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#user-1-4-5" role="tab">ユーザー</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-1-4-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-1-4-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-1-4-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-1-4-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#user-1-4-5" role="tab">ユーザー</a></p>
           </div>
         </div>
         <!--フォロワーアクティビティーパネルリンクリスト-->
         <h2>
           <span onclick="obj=document.getElementById('pulldown_2').style; obj.display=(obj.display=='none')?'block':'none';">
-            <a style="cursor:pointer;">・<span class="underline">フォロワーアクティビティー▼ </span></a>
+            <a style="cursor:pointer;"><span class="underline">► フォロワーアクティビティー</span></a>
           </span>
-        </h2><br />
+        </h2>
         <div class="pulldown_wrapper" id="pulldown_2" style="display:none;clear:both;">
           <p>
             <span onclick="obj=document.getElementById('pulldown_2_1').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a class="line" style="cursor:pointer;">・最新更新リスト▼ </a>
+              <a class="line" style="cursor:pointer;">► 最新更新リスト</a>
             </span>
           </p>
           <div class="pulldown_wrapper" id="pulldown_2_1" style="display:none;clear:both;">
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-2-1-1" role="tab">長期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-2-1-2" role="tab">中期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-2-1-3" role="tab">短期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-2-1-4" role="tab">アプローチ</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#xroom-2-1-5" role="tab">X Room</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-2-1-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-2-1-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-2-1-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-2-1-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#xroom-2-1-5" role="tab">X Room</a></p>
           </div>
           <p>
             <span onclick="obj=document.getElementById('pulldown_2_2').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a class="line" style="cursor:pointer;">・最新実行中リスト▼ </a>
+              <a class="line" style="cursor:pointer;">► 最新実行中リスト</a>
             </span>
           </p>
           <div class="pulldown_wrapper" id="pulldown_2_2" style="display:none;clear:both;">
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-2-2-1" role="tab">長期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-2-2-2" role="tab">中期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-2-2-3" role="tab">短期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-2-2-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-2-2-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-2-2-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-2-2-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-2-2-4" role="tab">アプローチ</a></p>
           </div>
           <p>
             <span onclick="obj=document.getElementById('pulldown_2_3').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a class="line" style="cursor:pointer;">・最新達成リスト▼ </a>
+              <a class="line" style="cursor:pointer;">► 最新達成リスト</a>
             </span>
           </p>
           <div class="pulldown_wrapper" id="pulldown_2_3" style="display:none;clear:both;">
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-2-3-1" role="tab">長期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-2-3-2" role="tab">中期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-2-3-3" role="tab">短期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-2-3-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-2-3-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-2-3-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-2-3-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-2-3-4" role="tab">アプローチ</a></p>
           </div>
           <p>
             <span onclick="obj=document.getElementById('pulldown_2_4').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a class="line" style="cursor:pointer;">・フォロワーのいいね / フォロー▼ </a>
+              <a class="line" style="cursor:pointer;">► フォロワーのいいね / フォロー</a>
             </span>
           </p>
           <div class="pulldown_wrapper" id="pulldown_2_4" style="display:none;clear:both;">
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#l-goal-2-4-1" role="tab">長期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#m-goal-2-4-2" role="tab">中期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#s-goal-2-4-3" role="tab">短期目標</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#approach-2-4-4" role="tab">アプローチ</a></p>
-            <p><a class="list-group-item list-group-item-action" data-toggle="list" href="#user-2-4-5" role="tab">ユーザー</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-2-4-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-2-4-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-2-4-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-2-4-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#user-2-4-5" role="tab">ユーザー</a></p>
           </div>
         </div>
         <!--いいね / フォロワーランキングパネルリンクリスト-->
         <h2>
           <span onclick="obj=document.getElementById('pulldown_3').style; obj.display=(obj.display=='none')?'block':'none';">
-            <a style="cursor:pointer;">・<span class="underline">いいね / フォロワーランキング▼ </span></a>
+            <a style="cursor:pointer;"><span class="underline">► いいね / フォロワーランキング </span></a>
           </span>
         </h2>
         <div class="pulldown_wrapper" id="pulldown_3" style="display:none;clear:both;">
-          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-3-1" role="tab">長期目標</a></p>
-          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-3-2" role="tab">中期目標</a></p>
-          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-3-3" role="tab">短期目標</a></p>
-          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-3-4" role="tab">アプローチ</a></p>
-          <p><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#user-3-5" role="tab">ユーザー</a></p>
+          <div class="pulldown_wrapper">
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#l-goal-3-1" role="tab">長期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#m-goal-3-2" role="tab">中期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#s-goal-3-3" role="tab">短期目標</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#approach-3-4" role="tab">アプローチ</a></p>
+            <p class="panel-p"><a class="list-group-item list-group-item-action indent-right" data-toggle="list" href="#user-3-5" role="tab">ユーザー</a></p>
+          </div>
         </div>
       </div>
     </aside>
@@ -521,11 +524,6 @@
         $(this).tab('show')
       })
     })
-    // $(document).on('turbolinks:load', function(){
-    //   var urlParams = new URLSearchParams(window.location.search);
-    //   var content = urlParams.get('content');
-    //   $(`[href="#${content}"]`).tab('show')
-    // })
   </script>
 <% else %>
   <div class="center jumbotron">
