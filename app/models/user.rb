@@ -17,6 +17,12 @@ class User < ApplicationRecord
   has_many :passive_block_relationships, class_name: "BlockRelationship", foreign_key: "blocked_id", dependent: :destroy
   has_many :blocking, through: :active_block_relationships, source: :blocked
   has_many :blockers, through: :passive_block_relationships, source: :blocker
+  has_many :from_notices, class_name: "Notice",
+            foreign_key: "from_id", dependent: :destroy
+  has_many :to_notices, class_name: "Notice",
+          foreign_key: "to_id", dependent: :destroy
+  has_many :sent_notices, through: :from_notices, source: :from
+  has_many :received_notices, through: :to_notices, source: :to
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -92,6 +98,9 @@ class User < ApplicationRecord
     # ユーザーをフォローする
   def follow(other_user)
     following << other_user
+    notice = Notice.new(from_id: self.id, to_id: other_user.id, 
+              content: "#{self.name}さんがあなた（#{other_user.name}）をフォローしました", link_to: "/users/#{self.id}/long_term_goals")
+    notice.save
   end
 
   # ユーザーをフォロー解除する
@@ -131,6 +140,11 @@ class User < ApplicationRecord
   # 現在のユーザーがブロックしてたらtrueを返す
   def blocking?(other_user)
     blocking.include?(other_user)
+  end
+  
+  #通知を送る
+  def send_notice(other_user, content)
+    from_notices.create!(to_id: other_user.id, content: content)
   end
   
   private

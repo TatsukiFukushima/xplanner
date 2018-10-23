@@ -5,7 +5,7 @@
       <p class="s-goal-approach-content"><%= approach.content %></p>
       <ul class="s-goal-left">
         <li>
-          <%= link_to short_term_goal_comments_path(s_goal) do %>
+          <%= link_to approach_comments_path(approach) do %>
             <span><i class="fas fa-comment"></i> <%= approach.comments.count %></span>
           <% end %>
         </li>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete  '/s_like/:id',  to: 'likes#s_destroy', as: 's_like'
   delete  '/a_like/:id',  to: 'likes#a_destroy', as: 'a_like'
   get     'likes',        to: 'likes#index'
+  get     '/notices/:id', to: 'notices#index'
   resources :users, except: :show, shallow: true do
     member do
       get :following, :followers, :blocking

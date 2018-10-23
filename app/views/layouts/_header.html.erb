@@ -14,7 +14,7 @@
               <% end %>
             </div>
           </li>
-          <li><a class="fas fa-bell" href="#"></a>     </li>
+          <li><a class="fas fa-bell" href="<%= "/notices/#{current_user.id}" %>"></a>     </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= gravatar_for current_user, size: 25 %>  <%= current_user.name %> <b class="caret"></b>

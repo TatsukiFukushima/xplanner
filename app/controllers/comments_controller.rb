@@ -25,6 +25,9 @@ class CommentsController < ApplicationController
     @comment = @long_term_goal.comments.build(comment_params)
     if @comment.save
       flash[:success] = "コメントを送信しました"
+      notice = Notice.new(from_id: current_user.id, to_id: @long_term_goal.user_id, 
+              content: "#{current_user.name}さんがあなたの長期目標(#{@long_term_goal.content})にコメントしました", link_to: "/long_term_goals/#{@long_term_goal.id}/comments")
+      notice.save
       redirect_to long_term_goal_comments_path(@long_term_goal)
     else 
       flash[:info] = "コメントの送信ができませんでした"
@@ -34,9 +37,13 @@ class CommentsController < ApplicationController
   
   def m_create
     @mid_term_goal = MidTermGoal.find(params[:mid_term_goal_id])
+    @long_term_goal = LongTermGoal.find(@mid_term_goal.long_term_goal_id)
     @comment = @mid_term_goal.comments.create(comment_params)
     if @comment.save
       flash[:success] = "コメントを送信しました"
+      notice = Notice.new(from_id: current_user.id, to_id: @long_term_goal.user_id, 
+              content: "#{current_user.name}さんがあなたの中期目標(#{@mid_term_goal.content})にコメントしました", link_to: "/mid_term_goals/#{@mid_term_goal.id}/comments")
+      notice.save
       redirect_to mid_term_goal_comments_path(@mid_term_goal)
     else 
       flash[:info] = "コメントの送信ができませんでした"
@@ -46,9 +53,14 @@ class CommentsController < ApplicationController
   
   def s_create 
     @short_term_goal = ShortTermGoal.find(params[:short_term_goal_id])
+    @mid_term_goal = MidTermGoal.find(@short_term_goal.mid_term_goal_id)
+    @long_term_goal = LongTermGoal.find(@mid_term_goal.long_term_goal_id)
     @comment = @short_term_goal.comments.create(comment_params)
     if @comment.save
       flash[:success] = "コメントを送信しました"
+      notice = Notice.new(from_id: current_user.id, to_id: @long_term_goal.user_id, 
+              content: "#{current_user.name}さんがあなたの短期目標(#{@short_term_goal.content})にコメントしました", link_to: "/short_term_goals/#{@short_term_goal.id}/comments")
+      notice.save
       redirect_to short_term_goal_comments_path(@short_term_goal)
     else 
       flash[:info] = "コメントの送信ができませんでした"
@@ -58,9 +70,15 @@ class CommentsController < ApplicationController
   
   def a_create 
     @approach = Approach.find(params[:approach_id])
+    @short_term_goal = ShortTermGoal.find(@approach.short_term_goal_id)
+    @mid_term_goal = MidTermGoal.find(@short_term_goal.mid_term_goal_id)
+    @long_term_goal = LongTermGoal.find(@mid_term_goal.long_term_goal_id)
     @comment = @approach.comments.create(comment_params)
     if @comment.save
       flash[:success] = "コメントを送信しました"
+      notice = Notice.new(from_id: current_user.id, to_id: @long_term_goal.user_id, 
+              content: "#{current_user.name}さんがあなたのアプローチ(#{@approach.content})にコメントしました", link_to: "/approaches/#{@approach.id}/comments")
+      notice.save
       redirect_to approach_comments_path(@approach)
     else 
       flash[:info] = "コメントの送信ができませんでした"

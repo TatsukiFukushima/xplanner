@@ -1098,3 +1098,22 @@ p.chat_tri_l:before {
   border-left: 8px solid transparent;
   border-bottom: 10px solid #ddd;
 }
+
+
+
+/*=================================================================
+      Notices
+=================================================================*/
+
+.notice-head {
+  background-color: #fff;
+  padding: 10px;
+  width: 50%;
+  margin: 0 0 10px 25%;
+  font-size: 32px;
+  display: inline-block;
+}
+
+.notice a {
+  font-size: 20px;
+}
