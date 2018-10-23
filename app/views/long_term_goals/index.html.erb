@@ -25,11 +25,16 @@
     <% else %>
       <div class="l-index">
     <% end %>
-    <%= render 'l_goal' %>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item current"><%= link_to "長期目標リスト", user_long_term_goals_path(@user) %></li>
+          </ol>
+        </nav>
+        <%= render 'l_goal' %>
       </div>
   </div>
-<div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<%= link_to '戻る', :back, data: { "turbolinks" => false } %>
+  <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+</div>
 
 
 
@@ -80,7 +85,12 @@
   <div class="row">
     <div class="l-index">
 <% end %>
-    <%= render 'l_goal' %>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "長期目標一覧", user_long_term_goals_path(@user) %></li>
+        </ol>
+      </nav>
+      <%= render 'l_goal' %>
     </div>
   </div>
 <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
