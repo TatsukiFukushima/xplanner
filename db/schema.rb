@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181022075646) do
+ActiveRecord::Schema.define(version: 20181023090744) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "content"
@@ -122,6 +122,15 @@ ActiveRecord::Schema.define(version: 20181022075646) do
     t.integer "user_id"
     t.index ["long_term_goal_id"], name: "index_mid_term_goals_on_long_term_goal_id"
     t.index ["user_id"], name: "index_mid_term_goals_on_user_id"
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.string "content"
+    t.integer "to_id"
+    t.integer "from_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "link_to"
   end
 
   create_table "relationships", force: :cascade do |t|

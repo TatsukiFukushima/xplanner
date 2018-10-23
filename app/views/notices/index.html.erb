@@ -1,0 +1,37 @@
+<div class="row">
+  <aside class="col-md-3 user-sidebar">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %><br clear = "">
+        <%= link_to @user.name, user_long_term_goals_path(@user), data: {"turbolinks" => false} %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section class="follow-button">
+      <%= render 'users/follow_form' if logged_in? %>
+    </section>
+    <section class="block-button">
+      <%= render 'users/block_form' if logged_in? %>
+    </section>
+  </aside>
+  
+  
+  <div class="col-md-9">
+    <h1 class="notice-head">通知一覧</h1>
+    <div id = "notices">
+      <%= render @notices %>
+    </div>
+  </div>
+<%= link_to '戻る', :back, data: { "turbolinks" => false } %>
+
+
+<!-- 開発で使った通知送るフォーム
+  <form>
+    <div class="notice_form">
+     <%= render 'notices/notice_form',
+     {from_user: current_user, to_user: @to_user} %>
+    </div>
+  </form>
+-->
