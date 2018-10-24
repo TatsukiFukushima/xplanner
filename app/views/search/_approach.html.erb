@@ -2,6 +2,15 @@
 <% s_goal = approach.short_term_goal %>
   <div class="clearfix item">
     <section class="left">
+      <% if approach.status == "未達成" %>
+        <p class="status status-red"><%= approach.status %></p>
+      <% elsif approach.status == "実行中" %>
+        <p class="status status-yellow"><%= approach.status %></p>
+      <% else %>
+        <p class="status status-green"><%= approach.status %></p>
+      <% end %>
+        <span>期限: </span><%= approach.deadline.date ? approach.deadline.date : "未設定" %>
+        <span class="effectiveness-wrapper">効果<span class="effectiveness"><%= approach.effectiveness %></span></span><br />
       <p class="s-goal-approach-content"><%= approach.content %></p>
       <ul class="s-goal-left">
         <li>
@@ -20,7 +29,14 @@
       </ul>
     </section>
     <section class="right">
-      <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(approach.user, size: 20) %></span><span class="holder_name"><%= approach.user.name %></span></span>
+      <span class="holder_wrapper">
+        <span class="holder_image">
+          <%= gravatar_for(approach.user, size: 20) %>
+        </span>
+        <span class="holder_name">
+          <%= link_to approach.user.name, mid_term_goal_short_term_goals_path(approach.short_term_goal) %>
+        </span>
+      </span>
     </section>
   </div>
 <% end %>

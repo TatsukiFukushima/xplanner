@@ -27,8 +27,17 @@
       </ul>
     </section>
     <section class="right">
-       <p>更新日：<%= Date.parse(s_goal.updated_at.to_s).strftime('%Y/%m/%d') %></p>
-      <p><span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(s_goal.user, size: 20) %></span><span class="holder_name"><%= s_goal.user.name %></span></span></p>
+      <p>更新日：<%= Date.parse(s_goal.updated_at.to_s).strftime('%Y/%m/%d') %></p>
+      <p>
+        <span class="holder_wrapper">
+          <span class="holder_image">
+            <%= gravatar_for(s_goal.user, size: 20) %>
+          </span>
+          <span class="holder_name">
+            <%= link_to s_goal.user.name, mid_term_goal_short_term_goals_path(s_goal.mid_term_goal), target: '_blank' %>
+          </span>
+        </span>
+      </p>
     </section>
   </div>
 <% end %>

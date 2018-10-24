@@ -1,0 +1,286 @@
+<% if params[:your_updated_l_goals].present? %>
+  <h3 class="center">あなたが最近更新した長期目標</h3>
+  <div class="result_item">
+    <%= render 'l_goal', l_goals: @your_updated_l_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_updated_m_goals].present? %>
+  <h3 class="center">あなたが最近更新した中期目標</h3>
+  <div class="result_item">
+    <%= render 'm_goal', m_goals: @your_updated_m_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_updated_s_goals].present? %>
+  <h3 class="center">あなたが最近更新した短期目標</h3>
+  <div class="result_item">
+    <%= render 's_goal', s_goals: @your_updated_s_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_updated_approaches].present? %>
+  <h3 class="center">あなたが最近更新したアプローチ</h3>
+  <div class="result_item">
+    <%= render 'approach', approaches: @your_updated_approaches %>
+  </div>
+<% end %>
+
+<% if params[:your_xrooms].present? %>
+  <h3 class="center">あなたが最近作成したX Room</h3>
+  <div class="result_item">
+    <%= render 'xroom', xrooms: @your_xrooms %>
+  </div>
+<% end %>
+
+<% if  params[:your_ongoing_l_goals].present? %>
+  <h3 class="center">あなたの最近実行中の長期目標</h3>
+  <div class="result_item">
+    <%= render 'l_goal', l_goals: @your_ongoing_l_goals %>
+  </div>
+<% end %>
+
+<% if  params[:your_ongoing_m_goals].present? %>
+  <h3 class="center">あなたの最近実行中の中期目標</h3>
+  <div class="result_item">
+    <%= render 'm_goal', m_goals: @your_ongoing_m_goals %>
+  </div>
+<% end %>
+
+<% if  params[:your_ongoing_s_goals].present? %>
+  <h3 class="center">あなたの最近実行中の短期目標</h3>
+  <div class="result_item">
+    <%= render 's_goal', s_goals: @your_ongoing_s_goals %>
+  </div>
+<% end %>
+
+<% if  params[:your_ongoing_approaches].present? %>
+  <h3 class="center">あなたの最近実行中アプローチ</h3>
+  <div class="result_item">
+    <%= render 'approach', approaches: @your_ongoing_approaches %>
+  </div>
+<% end %>
+
+<% if params[:your_achieved_l_goals].present? %>
+  <h3 class="center">あなたが最近達成した長期目標</h3>
+  <div class="result_item">
+    <%= render 'l_goal', l_goals: @your_achieved_l_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_achieved_m_goals].present? %>
+  <h3 class="center">あなたが最近達成した中期目標</h3>
+  <div class="result_item">
+    <%= render 'm_goal', m_goals: @your_achieved_m_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_achieved_s_goals].present? %>
+  <h3 class="center">あなたが最近達成した短期目標</h3>
+  <div class="result_item">
+    <%= render 's_goal', s_goals: @your_achieved_s_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_achieved_approaches].present? %>
+  <h3 class="center">あなたが最近達成したアプローチ</h3>
+  <div class="result_item">
+    <%= render 'approach', approaches: @your_achieved_approaches %>
+  </div>
+<% end %>
+
+<% if params[:your_favorite_l_goals].present? %>
+  <h3 class="center">あなたがいいねをした長期目標</h3>
+  <div class="result_item">
+    <%= render 'l_goal', l_goals: @your_favorite_l_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_favorite_m_goals].present? %>
+  <h3 class="center">あなたがいいねをした中期目標</h3>
+  <div class="result_item">
+    <%= render 'm_goal', m_goals: @your_favorite_m_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_favorite_s_goals].present? %>
+  <h3 class="center">あなたがいいねをした短期目標</h3>
+  <div class="result_item">
+    <%= render 's_goal', s_goals: @your_favorite_s_goals %>
+  </div>
+<% end %>
+
+<% if params[:your_favorite_approaches].present? %>
+  <h3 class="center">あなたがいいねをしたアプローチ</h3>
+  <div class="result_item">
+    <%= render 'approach', approaches: @your_favorite_approaches %>
+  </div>
+<% end %>
+
+<% if params[:your_resent_followings].present? %>
+  <h3 class="center">あなたがフォローしたユーザー</h3>
+  <div class="result_item">
+    <%= render 'user', users: @your_resent_followings %>
+  </div>
+<% end %>
+
+<% if params[:followers_updated_l_goals].present? %>
+  <h3 class="center">フォロワーが最近更新した長期目標</h3>
+  <div class="result_item">
+    <%= render 'l_goal', l_goals: @followers_updated_l_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_updated_m_goals].present? %>
+  <h3 class="center">フォロワーが最近更新した中期目標</h3>
+  <div class="result_item">
+    <%= render 'm_goal', m_goals: @followers_updated_m_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_updated_s_goals].present? %>
+  <h3 class="center">フォロワーが最近更新した短期目標</h3>
+  <div class="result_item">
+    <%= render 's_goal', s_goals: @followers_updated_s_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_updated_approaches].present? %>
+  <h3 class="center">フォロワーが最近更新したアプローチ</h3>
+  <div class="result_item">
+    <%= render 'approach', approaches: @followers_updated_approaches %>
+  </div>
+<% end %>
+
+<% if params[:followers_resent_xrooms].present? %>
+  <h3 class="center">フォロワーが最近作成したX Room</h3>
+  <div class="result_item">
+    <%= render 'xroom', xrooms: @followers_resent_xrooms %>
+  </div>
+<% end %>
+
+<% if params[:followers_ongoing_l_goals].present? %>
+  <h3 class="center">フォロワーの最近実行中の長期目標</h3>
+  <div class="result_item">
+    <%= render 'l_goal', l_goals: @followers_ongoing_l_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_ongoing_m_goals].present? %>
+  <h3 class="center">フォロワーの最近実行中の中期目標</h3>
+  <div class="result_item">
+    <%= render 'm_goal', m_goals: @followers_ongoing_m_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_ongoing_s_goals].present? %>
+  <h3 class="center">フォロワーの最近実行中の短期目標</h3>
+  <div class="result_item">
+    <%= render 's_goal', s_goals: @followers_ongoing_s_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_ongoing_approaches].present? %>
+  <h3 class="center">フォロワーの最近実行中のアプローチ</h3>
+  <div class="result_item">
+    <%= render 'approach', approaches: @followers_ongoing_approaches %>
+  </div>
+<% end %>
+
+<% if params[:followers_achieved_l_goals].present? %>
+  <h3 class="center">フォロワーが最近達成した長期目標</h3>
+  <div class="result_item">
+    <%= render 'l_goal', l_goals: @followers_achieved_l_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_achieved_m_goals].present? %>
+  <h3 class="center">フォロワーが最近達成した中期目標</h3>
+  <div class="result_item">
+    <%= render 'm_goal', m_goals: @followers_achieved_m_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_achieved_s_goals].present? %>
+  <h3 class="center">フォロワーが最近達成した短期目標</h3>
+  <div class="result_item">
+    <%= render 's_goal', s_goals: @followers_achieved_s_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_achieved_approaches].present? %>
+  <h3 class="center">フォロワーが最近達成したアプローチ</h3>
+  <div class="result_item">
+    <%= render 'approach', approaches: @followers_achieved_approaches %>
+  </div>
+<% end %>
+
+<% if params[:followers_favorite_l_goals].present? %>
+  <h3 class="center">フォロワーがいいねをした長期目標</h3>
+  <div class="result_item">
+    <%= render 'l_goal', l_goals: @followers_favorite_l_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_favorite_m_goals].present? %>
+  <h3 class="center">フォロワーがいいねをした中期目標</h3>
+  <div class="result_item">
+    <%= render 'm_goal', m_goals: @followers_favorite_m_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_favorite_s_goals].present? %>
+  <h3 class="center">フォロワーがいいねをした短期目標</h3>
+  <div class="result_item">
+    <%= render 's_goal', s_goals: @followers_favorite_s_goals %>
+  </div>
+<% end %>
+
+<% if params[:followers_favorite_approaches].present? %>
+  <h3 class="center">フォロワーがいいねをしたアプローチ</h3>
+  <div class="result_item">
+    <%= render 'approach', approaches: @followers_favorite_approaches %>
+  </div>
+<% end %>
+
+<% if params[:followers_resent_followings].present? %>
+  <h3 class="center">フォロワーがフォローをしたユーザー</h3>
+  <div class="result_item">
+    <%= render 'user', users: @followers_resent_followings %>
+  </div>
+<% end %>
+
+<% if params[:l_rank].present? %>
+  <h3 class="center">長期目標いいねランキングTOP10</h3>
+  <div class="l_goal_result result_item">
+    <%= render 'l_goal', l_goals: @l_rank %>
+  </div>
+<% end %>
+
+<% if params[:m_rank].present? %>
+  <h3 class="center">中期目標いいねランキングTOP10</h3>
+  <div class="m_goal_result result_item">
+    <%= render 'm_goal', m_goals: @m_rank %>
+  </div>
+<% end %>
+
+<% if params[:s_rank].present? %>
+  <h3 class="center">短期目標いいねランキングTOP10</h3>
+  <div class="s_goal_result result_item">
+    <%= render 's_goal', s_goals: @s_rank %>
+  </div>
+<% end %>
+
+<% if params[:a_rank].present? %>
+  <h3 class="center">アプローチいいねランキングTOP10</h3>
+  <div class="approach_result result_item">
+    <%= render 'approach', approaches: @a_rank %>
+  </div>
+<% end %>
+
+<% if params[:u_rank].present? %>
+  <h3 class="center">ユーザーフォロワーランキングTOP10</h3>
+  <div class="user_result result_item">
+    <%= render 'user', users: @u_rank %>
+  </div>
+<% end %>

@@ -14,17 +14,17 @@
           <span><%= xroom.user_count %>人</span>
         </li>
         <li>
-          <%= link_to 'ルームに入る', xroom_path(xroom), class: "xroom_entry", data: {"turbolinks" => false} %>
+          <%= link_to 'ルームに入る', xroom_path(xroom), class: "xroom_entry", data: {"turbolinks" => false}, target: '_blank' %>
         </li>
       </ul>
       <ul class="col-sm-2">
       </ul>
       <ul class="col-sm-6">
-        <li>
-          <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for xroom.user, size: 20 %></span><span class="holder_name"><%= link_to xroom.user.name, user_long_term_goals_path(xroom.user), target: '_blank' %></span></span>
-        </li>
         <li class="xroom_desc">
           <span><%= xroom.description %></span>
+        </li>
+        <li>
+          <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for xroom.user, size: 20 %></span><span class="holder_name"><%= link_to xroom.user.name, user_long_term_goals_path(xroom.user), target: '_blank' %></span></span>
         </li>
       </ul>
     </li>
