@@ -24,7 +24,7 @@ html {
 
 body {
   padding-top: 60px;
-  background-color: #eee;
+  background-color: #f0f0f0;
 }
 
 section {
@@ -970,30 +970,48 @@ div.message_form {
   background-color: #15366b;
 }
 
+
 li.xroom_item {
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px 30px;
   
+  .xroom_category {
+    display: inline-block;
+    font-size: 1.4rem;
+    padding: 0px 5px;
+    background-color: #bbe5ed;
+    border-radius: 10px;
+  }
+  
   .xroom_middle {
-    margin-top: 6px;
     margin-bottom: 6px; 
     overflow-wrap: break-word;
     
     .xroom_name {
       font-size: 2.8rem;  
+      margin-bottom: 12px;
     }
   }
   
   .xroom_entry {
     display: inline-block;
-    padding: 5px;
-    background-color: #bbe5ed;
-    border-radius: 15px;
+    font-size: 4.0rem;
+    margin-top: 25px;
+    padding: 10px;
+    background-color: #666;
+    color: #fff;
+    /* background-color: #bbe5ed; */
+    border-radius: 10px;
   }
   
   .xroom_desc {
     overflow-wrap: break-word;
+  }
+  
+  .xroom_count {
+    line-height: 115px;
+    font-size: 2.0rem;
   }
 }
 
@@ -1323,8 +1341,10 @@ p.panel-p {
 span.holder_wrapper {
   display: inline-block;
   padding: 5px;
-  // background-color: #bbe5ed;
+  /* XROOMのデザインのためにコメントアウト。他のところで必要ならごめんなさい。
+  background-color: #bbe5ed;
   border-radius: 10px;
+  */
   
   span.holder_image {
     vertical-align: middle;

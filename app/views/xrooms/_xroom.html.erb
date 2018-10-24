@@ -1,4 +1,35 @@
 <li class="xroom_item clearfix">
+  <ul class="col-sm-8">
+    <li class="xroom_top">
+      <p class="xroom_category"><%= xroom.category %></p>
+      <span class="holder_wrapper"><span class="holder_image">作成者：<%= gravatar_for xroom.user, size: 20 %></span><span class="holder_name"><%= link_to xroom.user.name, user_long_term_goals_path(xroom.user), target: '_blank' %></span></span>
+    </li>
+    <li class="xroom_middle">
+    <% unless xroom.name.blank? %>
+      <span class="xroom_name"><%= link_to xroom.name, xroom_path(xroom), data: {"turbolinks" => false} %></span>
+    <% else %>
+      <span class="xroom_name">X Room<%= xroom.id %></span>
+    <% end %>
+    </li>
+    <li class="xroom_desc">
+      <%= xroom.description %>
+    </li>
+  </ul>
+  <ul class="col-sm-2">
+    <span class="xroom_count"><%= xroom.user_count %>人</span>
+  </ul>
+  <ul class="col-sm-2">
+    <li>
+      <%= link_to '', xroom_path(xroom), class: "xroom_entry fas fa-sign-in-alt", data: {"turbolinks" => false} %>
+    </li>
+  </ul>
+</li>
+
+
+
+<%#= 前のやつ。予備用 %>
+<% if false %>
+<li class="xroom_item clearfix">
   <ul class="col-sm-4">
     <li class="xroom_category">
       <%= xroom.category %>
@@ -26,3 +57,4 @@
     </li>
   </ul>
 </li>
+<% end %>
