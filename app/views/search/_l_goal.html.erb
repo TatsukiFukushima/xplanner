@@ -27,7 +27,14 @@
       </ul>
     </section>
     <section class="right">
-      <span class="holder_wrapper"><span class="holder_image"><%= gravatar_for(goal.user, size: 20) %></span><span class="holder_name"><%= goal.user.name %></span></span>
+      <span class="holder_wrapper">
+        <span class="holder_image">
+          <%= gravatar_for(goal.user, size: 20) %>
+        </span>
+        <span class="holder_name">
+          <%= link_to goal.user.name, user_long_term_goals_path(goal.user), target: '_blank' %>
+        </span>
+      </span>
     </section>
   </div>
 <% end %>
