@@ -16,5 +16,8 @@
 //= require jquery-ui/widgets/sortable
 //= require jquery-ui/effects/effect-highlight
 //= require bootstrap
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
 //= require_tree .
 //= require turbolinks

@@ -6,7 +6,6 @@ class LongTermGoalsController < ApplicationController
   before_action :is_blocked?, only: [:index]
 
   
-  
   def new
     @long_term_goal = @user.long_term_goals.build
     @long_term_goal.build_deadline
@@ -32,6 +31,17 @@ class LongTermGoalsController < ApplicationController
   def update
     if @long_term_goal.update_attributes(long_term_goal_params)
       @long_term_goals = @user.long_term_goals.rank(:row_order)
+      if params[:date] || (request.referer == root_url)
+        @l_goals =                       @user.long_term_goals
+        @l_goals_by_date =               @l_goals.group_by { |l_goal| l_goal.deadline.date }
+        @m_goals =                       @user.mid_term_goals
+        @m_goals_by_date =               @m_goals.group_by { |m_goal| m_goal.deadline.date }
+        @s_goals =                       @user.short_term_goals
+        @s_goals_by_date =               @s_goals.group_by { |s_goal| s_goal.deadline.date }
+        @approaches =                    @user.approaches
+        @approaches_by_date =            @approaches.group_by { |approach| approach.deadline.date }
+        @date =                          params[:date] ? Date.parse(params[:date]) : Date.today
+      end 
     else
       render 'edit'
     end 

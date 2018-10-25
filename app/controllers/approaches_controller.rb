@@ -34,7 +34,17 @@ class ApproachesController < ApplicationController
     @mid_term_goal = @short_term_goal.mid_term_goal 
     if @approach.update_attributes(approach_params)
       @approaches = @short_term_goal.approaches.rank(:row_order) 
-      # flash[:success] = "アプローチを編集しました"
+      if params[:date] || (request.referer == root_url)
+        @l_goals =                       @user.long_term_goals
+        @l_goals_by_date =               @l_goals.group_by { |l_goal| l_goal.deadline.date }
+        @m_goals =                       @user.mid_term_goals
+        @m_goals_by_date =               @m_goals.group_by { |m_goal| m_goal.deadline.date }
+        @s_goals =                       @user.short_term_goals
+        @s_goals_by_date =               @s_goals.group_by { |s_goal| s_goal.deadline.date }
+        @approaches =                    @user.approaches
+        @approaches_by_date =            @approaches.group_by { |approach| approach.deadline.date }
+        @date =                          params[:date] ? Date.parse(params[:date]) : Date.today
+      end 
     else 
       render 'new'
     end 

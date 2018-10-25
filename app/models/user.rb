@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :mid_term_goals, dependent: :destroy
   has_many :short_term_goals, dependent: :destroy
   has_many :approaches, dependent: :destroy
-  has_many  :xrooms, dependent: :destroy
+  has_many :xrooms, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy

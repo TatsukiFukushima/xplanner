@@ -1,2 +1,6 @@
-$(".l-index").html("<%= escape_javascript(render 'l_goal') %>")
+<% if params[:date] || (request.referer == root_url) %>
+  $(".calendar").html("<%= escape_javascript(render 'landing_page/calendar') %>")
+<% else %>
+  $(".l-index").html("<%= escape_javascript(render 'l_goal') %>")  
+<% end %>
 $(".goal-modal").modal("hide")
