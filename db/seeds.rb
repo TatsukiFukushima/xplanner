@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 User.create!(name: "chandler",
             email: "chanchan@icloud.com",
             password: "chanchan",
@@ -22,7 +14,7 @@ User.create!(name:  "Example User",
              activated: true,
              activated_at: Time.zone.now)
 
-99.times do |n|
+60.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -43,7 +35,7 @@ followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
-# 長期目標
+# 長期目標 > 中期目標 > 短期目標 > アプローチ
 users = User.all 
 users.each do |owner|
   5.times do 
@@ -69,6 +61,78 @@ users.each do |owner|
     content = Faker::Lorem.sentence(1)
     params = { approach: { user_id: owner.id, content: content, deadline_attributes: { date: '2018-10-24' } } }
     s_goal.approaches.create!(params[:approach])  
+  end 
+end 
+
+
+# X Room
+10.times do |i|
+  user = User.find(i + 1)
+  category = Faker::Lorem.word.capitalize
+  description = Faker::Lorem.sentence(2)
+  params = { xroom: { category: category, description: description } }
+  user.xrooms.create!(params[:xroom])
+end 
+
+# Like
+20.times do |i|
+  user = User.find(i + 1)
+  random_num_ary = (1..300).sort_by{rand}
+  5.times do
+    random_pop     = random_num_ary.pop
+    params = { like: { likable_type: 'LongTermGoal', likable_id: random_pop, user_id: user.id } }
+    Like.create!(params[:like])
+  end
+  random_num_ary = (1..300).sort_by{rand}
+  5.times do 
+    random_pop     = random_num_ary.pop
+    params = { like: { likable_type: 'MidTermGoal', likable_id: random_pop, user_id: user.id } }
+    Like.create!(params[:like])
+  end 
+  random_num_ary = (1..300).sort_by{rand}
+  5.times do 
+    random_pop     = random_num_ary.pop
+    params = { like: { likable_type: 'ShortTermGoal', likable_id: random_pop, user_id: user.id } }
+    Like.create!(params[:like])
+  end 
+  random_num_ary = (1..300).sort_by{rand}
+  5.times do 
+    random_pop     = random_num_ary.pop
+    params = { like: { likable_type: 'Approach', likable_id: random_pop, user_id: user.id } }
+    Like.create!(params[:like])
+  end 
+end 
+
+# Comment
+20.times do |i|
+  user = User.find(i + 1)
+  random_num_ary = (1..300).sort_by{rand}
+  5.times do
+    random_pop     = random_num_ary.pop
+    content = Faker::Lorem.sentence(1)
+    params = { comment: { commentable_type: 'LongTermGoal', commentable_id: random_pop, content: content, user_id: user.id } }
+    Comment.create!(params[:comment])
+  end
+  random_num_ary = (1..300).sort_by{rand}
+  5.times do 
+    random_pop     = random_num_ary.pop
+    content = Faker::Lorem.sentence(1)
+    params = { comment: { commentable_type: 'MidTermGoal', commentable_id: random_pop, content: content, user_id: user.id } }
+    Comment.create!(params[:comment])
+  end 
+  random_num_ary = (1..300).sort_by{rand}
+  5.times do 
+    random_pop     = random_num_ary.pop
+    content = Faker::Lorem.sentence(1)
+    params = { comment: { commentable_type: 'ShortTermGoal', commentable_id: random_pop, content: content, user_id: user.id } }
+    Comment.create!(params[:comment])
+  end 
+  random_num_ary = (1..300).sort_by{rand}
+  5.times do 
+    random_pop     = random_num_ary.pop
+    content = Faker::Lorem.sentence(1)
+    params = { comment: { commentable_type: 'Approach', commentable_id: random_pop, content: content, user_id: user.id } }
+    Comment.create!(params[:comment])
   end 
 end 
 
