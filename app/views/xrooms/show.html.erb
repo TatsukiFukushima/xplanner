@@ -1,13 +1,13 @@
 <div class="row">
-  <aside class="col-md-4 center">
+  <aside class="col-md-4">
     <%= link_to 'Xroom一覧へ', xrooms_path, class: 'xroom_link', data: {"turbolinks" => false} %>
     <section class="xmessage_sidebar">
       <h3 class="xroom_attr">カテゴリー</h2>
       <p class="xroom_exp xroom_category"><%= @xroom.category %></p>
       <h3 class="xroom_attr">概要</h2>
       <p class="xroom_exp xroom_description"><%= @xroom.description %> </p>
-      <h3 class="xroom_attr">リアルタイムユーザー<span id="xuser_count"><%= @xroom.user_count %></span>人</h3>
-      <ul class="xroom_users">
+      <h3 class="xroom_attr">リアルタイムユーザー: <span id="xuser_count"><%= @xroom.user_count %></span>人</h3>
+      <ul class="xroom_users xroom_exp">
         <%= render 'xroom_user', xroom_users: @xroom_users %>
       </ul>
     </section>
