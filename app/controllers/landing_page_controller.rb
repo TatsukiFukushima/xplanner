@@ -3,6 +3,15 @@ class LandingPageController < ApplicationController
   def home
     @user = current_user if logged_in?
     if @user 
+      @l_goals =                       @user.long_term_goals
+      @l_goals_by_date =               @l_goals.group_by { |l_goal| l_goal.deadline.date }
+      @m_goals =                       @user.mid_term_goals
+      @m_goals_by_date =               @m_goals.group_by { |m_goal| m_goal.deadline.date }
+      @s_goals =                       @user.short_term_goals
+      @s_goals_by_date =               @s_goals.group_by { |s_goal| s_goal.deadline.date }
+      @approaches =                    @user.approaches
+      @approaches_by_date =            @approaches.group_by { |approach| approach.deadline.date }
+      @date =                          params[:date] ? Date.parse(params[:date]) : Date.today
       @your_updated_l_goals =          @user.your_updated_l_goals                                 if params[:your_updated_l_goals].present?
       @your_updated_m_goals =          @user.your_updated_m_goals                                 if params[:your_updated_m_goals].present?
       @your_updated_s_goals =          @user.your_updated_s_goals                                 if params[:your_updated_s_goals].present?

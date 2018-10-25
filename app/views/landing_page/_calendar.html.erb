@@ -1,0 +1,43 @@
+<%= calendar @date do |date| %>
+  <%= date.day %>
+  <% if @l_goals_by_date[date] %>
+  <ul>
+    <% @l_goals_by_date[date].each do |l_goal| %>
+      <li class="l_goal">
+        <%= link_to l_goal.content, user_long_term_goals_path(l_goal.user), target: '_blank'  %>
+        <%= link_to '', edit_long_term_goal_path(l_goal, date: params[:date]), class: "glyphicon glyphicon-pencil", remote: true %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+  <% if @m_goals_by_date[date] %>
+  <ul>
+    <% @m_goals_by_date[date].each do |m_goal| %>
+      <li class="m_goal">
+        <%= link_to m_goal.content, long_term_goal_mid_term_goals_path(m_goal.long_term_goal), target: '_blank'  %>
+        <%= link_to '', edit_mid_term_goal_path(m_goal, date: params[:date]), class: "glyphicon glyphicon-pencil", remote: true %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+  <% if @s_goals_by_date[date] %>
+  <ul>
+    <% @s_goals_by_date[date].each do |s_goal| %>
+      <li class="s_goal">
+        <%= link_to s_goal.content, mid_term_goal_short_term_goals_path(s_goal.mid_term_goal), target: '_blank'  %>
+        <%= link_to '', edit_short_term_goal_path(s_goal, date: params[:date]), class: "glyphicon glyphicon-pencil", remote: true %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+  <% if @approaches_by_date[date] %>
+  <ul>
+    <% @approaches_by_date[date].each do |approach| %>
+      <li class="approach">
+        <%= link_to approach.content, mid_term_goal_short_term_goals_path(approach.short_term_goal.mid_term_goal), target: '_blank'  %>
+        <%= link_to '', edit_approach_path(approach, date: params[:date]), class: "glyphicon glyphicon-pencil", remote: true %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+<% end %>

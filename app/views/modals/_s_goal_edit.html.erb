@@ -1,6 +1,6 @@
 <div class="modal-dialog">
   <div class="modal-content">
-    <%= form_for(@short_term_goal, url: short_term_goal_path, remote: true) do |f| %>
+    <%= form_for(@short_term_goal, url: short_term_goal_path(date: params[:date]), remote: true) do |f| %>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

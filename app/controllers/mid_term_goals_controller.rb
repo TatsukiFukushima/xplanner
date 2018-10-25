@@ -33,7 +33,17 @@ class MidTermGoalsController < ApplicationController
     @long_term_goal = @mid_term_goal.long_term_goal
     if @mid_term_goal.update_attributes(mid_term_goal_params)
       @mid_term_goals = @long_term_goal.mid_term_goals.rank(:row_order)
-      # flash[:success] = "中期目標を編集しました"
+      if params[:date] || (request.referer == root_url)
+        @l_goals =                       @user.long_term_goals
+        @l_goals_by_date =               @l_goals.group_by { |l_goal| l_goal.deadline.date }
+        @m_goals =                       @user.mid_term_goals
+        @m_goals_by_date =               @m_goals.group_by { |m_goal| m_goal.deadline.date }
+        @s_goals =                       @user.short_term_goals
+        @s_goals_by_date =               @s_goals.group_by { |s_goal| s_goal.deadline.date }
+        @approaches =                    @user.approaches
+        @approaches_by_date =            @approaches.group_by { |approach| approach.deadline.date }
+        @date =                          params[:date] ? Date.parse(params[:date]) : Date.today
+      end 
     else 
       render 'edit'
     end 

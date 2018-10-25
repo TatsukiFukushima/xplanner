@@ -138,10 +138,20 @@
     
     <div class="col-md-9">
       <div id="home-wrapper">
-        
+        <div id="calendar"></div>
+        <div id="home-calendar">
+          <h2 id="month">
+            <%= link_to "<", date: @date.prev_month %>
+            <%= @date.strftime("%B %Y") %>
+            <%= link_to ">", date: @date.next_month %>
+          </h2>
+          <%= render 'calendar' %>
+        </div>
       </div>
     </div>
   </div>
+  <div class="modal fade goal-modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+  
 <% else %>
   <div class="center jumbotron">
     <h1>X Planner</h1>
