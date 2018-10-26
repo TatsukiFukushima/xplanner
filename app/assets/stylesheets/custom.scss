@@ -65,12 +65,12 @@ a {
 
 ol.breadcrumb {
   background: transparent;
+  padding: 0;
   margin-bottom: 10px;
   
   li+li:before {
-    content: '>>';
-    font-size: 1rem;
-    vertical-align: middle;
+    content: '> ';
+    font-size: 1.8rem;
     color: $gray-light;
   }
   
@@ -1025,16 +1025,18 @@ li.xroom_item {
 
 .xroom_exp {
   display: inline-block;
-  width: 80%;
-  background-color: #ddd;
+  width: 100%;
+  padding: 3px;
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
   overflow-wrap: break-word;
 }
 
 .xroom_users {
   margin: 0 auto 20px;
-  width: 80%;
+  width: 100%;
   max-height: 200px;
-  background-color: #ddd;
+  background-color: #f3f3f3;
   overflow: scroll;
 }
 
@@ -1045,11 +1047,17 @@ li.xroom_item {
   margin-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
+  border: 1px solid #ddd;
   display: inline-block;
 }
 
 .xmessage_sidebar {
+  padding: 10px 30px 20px 30px;
   background-color: #fff;
+  
+  #xuser_count {
+    display: inline;
+  }
 }
 
 section.xmessage_box {

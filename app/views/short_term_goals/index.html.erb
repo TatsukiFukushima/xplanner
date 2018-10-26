@@ -1,4 +1,15 @@
+
 <div class="row">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <% if current_user == @user %>
+        <li class="breadcrumb-item"><%= link_to "HOME", root_path %></li>
+      <% end %>
+      <li class="breadcrumb-item"><%= link_to "長期目標リスト", user_long_term_goals_path(@user) %></li>
+      <li class="breadcrumb-item"><%= link_to "中期目標リスト", long_term_goal_mid_term_goals_path(@long_term_goal) %></li>
+      <li class="breadcrumb-item current"><%= link_to "短期目標リスト", mid_term_goal_short_term_goals_path(@mid_term_goal) %></li>
+    </ol>
+  </nav>
   <aside class="col-md-3 user-sidebar">
     <section class="user_info">
       <h1>
@@ -18,20 +29,13 @@
   </aside>
   
   <div class="col-md-9">
-    <h1 class = "s-goal-head"><%= @long_term_goal.content %><span>|</span><%= @mid_term_goal.content %></h1>
+    <h1 class = "s-goal-head"><%= @long_term_goal.content %><span> | </span><%= @mid_term_goal.content %></h1>
     <% if current_user == @user %>
       <p class="create-s-goal"><%= link_to "＋", new_mid_term_goal_short_term_goal_path(@mid_term_goal), remote: true %></p>
       <div class="table-sortable ui-sortable s-index"> <!-- これ消すと並び替えできなくなるので注意 -->
     <% else %>
       <div class="s-index">
     <% end %>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><%= link_to "長期目標リスト", user_long_term_goals_path(@user) %></li>
-            <li class="breadcrumb-item"><%= link_to "中期目標リスト", long_term_goal_mid_term_goals_path(@long_term_goal) %></li>
-            <li class="breadcrumb-item current"><%= link_to "短期目標リスト", mid_term_goal_short_term_goals_path(@mid_term_goal) %></li>
-          </ol>
-        </nav>
         <%= render 's_goal' %>
       </div>
   </div>

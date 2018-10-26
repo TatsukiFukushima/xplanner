@@ -8,7 +8,7 @@
     <% unless xroom.name.blank? %>
       <span class="xroom_name"><%= link_to xroom.name, xroom_path(xroom), data: {"turbolinks" => false} %></span>
     <% else %>
-      <span class="xroom_name">X Room<%= xroom.id %></span>
+      <span class="xroom_name"><%= link_to "X Room #{xroom.id}", xroom_path(xroom), data: {"turbolinks" => false} %></span>
     <% end %>
     </li>
     <li class="xroom_desc">
