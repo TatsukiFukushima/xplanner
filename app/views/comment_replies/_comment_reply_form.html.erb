@@ -1,4 +1,21 @@
 <div class="clearfix" id="comment-reply-form">
+    <%= form_for(@comment.comment_replies.build, url: comment_comment_replies_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      
+      <%= gravatar_for current_user, size: 35 %>
+      <%= f.text_field :content, class: 'form-control', placeholder: '返信コメントを送信' %>
+      
+      <%= f.submit '送信', class: 'btn btn-primary' %>
+    <% end %>
+</div>
+
+
+
+<%# 前のやつ %>
+<% if false %>
+<div class="clearfix" id="comment-reply-form">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@comment.comment_replies.build, url: comment_comment_replies_path) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
@@ -12,3 +29,4 @@
     <% end %>
   </div>
 </div>
+<% end %>

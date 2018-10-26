@@ -9,6 +9,7 @@
         <% else %>
           <p class = "status status-green"><%= goal.status %></p>
         <% end %>
+        <p class="l-goal-category"><%= goal.category %></p>
         <span>期限: </span><%= goal.deadline.date ? goal.deadline.date : "未設定" %><br />
         <p class="l-goal-content"><%= link_to goal.content, long_term_goal_mid_term_goals_path(goal), data: {"turbolinks" => false} %></p>
         <ul class="l-goal-left">

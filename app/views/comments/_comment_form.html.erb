@@ -1,65 +1,57 @@
 <%#= 長期目標用 %>
 <% if params[:long_term_goal_id] %>
 <div class="clearfix" id="comment-form">
-  <div class="col-md-6 col-md-offset-3">
     <%= form_for(@long_term_goal.comments.build, url: long_term_goal_comments_path) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
       <%= f.hidden_field :user_id, value: current_user.id %>
       
-      <%= f.label :content, 'コメント内容' %>
-      <%= f.text_field :content, class: 'form-control' %>
+      <%= gravatar_for current_user, size: 35 %>
+      <%= f.text_field :content, class: 'form-control', placeholder: 'コメントを送信' %>
       
       <%= f.submit '送信', class: 'btn btn-primary' %>
     <% end %>
-  </div>
 </div>
 <%#= 中期目標用 %>
 <% elsif params[:mid_term_goal_id] %>
 <div class="clearfix" id="comment-form">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@mid_term_goal.comments.build, url: mid_term_goal_comments_path) do |f| %>
+  <%= form_for(@mid_term_goal.comments.build, url: mid_term_goal_comments_path) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
       <%= f.hidden_field :user_id, value: current_user.id %>
       
-      <%= f.label :content, 'コメント内容' %>
-      <%= f.text_field :content, class: 'form-control' %>
+      <%= gravatar_for current_user, size: 35 %>
+      <%= f.text_field :content, class: 'form-control', placeholder: 'コメントを送信' %>
       
       <%= f.submit '送信', class: 'btn btn-primary' %>
     <% end %>
-  </div>
 </div>
 <%#= 短期目標用 %>
 <% elsif params[:short_term_goal_id] %>
 <div class="clearfix" id="comment-form">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@short_term_goal.comments.build, url: short_term_goal_comments_path) do |f| %>
+  <%= form_for(@short_term_goal.comments.build, url: short_term_goal_comments_path) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
       <%= f.hidden_field :user_id, value: current_user.id %>
       
-      <%= f.label :content, 'コメント内容' %>
-      <%= f.text_field :content, class: 'form-control' %>
+      <%= gravatar_for current_user, size: 35 %>
+      <%= f.text_field :content, class: 'form-control', placeholder: 'コメントを送信' %>
       
       <%= f.submit '送信', class: 'btn btn-primary' %>
     <% end %>
-  </div>
 </div>
 <%#= アプローチ用 %>
 <% elsif params[:approach_id] %>
 <div class="clearfix" id="comment-form">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@approach.comments.build, url: approach_comments_path) do |f| %>
+  <%= form_for(@approach.comments.build, url: approach_comments_path) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
       <%= f.hidden_field :user_id, value: current_user.id %>
       
-      <%= f.label :content, 'コメント内容' %>
-      <%= f.text_field :content, class: 'form-control' %>
+      <%= gravatar_for current_user, size: 35 %>
+      <%= f.text_field :content, class: 'form-control', placeholder: 'コメントを送信' %>
       
       <%= f.submit '送信', class: 'btn btn-primary' %>
     <% end %>
-  </div>
 </div>
 <% end %>

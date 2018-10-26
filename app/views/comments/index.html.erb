@@ -1,3 +1,66 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1 class="comment-head">コメント一覧</h1>
+    <div class="goal-source">
+      <% if params[:long_term_goal_id] %>
+        <div class="goal-source-top">
+          <%= gravatar_for @long_term_goal.user, size: 40 %>
+          <%= link_to @long_term_goal.user.name, user_long_term_goals_path(@long_term_goal.user),
+                            class: "goal-source-user-name", data: {"turbolinks" => false} %>
+        </div>
+        <p><%= @long_term_goal.content %></p>
+      <% elsif params[:mid_term_goal_id] %>
+        <div class="goal-source-top">
+          <%= gravatar_for @mid_term_goal.user, size: 40 %>
+          <%= link_to @mid_term_goal.user.name, user_long_term_goals_path(@mid_term_goal.user),
+                            class: "goal-source-user-name", data: {"turbolinks" => false} %>
+        </div>
+        <p><%= @mid_term_goal.content %></p>
+      <% elsif params[:short_term_goal_id] %>
+        <div class="goal-source-top">
+          <%= gravatar_for @short_term_goal.user, size: 40 %>
+          <%= link_to @short_term_goal.user.name, user_long_term_goals_path(@short_term_goal.user),
+                            class: "goal-source-user-name", data: {"turbolinks" => false} %>
+        </div>
+        <p><%= @short_term_goal.content %></p>
+      <% elsif params[:approach_id] %>
+        <div class="goal-source-top">
+          <%= gravatar_for @approach.user, size: 40 %>
+          <%= link_to @approach.user.name, user_long_term_goals_path(@approach.user),
+                            class: "goal-source-user-name", data: {"turbolinks" => false} %>
+        </div>
+        <p><%= @approach.content %></p>
+      <% end %>
+    </div>
+    
+    <div class="comments">
+      <% @comments.each do |comment| %>
+        <div class="comment clearfix">
+          <div class="comment-left col-md-2">
+            <%= gravatar_for comment.user, size: 55 %>
+          </div>
+          <div class="comment-right col-md-10">
+            <%= link_to comment.user.name, user_long_term_goals_path(comment.user), class: "comment-user-name", data: {"turbolinks" => false} %>
+            <p><%= comment.content %></p>
+            <%= link_to comment_comment_replies_path(comment) do %>
+              <span><i class="fas fa-comments"></i> <%= comment.comment_replies.count %> </span>
+            <% end %>
+            <% if current_user == comment.user %>
+              <%= link_to "削除", comment_path(comment), method: :delete,
+                                data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= render 'comments/comment_form' %>
+  </div>
+</div>
+
+
+
+<%# 前のやつ %>
+<% if false %>
 <h1>コメント一覧</h1>
 <a href="#comment-form">コメント欄へ↓</a>
 <% @comments.each do |comment| %>
@@ -14,4 +77,4 @@
   </div>
 <% end %>
 <%= render 'comments/comment_form' %>
-
+<% end %>
