@@ -464,10 +464,10 @@ a {
 
 .status {
   display: inline;
-  font-size: 13px;
-  padding: 3px 5px;
-  margin-right: 20px;
-  border-radius: 12px;
+  font-size: 15px;
+  padding: 3px 7px;
+  margin-right: 10px;
+  border-radius: 15px;
   color: #fff;
 }
 
@@ -483,9 +483,19 @@ a {
   background-color: #16e000;
 }
 
+.l-goal-category {
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: 0px 7px;
+    margin-right: 30px;
+    background-color: #bbe5ed;
+    border-radius: 10px;
+    margin-bottom: 0;
+  }
+
 .l-goal-content {
   font-size: 24px;
-  margin-bottom: 0;
+  margin: 5px 0;
 }
 
 .l-goal-left {
@@ -586,7 +596,7 @@ section {
 
 .m-goal-link {
   float: right;
-  margin-top: 30px;
+  margin-top: 40px;
   margin-bottom: 15px;
   
   a {
@@ -625,10 +635,18 @@ section {
 .m-goal-head {
   background-color: #fff;
   padding: 10px;
-  width: 50%;
-  margin: 0 0 10px 25%;
-  font-size: 32px;
+  width: 60%;
+  margin: 0 0 10px 20%;
   display: inline-block;
+  overflow: hidden;
+  
+  h1 {
+    font-size: 32px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .create-m-goal {
@@ -717,10 +735,18 @@ section {
 .s-goal-head {
   background-color: #fff;
   padding: 10px;
-  width: 50%;
-  margin: 0 0 10px 25%;
-  font-size: 32px;
+  width: 60%;
+  margin: 0 0 10px 20%;
   display: inline-block;
+  overflow: hidden;
+  
+  h1 {
+    font-size: 32px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .create-s-goal {
@@ -804,6 +830,182 @@ section {
       Likes
 =================================================================*/
 
+
+
+
+/*=================================================================
+      Comments
+=================================================================*/
+
+.comment-head {
+  background-color: #fff;
+  padding: 10px;
+  width: 60%;
+  margin: 5px 0 10px 20%;
+  font-size: 32px;
+}
+
+.goal-source {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 30px;
+  margin-bottom: 7px;
+  
+  .goal-source-user-name {
+    font-size: 2.0rem;
+    font-weight: bold;
+    padding-left: 5px;
+  }
+  
+  p {
+    font-size: 24px;
+  }
+}
+
+
+.comment {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px 30px;
+  
+  .comment-left {
+    padding: 0;
+    width: 60px;
+  }
+  
+  .comment-right {
+    padding-left: 10px;
+  }
+  
+  .comment-user-name {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .fa-comments {
+    color: #888;
+  }
+  
+  .fa-trash-alt {
+    color: #888;
+  }
+  
+  span {
+    margin-right: 200px;
+  }
+}
+
+#comment-form {
+  background-color: #dee7f7;
+  border: 1px solid #ccc;
+  padding: 10px 30px;
+  
+  .form-control {
+    height: 35px;
+    width: 72%;
+    margin: 0 3px 0 15px;
+    display: inline-block;
+  }
+  
+  .btn {
+    width: 12%;
+    padding: 6px 0;
+    text-align: center;
+  }
+}
+
+
+
+/*=================================================================
+      CommentReplies
+=================================================================*/
+
+.comment-reply-head {
+  background-color: #fff;
+  padding: 10px;
+  width: 60%;
+  margin: 5px 0 10px 20%;
+  font-size: 32px;
+}
+
+.comment-source {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 30px;
+  margin-bottom: 7px;
+  
+  .comment-source-user-name {
+    font-size: 2.0rem;
+    font-weight: bold;
+    padding-left: 5px;
+  }
+  
+  p {
+    font-size: 20px;
+  }
+}
+
+
+.comment-reply {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px 30px;
+  
+  .comment-reply-left {
+    padding: 0;
+    width: 60px;
+  }
+  
+  .comment-reply-right {
+    padding-left: 10px;
+  }
+  
+  .comment-reply-user-name {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .fa-comments {
+    color: #888;
+  }
+  
+  .fa-trash-alt {
+    color: #888;
+  }
+  
+  span {
+    margin-right: 200px;
+  }
+}
+
+#comment-reply-form {
+  background-color: #dee7f7;
+  border: 1px solid #ccc;
+  padding: 10px 30px;
+  
+  .form-control {
+    height: 35px;
+    width: 72%;
+    margin: 0 3px 0 15px;
+    display: inline-block;
+  }
+  
+  .btn {
+    width: 12%;
+    padding: 6px 0;
+    text-align: center;
+  }
+}
 
 
 

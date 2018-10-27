@@ -1,3 +1,41 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1 class="comment-reply-head">返信一覧</h1>
+    <div class="comment-source">
+      <div class="comment-source-top">
+        <%= gravatar_for @comment.user, size: 40 %>
+        <%= link_to @comment.user.name, user_long_term_goals_path(@comment.user),
+                          class: "comment-source-user-name", data: {"turbolinks" => false} %>
+      </div>
+      <p><%= @comment.content %></p>
+    </div>
+    
+    <div class="comment-replies">
+      <% @comment_replies.each do |comment_reply| %>
+        <div class="comment-reply clearfix">
+          <div class="comment-reply-left col-md-2">
+            <%= gravatar_for comment_reply.user, size: 55 %>
+          </div>
+          <div class="comment-reply-right col-md-10">
+            <%= link_to comment_reply.user.name, user_long_term_goals_path(comment_reply.user), class: "comment-reply-user-name", data: {"turbolinks" => false} %>
+            <p><%= comment_reply.content %></p>
+            <% if current_user == comment_reply.user %>
+              <%= link_to "削除", comment_reply_path(comment_reply), method: :delete,
+                                data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= render 'comment_replies/comment_reply_form' %>
+  </div>
+</div>
+
+
+
+
+<%# 前のやつ %>
+<% if false %>
 <h1>返信コメント一覧</h1>
 <a href="#comment-reply-form">返信コメント欄へ↓</a>
 <% @comment_replies.each do |comment_reply| %>
@@ -11,3 +49,4 @@
   </div>
 <% end %>
 <%= render 'comment_replies/comment_reply_form' %>
+<% end %>

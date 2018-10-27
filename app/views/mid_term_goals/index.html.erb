@@ -27,7 +27,9 @@
   </aside>
   
   <div class="col-md-9">
-    <h1 class = "m-goal-head"><%= @long_term_goal.category %><span> | </span><%= @long_term_goal.content %></h1>
+    <div class="m-goal-head">
+      <h1><%= @long_term_goal.content %></h1>
+    </div>
     <% if current_user == @user %>
       <p class="create-m-goal"><%= link_to "＋", new_long_term_goal_mid_term_goal_path(@long_term_goal), remote: true %></p>
       <div class="table-sortable ui-sortable m-index"> <!-- これ消すと並び替えできなくなるので注意 -->
