@@ -1638,7 +1638,7 @@ div.list-group {
   }
 }
 
-.l-goal-wrapper + .l-goal-wrapper {
+.overview-header:not(:first-child) {
   padding-top: 100px;
   border-top: 1px solid $gray-light;
 }
