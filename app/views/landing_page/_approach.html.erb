@@ -11,7 +11,7 @@
       <% end %>
       <span>期限: </span><%= approach.deadline.date ? approach.deadline.date : "未設定" %>
       <span class="effectiveness-wrapper">効果:<span class="effectiveness"><%= approach.effectiveness %></span></span><br />
-      <p class="s-goal-approach-content"><%= approach.content %></p>
+      <p class="s-goal-approach-content"><%= link_to approach.content, mid_term_goal_short_term_goals_path(approach.short_term_goal.mid_term_goal), target: '_blank', data: {"turbolinks" => false} %></p>
       <ul class="s-goal-left">
         <li>
           <%= link_to short_term_goal_comments_path(s_goal) do %>

@@ -9,7 +9,7 @@
         <p class = "status status-green"><%= m_goal.status %></p>
       <% end %>
       <span>期限: </span><%= m_goal.deadline ? m_goal.deadline.date : "未設定" %><br />
-      <p class="m-goal-content"><%= link_to m_goal.content, mid_term_goal_short_term_goals_path(m_goal), data: {"turbolinks" => false} %></p>
+      <p class="m-goal-content"><%= link_to m_goal.content, long_term_goal_mid_term_goals_path(m_goal.long_term_goal), target: '_blank', data: {"turbolinks" => false} %></p>
       <ul class="m-goal-left">
         <li>
           <%= link_to mid_term_goal_comments_path(m_goal) do %>

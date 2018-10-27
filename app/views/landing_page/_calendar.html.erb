@@ -4,7 +4,7 @@
   <ul>
     <% @l_goals_by_date[date].each do |l_goal| %>
       <li class="l_goal">
-        <%= link_to l_goal.content, user_long_term_goals_path(l_goal.user), target: '_blank'  %>
+        <%= link_to l_goal.content, user_long_term_goals_path(l_goal.user), class: "l-calendar-anchor", target: '_blank', data: {"turbolinks" => false}  %>
         <%= link_to '', edit_long_term_goal_path(l_goal, date: params[:date]), class: "glyphicon glyphicon-pencil", remote: true %>
       </li>
     <% end %>
@@ -14,7 +14,7 @@
   <ul>
     <% @m_goals_by_date[date].each do |m_goal| %>
       <li class="m_goal">
-        <%= link_to m_goal.content, long_term_goal_mid_term_goals_path(m_goal.long_term_goal), target: '_blank'  %>
+        <%= link_to m_goal.content, long_term_goal_mid_term_goals_path(m_goal.long_term_goal), class: "m-calendar-anchor", target: '_blank', data: {"turbolinks" => false}  %>
         <%= link_to '', edit_mid_term_goal_path(m_goal, date: params[:date]), class: "glyphicon glyphicon-pencil", remote: true %>
       </li>
     <% end %>
@@ -24,7 +24,7 @@
   <ul>
     <% @s_goals_by_date[date].each do |s_goal| %>
       <li class="s_goal">
-        <%= link_to s_goal.content, mid_term_goal_short_term_goals_path(s_goal.mid_term_goal), target: '_blank'  %>
+        <%= link_to s_goal.content, mid_term_goal_short_term_goals_path(s_goal.mid_term_goal), class: "s-calendar-anchor", target: '_blank', data: {"turbolinks" => false}  %>
         <%= link_to '', edit_short_term_goal_path(s_goal, date: params[:date]), class: "glyphicon glyphicon-pencil", remote: true %>
       </li>
     <% end %>
@@ -34,10 +34,49 @@
   <ul>
     <% @approaches_by_date[date].each do |approach| %>
       <li class="approach">
-        <%= link_to approach.content, mid_term_goal_short_term_goals_path(approach.short_term_goal.mid_term_goal), target: '_blank'  %>
+        <%= link_to approach.content, mid_term_goal_short_term_goals_path(approach.short_term_goal.mid_term_goal), class: "a-calendar-anchor", target: '_blank', data: {"turbolinks" => false}  %>
         <%= link_to '', edit_approach_path(approach, date: params[:date]), class: "glyphicon glyphicon-pencil", remote: true %>
       </li>
     <% end %>
   </ul>
   <% end %>
 <% end %>
+<script>
+  var calendar = function() {
+    $('.l-calendar-anchor').hover(
+      function() {
+        $(this).parent().css('background', 'rgba(237, 156, 156, 0.5)');
+      },
+      function() {
+        $(this).parent().css('background', 'rgb(237, 156, 156)');
+      }
+    );
+    $('.m-calendar-anchor').hover(
+      function() {
+        $(this).parent().css('background', 'rgba(202, 252, 136, 0.5)');
+      },
+      function() {
+        $(this).parent().css('background', 'rgb(202, 252, 136)');
+      }
+    );
+    $('.s-calendar-anchor').hover(
+      function() {
+        $(this).parent().css('background', 'rgba(173, 238, 244, 0.5)');
+      },
+      function() {
+        $(this).parent().css('background', 'rgb(173, 238, 244)');
+      }
+    );
+    $('.a-calendar-anchor').hover(
+      function() {
+        $(this).parent().css('background', 'rgb(250, 250, 250)');
+      },
+      function() {
+        $(this).parent().css('background', 'rgb(238, 238, 238)');
+      }
+    );
+  }
+  $(document).ready(calendar)
+  $(document).on('turbolinks:load', calendar)
+  $(document).on('ajax:success', calendar)
+</script>
