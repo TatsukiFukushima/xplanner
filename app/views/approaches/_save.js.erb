@@ -1,5 +1,6 @@
 <% if params[:date] || (request.referer == root_url) %>
   $(".calendar").html("<%= escape_javascript(render 'landing_page/calendar') %>")
+  $("#goal-overview-wrapper").html("<%= escape_javascript(render 'landing_page/goal_overview') %>")
 <% else %>
   $(".<%= @short_term_goal.id %>-a-index").html("<%= escape_javascript(render 'short_term_goals/approach', s_goal: @short_term_goal) %>")
 <% end %>

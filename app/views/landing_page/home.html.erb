@@ -138,15 +138,24 @@
     
     <div class="col-md-9">
       <div id="home-wrapper">
-        <div id="calendar"></div>
         <div id="home-calendar">
-          <h2 id="month">
+          <h2 id="month" class=" clearfix">
             <%= link_to "<", date: @date.prev_month %>
             <%= @date.strftime("%B %Y") %>
             <%= link_to ">", date: @date.next_month %>
           </h2>
+          <span id="color-instruction">
+            長期目標:<span class="l_goal_color"></span>
+            中期目標:<span class="m_goal_color"></span>
+            短期目標:<span class="s_goal_color"></span>
+            アプローチ:<span class="approach_color"></span>
+          </span>
           <%= render 'calendar' %>
         </div>
+      </div>
+      <h2 id="goal-overview-header">目標俯瞰図</h2>
+      <div id="goal-overview-wrapper">
+        <%= render 'goal_overview' %>
       </div>
     </div>
   </div>

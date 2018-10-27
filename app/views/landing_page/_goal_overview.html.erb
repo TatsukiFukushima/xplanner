@@ -1,0 +1,118 @@
+<% @l_goals.each_with_index do |l_goal, l| %>
+  <div class="row">
+    <div class="col-sm-3 center">
+      <span>長期目標</span>
+    </div>
+    <div class="col-sm-3 center">
+      <span>中期目標</span>
+    </div>
+    <div class="col-sm-3 center">
+      <span>短期目標</span>
+    </div>
+    <div class="col-sm-3 center">
+      <span>アプローチ</span>
+    </div>
+  </div>
+  <div class="row l-goal-wrapper">
+    <div class="col-sm-3 l-goal-main l-goal-left-<%= l %>">
+      <%= link_to l_goal.content, user_long_term_goals_path(l_goal.user), class: "l-goal-anchor l-goal-anchor-#{l}", target: '_blank', data: {"turbolinks" => false} %>
+    </div>
+    <div class="col-sm-9 l-goal-right-<%= l %>">
+      <% l_goal.mid_term_goals.each_with_index do |m_goal, m| %>
+        <div class="row m-goal-wrapper">
+          <div class="col-sm-4 m-goal-main m-goal-left-<%= l %>-<%= m %>">
+            <%= link_to m_goal.content, long_term_goal_mid_term_goals_path(m_goal.long_term_goal), class: "m-goal-anchor m-goal-anchor-#{l}-#{m}", target: '_blank', data: {"turbolinks" => false} %>
+          </div>
+          <div class="col-sm-8 m-goal-right-<%= l %>-<%= m %>">
+            <% m_goal.short_term_goals.each_with_index do |s_goal, s| %>
+              <div class="row s-goal-wrapper">
+                <div class="col-sm-6 s-goal-main s-goal-left-<%= l %>-<%= m %>-<%= s %>">
+                  <%= link_to s_goal.content, mid_term_goal_short_term_goals_path(s_goal.mid_term_goal), class: "s-goal-anchor s-goal-anchor-#{l}-#{m}-#{s}", target: '_blank', data: {"turbolinks" => false} %>
+                </div>
+                <div class="col-sm-6 s-goal-right-<%= l %>-<%= m %>-<%= s %>">
+                  <% s_goal.approaches.each do |approach| %>
+                    <div class="row approach-wrapper">
+                      <div class="col-sm-12 approach-main">
+                        <%= link_to approach.content, mid_term_goal_short_term_goals_path(approach.short_term_goal.mid_term_goal), class: "approach-anchor", target: '_blank', data: {"turbolinks" => false} %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<script>
+  var ready = function() {
+    var l_goal_length   = $('.l-goal-main').length;
+    for (var l = 0; l < l_goal_length; l++) {
+      var right_height  = $(`.l-goal-right-${l}`).height();
+      var left_height   = $(`.l-goal-left-${l}`).height();
+      var anchor_height = $(`.l-goal-anchor-${l}`).height();
+      if (right_height > left_height) {
+        $(`.l-goal-left-${l}`).css('height', right_height + 'px');
+        $(`.l-goal-anchor-${l}`).css({'position': 'absolute', 'display': 'inline-block', 'top': 0, 'bottom': 0, 'left': 0, 'right': 0, 'margin': 'auto', 'width': '90%', 'height': anchor_height + 'px' });
+      }
+      var m_goal_length  = $('.m-goal-main').length;
+      for (var m = 0; m < m_goal_length; m++) {
+        var right_height = $(`.m-goal-right-${l}-${m}`).height();
+        var left_height  = $(`.m-goal-left-${l}-${m}`).height();
+        var anchor_height = $(`.m-goal-anchor-${l}-${m}`).height();
+        if (right_height > left_height) {
+          $(`.m-goal-left-${l}-${m}`).css('height', right_height + 'px');
+          $(`.m-goal-anchor-${l}-${m}`).css({'position': 'absolute', 'display': 'inline-block', 'top': 0, 'bottom': 0, 'left': 0, 'right': 0, 'margin': 'auto', 'width': '90%', 'height': anchor_height + 'px' });
+        }
+        var s_goal_length  = $('.s-goal-main').length;
+        for (var s = 0; s < s_goal_length; s++) {
+          var right_height = $(`.s-goal-right-${l}-${m}-${s}`).height();
+          var left_height  = $(`.s-goal-left-${l}-${m}-${s}`).height();
+          var anchor_height = $(`.s-goal-anchor-${l}-${m}-${s}`).height();
+          if (right_height > left_height) {
+            $(`.s-goal-left-${l}-${m}-${s}`).css('height', right_height + 'px');
+            $(`.s-goal-anchor-${l}-${m}-${s}`).css({'position': 'absolute', 'display': 'inline-block', 'top': 0, 'bottom': 0, 'left': 0, 'right': 0, 'margin': 'auto', 'width': '90%', 'height': anchor_height + 'px' });
+          }
+        }
+      }
+    }  
+    $('.l-goal-anchor').hover(
+      function() {
+        $(this).parent().css('background', 'rgba(237, 156, 156, 0.5)');
+      },
+      function() {
+        $(this).parent().css('background', 'rgb(237, 156, 156)');
+      }
+    );
+    $('.m-goal-anchor').hover(
+      function() {
+        $(this).parent().css('background', 'rgba(202, 252, 136, 0.5)');
+      },
+      function() {
+        $(this).parent().css('background', 'rgb(202, 252, 136)');
+      }
+    );
+    $('.s-goal-anchor').hover(
+      function() {
+        $(this).parent().css('background', 'rgba(173, 238, 244, 0.5)');
+      },
+      function() {
+        $(this).parent().css('background', 'rgb(173, 238, 244)');
+      }
+    );
+    $('.approach-anchor').hover(
+      function() {
+        $(this).parent().css('background', 'rgb(250, 250, 250)');
+      },
+      function() {
+        $(this).parent().css('background', 'rgb(238, 238, 238)');
+      }
+    );
+  }
+  
+  $(document).ready(ready)
+  $(document).on('turbolinks:load', ready)
+  $(document).on('ajax:success', ready)
+</script>
